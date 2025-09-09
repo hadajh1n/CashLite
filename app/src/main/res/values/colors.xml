@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="themes">#2F2E2E</color>
+    <color name="fragAll">#2F2E2E</color>
+    <color name="llNavigation">#1A1818</color>
+    <color name="tvSelectedFragment">#CDDC39</color>
+
+</resources>
