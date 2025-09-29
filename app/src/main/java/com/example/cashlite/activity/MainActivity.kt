@@ -1,12 +1,10 @@
 package com.example.cashlite.activity
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.cashlite.R
 import com.example.cashlite.Tab
 import com.example.cashlite.databinding.ActivityMainBinding
@@ -25,61 +23,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        fragmentOpen()
-        observeTabSelection()
+        setupBottomNavigation()
     }
 
-    private fun fragmentOpen() = with(binding) {
+    private fun setupBottomNavigation() {
         val navController = findNavController(R.id.nav_host_fragment)
-        llHistory.setOnClickListener {
-            viewModel.selectTab(Tab.HISTORY)
-            navigateIfNotCurrent(navController, R.id.historyFragment)
-        }
-        llGraphs.setOnClickListener {
-            viewModel.selectTab(Tab.GRAPHS)
-            navigateIfNotCurrent(navController, R.id.graphsFragment)
-        }
-        llSettings.setOnClickListener {
-            viewModel.selectTab(Tab.SETTINGS)
-            navigateIfNotCurrent(navController, R.id.settingsFragment)
-        }
-    }
+        binding.bottomNavigation.setupWithNavController(navController)
 
-    private fun navigateIfNotCurrent(navController: NavController, destinationId: Int) {
-        if (navController.currentDestination?.id != destinationId) {
-            navController.navigate(destinationId)
-        }
-    }
-
-    private fun observeTabSelection() = with(binding) {
-        viewModel.selectedTab.observe(this@MainActivity) { tab ->
-            when (tab) {
-                Tab.HISTORY -> {
-                    highlightTab(tvHistory)
-                    resetTab(tvGraphs)
-                    resetTab(tvSettings)
-                }
-                Tab.GRAPHS -> {
-                    resetTab(tvHistory)
-                    highlightTab(tvGraphs)
-                    resetTab(tvSettings)
-                }
-                Tab.SETTINGS -> {
-                    resetTab(tvHistory)
-                    resetTab(tvGraphs)
-                    highlightTab(tvSettings)
-                }
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.historyFragment -> viewModel.selectTab(Tab.HISTORY)
+                R.id.graphsFragment -> viewModel.selectTab(Tab.GRAPHS)
+                R.id.settingsFragment -> viewModel.selectTab(Tab.SETTINGS)
             }
         }
-    }
-
-    private fun highlightTab(tv: TextView) {
-        tv.setTextColor(ContextCompat.getColor(this, R.color.black))
-        tv.setBackgroundColor(ContextCompat.getColor(this, R.color.tvSelectedFragment))
-    }
-
-    private fun resetTab(tv: TextView) {
-        tv.setTextColor(ContextCompat.getColor(this, R.color.white))
-        tv.setBackgroundColor(ContextCompat.getColor(this, R.color.transparent))
     }
 }

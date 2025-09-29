@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/historyFragment"
+        android:icon="@drawable/history"
+        android:title="История" />
+    <item
+        android:id="@id/graphsFragment"
+        android:icon="@drawable/graphs"
+        android:title="Графики" />
+    <item
+        android:id="@id/settingsFragment"
+        android:icon="@drawable/settings"
+        android:title="Настройки" />
+</menu>
