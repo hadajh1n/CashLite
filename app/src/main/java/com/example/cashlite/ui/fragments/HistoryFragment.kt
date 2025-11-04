@@ -1,4 +1,4 @@
-package com.example.cashlite.fragments
+package com.example.cashlite.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cashlite.adapters.HistoryAdapter
+import com.example.cashlite.ui.adapters.HistoryAdapter
 import com.example.cashlite.databinding.FragmentHistoryBinding
-import com.example.cashlite.viewModel.HistoryViewModel
+import com.example.cashlite.ui.viewModel.HistoryViewModel
 
 class HistoryFragment : Fragment() {
 

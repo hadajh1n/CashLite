@@ -1,7 +1,7 @@
-package com.example.cashlite.viewModel
+package com.example.cashlite.ui.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.cashlite.Tab
+import com.example.cashlite.core.utils.Tab
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

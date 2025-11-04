@@ -1,12 +1,12 @@
-package com.example.cashlite.viewModel
+package com.example.cashlite.ui.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cashlite.Transaction
-import com.example.cashlite.retrofit.RetrofitClient
+import com.example.cashlite.data.dataclass.Transaction
+import com.example.cashlite.network.retrofit.RetrofitClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

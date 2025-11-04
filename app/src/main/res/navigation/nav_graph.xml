@@ -6,19 +6,19 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.cashlite.fragments.HistoryFragment"
+        android:name="com.example.cashlite.ui.fragments.HistoryFragment"
         android:label="HistoryFragment" >
     </fragment>
 
     <fragment
         android:id="@+id/graphsFragment"
-        android:name="com.example.cashlite.fragments.GraphsFragment"
+        android:name="com.example.cashlite.ui.fragments.GraphsFragment"
         android:label="GraphsFragment">
     </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.cashlite.fragments.SettingsFragment"
+        android:name="com.example.cashlite.ui.fragments.SettingsFragment"
         android:label="SettingsFragment">
     </fragment>
 

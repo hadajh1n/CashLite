@@ -1,11 +1,11 @@
-package com.example.cashlite.adapters
+package com.example.cashlite.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
-import com.example.cashlite.Transaction
+import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemHistoryBinding
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
@@ -27,7 +27,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
         return HistoryViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: HistoryAdapter.HistoryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.bind(historyList[position])
     }
 

@@ -1,4 +1,4 @@
-package com.example.cashlite.retrofit
+package com.example.cashlite.network.retrofit
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

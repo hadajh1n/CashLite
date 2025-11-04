@@ -1,6 +1,6 @@
-package com.example.cashlite.retrofit
+package com.example.cashlite.network.retrofit
 
-import com.example.cashlite.Transaction
+import com.example.cashlite.data.dataclass.Transaction
 import retrofit2.http.GET
 
 interface TransactionApi {

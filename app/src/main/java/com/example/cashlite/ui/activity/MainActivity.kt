@@ -1,4 +1,4 @@
-package com.example.cashlite.activity
+package com.example.cashlite.ui.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.cashlite.R
-import com.example.cashlite.Tab
+import com.example.cashlite.core.utils.Tab
 import com.example.cashlite.databinding.ActivityMainBinding
-import com.example.cashlite.viewModel.MainViewModel
+import com.example.cashlite.ui.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
