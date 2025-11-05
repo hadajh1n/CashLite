@@ -1,21 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    // activity_main.xml
+        // activity_main.xml
     
     <style name="tvHistory" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="tvGraphs" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="tvSettings" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+        // fragment_history.xml
+
+    <style name="tvFinance" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvFinance</item>
+    </style>
+
+    <style name="tvMonth" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/tvMonth</item>
+    </style>
+
+    <style name="tvYear" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/tvYear</item>
+    </style>
+
+    <style name="tvExpensesTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvExpensesTitle</item>
+    </style>
+
+    <style name="tvIncomeTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvIncomeTitle</item>
+    </style>
+
+    <style name="tvExpenses" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/tvExpenses</item>
+    </style>
+
+    <style name="tvIncome" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/tvIncome</item>
+    </style>
+
+        // item_history.xml
+
+    <style name="tvCategory" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvCategory</item>
+    </style>
+
+    <style name="tvAmount" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvAmount</item>
     </style>
     
 </resources>

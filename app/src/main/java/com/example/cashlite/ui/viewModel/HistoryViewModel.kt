@@ -22,7 +22,7 @@ class HistoryViewModel : ViewModel() {
                 val history = withContext(Dispatchers.IO) {
                     RetrofitClient.transactionApi.getTransactions()
                 }
-                Log.d("HistoryViewModel", "Получено ${history.size} транзакций")
+
                 _transactions.postValue(history)
             } catch (e: Exception) {
                 Log.e("HistoryViewModel", "Ошибка загрузки: ${e.message}", e)

@@ -16,8 +16,8 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
         private val binding = ItemHistoryBinding.bind(view)
 
         fun bind(transaction: Transaction) = with(binding) {
-            tvDate.text = transaction.date
-            tvAmount.text = String.format("%.2f", transaction.amount)
+            tvCategory.text = transaction.category
+            tvAmount.text = String.format("%.2f ₽", transaction.amount)
         }
     }
 

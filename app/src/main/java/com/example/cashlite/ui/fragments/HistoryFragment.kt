@@ -35,7 +35,6 @@ class HistoryFragment : Fragment() {
         binding.rvHistory.adapter = adapter
 
         viewModel.transactions.observe(viewLifecycleOwner) { list ->
-            Log.d("HistoryFragment", "Обновление списка: ${list.size} элементов")
             adapter.historyList.clear()
             adapter.historyList.addAll(list)
             adapter.notifyDataSetChanged()

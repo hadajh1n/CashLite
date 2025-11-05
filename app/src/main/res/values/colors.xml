@@ -8,4 +8,19 @@
     <color name="fragAll">#2F2E2E</color>
     <color name="llNavigation">#1A1818</color>
 
+    // fragment_history.xml
+
+    <color name="tvFinance">#FFFFFFFF</color>
+    <color name="tvMonth">#FFFFFFFF</color>
+    <color name="tvYear">#FFFFFFFF</color>
+    <color name="tvExpensesTitle">#FFFFFFFF</color>
+    <color name="tvIncomeTitle">#FFFFFFFF</color>
+    <color name="tvExpenses">#FFFFFFFF</color>
+    <color name="tvIncome">#FFFFFFFF</color>
+
+    // item_history.xml
+
+    <color name="tvCategory">#FF000000</color>
+    <color name="tvAmount">#1A1818</color>
+
 </resources>
