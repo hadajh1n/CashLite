@@ -26,7 +26,6 @@
             android:paddingVertical="12dp"
             android:gravity="center_vertical">
 
-            <!-- Категория -->
             <TextView
                 android:id="@+id/tvCategory"
                 style="@style/tvCategory"
@@ -35,7 +34,6 @@
                 android:layout_weight="1"
                 tools:text="Wildberries" />
 
-            <!-- Сумма -->
             <TextView
                 android:id="@+id/tvAmount"
                 style="@style/tvAmount"

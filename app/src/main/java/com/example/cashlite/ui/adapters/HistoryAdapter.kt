@@ -10,14 +10,13 @@ import com.example.cashlite.databinding.ItemHistoryBinding
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
-    val historyList = mutableListOf<Transaction>()
+    private var items = mutableListOf<Transaction>()
 
     inner class HistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemHistoryBinding.bind(view)
 
-        fun bind(transaction: Transaction) = with(binding) {
-            tvCategory.text = transaction.category
-            tvAmount.text = String.format("%.2f ₽", transaction.amount)
+        fun bind() = with(binding) {
+
         }
     }
 
@@ -28,8 +27,8 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.bind(historyList[position])
+
     }
 
-    override fun getItemCount(): Int = historyList.size
+    override fun getItemCount(): Int = items.size
 }

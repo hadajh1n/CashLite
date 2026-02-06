@@ -36,16 +36,27 @@
         <item name="android:textColor">@color/tvYear</item>
     </style>
 
+    <style name="tvIncomeTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvIncomeTitle</item>
+    </style>
+
     <style name="tvExpensesTitle" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvExpensesTitle</item>
     </style>
 
-    <style name="tvIncomeTitle" parent="Widget.AppCompat.TextView">
+    <style name="tvBalanceTitle" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/tvIncomeTitle</item>
+        <item name="android:textColor">@color/tvBalanceTitle</item>
+    </style>
+
+    <style name="tvIncome" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/tvIncome</item>
     </style>
 
     <style name="tvExpenses" parent="Widget.AppCompat.TextView">
@@ -53,9 +64,9 @@
         <item name="android:textColor">@color/tvExpenses</item>
     </style>
 
-    <style name="tvIncome" parent="Widget.AppCompat.TextView">
+    <style name="tvBalance" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/tvIncome</item>
+        <item name="android:textColor">@color/tvBalance</item>
     </style>
 
         // item_history.xml

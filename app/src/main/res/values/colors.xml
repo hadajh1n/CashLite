@@ -13,10 +13,15 @@
     <color name="tvFinance">#FFFFFFFF</color>
     <color name="tvMonth">#FFFFFFFF</color>
     <color name="tvYear">#FFFFFFFF</color>
-    <color name="tvExpensesTitle">#FFFFFFFF</color>
     <color name="tvIncomeTitle">#FFFFFFFF</color>
-    <color name="tvExpenses">#FFFFFFFF</color>
-    <color name="tvIncome">#FFFFFFFF</color>
+    <color name="tvExpensesTitle">#FFFFFFFF</color>
+    <color name="tvBalanceTitle">#FFFFFFFF</color>
+    <color name="tvIncome">#4CAF50</color>
+    <color name="tvExpenses">#F44336</color>
+    <color name="tvBalance">#F4E5C2</color>
+
+    <color name="btnAddOperationBackground">#F4E5C2</color>
+    <color name="btnAddOperation">#2F2E2E</color>
 
     // item_history.xml
 
