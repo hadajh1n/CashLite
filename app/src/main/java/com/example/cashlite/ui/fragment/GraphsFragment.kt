@@ -1,15 +1,15 @@
-package com.example.cashlite.ui.fragments
+package com.example.cashlite.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cashlite.databinding.FragmentSettingsBinding
+import com.example.cashlite.databinding.FragmentGraphsBinding
 
-class SettingsFragment : Fragment() {
+class GraphsFragment : Fragment() {
 
-    private var _binding: FragmentSettingsBinding? = null
+    private var _binding: FragmentGraphsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -17,7 +17,7 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        _binding = FragmentGraphsBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }

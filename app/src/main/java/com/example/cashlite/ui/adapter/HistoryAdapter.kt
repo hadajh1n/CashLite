@@ -1,4 +1,4 @@
-package com.example.cashlite.ui.adapters
+package com.example.cashlite.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

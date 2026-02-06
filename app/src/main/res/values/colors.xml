@@ -23,6 +23,10 @@
     <color name="btnAddOperationBackground">#F4E5C2</color>
     <color name="btnAddOperation">#2F2E2E</color>
 
+    // fragment_add_new_operation.xml
+
+    <color name="btnAddNewOperation">#FFFFFFFF</color>
+
     // item_history.xml
 
     <color name="tvCategory">#FF000000</color>
