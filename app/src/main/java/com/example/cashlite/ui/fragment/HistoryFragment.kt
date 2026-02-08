@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentHistoryBinding
-import com.example.cashlite.ui.activity.AddNewOperationActivity
 import com.example.cashlite.ui.viewModel.HistoryViewModel
 
 class HistoryFragment : Fragment() {

@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.cashlite.R
-import com.example.cashlite.databinding.ActivityMainBinding
+import com.example.cashlite.databinding.ActivityAddNewOperationBinding
 
-fun AppCompatActivity.setupBottomNavigation(binding: ActivityMainBinding) {
+fun AppCompatActivity.setupAddOperationNavigation(binding: ActivityAddNewOperationBinding) {
     val navHostFragment = supportFragmentManager
-        .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        .findFragmentById(R.id.nav_host_add_new_operation_fragment) as NavHostFragment
 
-    binding.bottomNavigation
+    binding.topNavigationOperation
         .setupWithNavController(navHostFragment.navController)
 }

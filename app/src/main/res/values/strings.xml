@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">CashLite</string>
 
-        // fragment_history
+    // fragment_history
 
     <string name="tvFinance">Финансы</string>
     <string name="tvIncomeTitle">Доходы</string>
     <string name="tvBalanceTitle">Баланс</string>
     <string name="tvExpensesTitle">Расходы</string>
 
-        // fragment_add_new_operation
+    // fragment_add_new_operation
 
     <string name="btnExpensesTitle">Расход</string>
     <string name="btnIncomeTitle">Доход</string>

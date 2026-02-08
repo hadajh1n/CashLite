@@ -2,11 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph_add_operation"
-    app:startDestination="@id/addNewOperationFragment">
+    app:startDestination="@id/addExpenceOperationFragment">
 
     <fragment
-        android:id="@+id/addNewOperationFragment"
-        android:name="com.example.cashlite.ui.fragment.AddNewOperationFragment"
-        android:label="AddNewOperationFragment" />
+        android:id="@+id/addExpenceOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.AddExpenceOperationFragment"
+        android:label="AddExpenceOperationFragment" />
+
+    <fragment
+        android:id="@+id/addIncomeOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.AddIncomeOperationFragment"
+        android:label="AddIncomeOperationFragment" />
+
+    <fragment
+        android:id="@+id/addTransferOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.AddTransferOperationFragment"
+        android:label="AddTransferOperationFragment" />
 
 </navigation>
