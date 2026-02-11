@@ -6,7 +6,7 @@
     android:viewportHeight="24">
 
     <path
-        android:fillColor="#546E7A"
+        android:fillColor="@color/iconsOfCategory"
         android:pathData="
             M20,10.7359622
             V18.5

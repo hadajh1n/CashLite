@@ -6,7 +6,7 @@
     android:viewportHeight="24">
 
     <path
-        android:fillColor="#546E7A"
+        android:fillColor="@color/iconsOfCategory"
         android:pathData="
             M1,1
             H4
@@ -22,10 +22,10 @@
             Z"/>
 
     <path
-        android:fillColor="#546E7A"
+        android:fillColor="@color/iconsOfCategory"
         android:pathData="M8,23 A2,2 0 1,0 8,19 A2,2 0 0,0 8,23 Z"/>
 
     <path
-        android:fillColor="#546E7A"
+        android:fillColor="@color/iconsOfCategory"
         android:pathData="M19,23 A2,2 0 1,0 19,19 A2,2 0 0,0 19,23 Z"/>
 </vector>

@@ -32,4 +32,8 @@
     <color name="tvCategory">#FF000000</color>
     <color name="tvAmount">#1A1818</color>
 
+    // drawable icons
+
+    <color name="iconsOfCategory">#EEEEEE</color>
+
 </resources>
