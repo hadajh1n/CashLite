@@ -19,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/llItemHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -26,13 +27,35 @@
             android:paddingVertical="12dp"
             android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/tvCategory"
-                style="@style/tvCategory"
+            <ImageView
+                android:id="@+id/imCategory"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                tools:src="@drawable/icon_basket" />
+
+            <LinearLayout
+                android:id="@+id/llTitleCategory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                tools:text="Wildberries" />
+                android:orientation="vertical"
+                android:paddingStart="12dp">
+
+                <TextView
+                    android:id="@+id/tvNote"
+                    style="@style/tvCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Магнит" />
+
+                <TextView
+                    android:id="@+id/tvCategory"
+                    style="@style/tvCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Супермаркет" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvAmount"
@@ -41,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="textEnd"
                 tools:text="-150.00 ₽" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/historyFragment"
-        android:icon="@drawable/history"
-        android:title="История" />
+        android:icon="@drawable/icon_history"
+        android:title="@string/historyFragment" />
     <item
         android:id="@id/graphsFragment"
-        android:icon="@drawable/graphs"
-        android:title="Графики" />
+        android:icon="@drawable/icon_graphs"
+        android:title="@string/graphsFragment" />
     <item
         android:id="@id/settingsFragment"
-        android:icon="@drawable/settings"
-        android:title="Настройки" />
+        android:icon="@drawable/icon_settings"
+        android:title="@string/settingsFragment" />
 </menu>

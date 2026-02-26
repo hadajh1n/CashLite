@@ -1,6 +1,6 @@
 package com.example.cashlite.data.dataclass
 
-data class ExpenceIcons(
+data class IconExpenseCategory(
     val imageId: Int,
-    val title: String,
+    val categoryName: String,
 )

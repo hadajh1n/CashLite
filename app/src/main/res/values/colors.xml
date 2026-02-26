@@ -26,6 +26,8 @@
     // fragment_add_new_operation.xml
 
     <color name="btnAddNewOperation">#FFFFFFFF</color>
+    <color name="hint">#FF000000</color>
+    <color name="panelAddNewOperation">#F4E5C2</color>
 
     // item_history.xml
 
@@ -35,5 +37,8 @@
     // drawable icons
 
     <color name="iconsOfCategory">#EEEEEE</color>
+    <color name="icon_categories_selector">#F09E45</color>
+    <color name="icon_default">#EEEEEE</color>
+    <color name="icon_add_category">#F09E45</color>
 
 </resources>

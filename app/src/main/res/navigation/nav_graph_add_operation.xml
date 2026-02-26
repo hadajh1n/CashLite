@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/addExpenceOperationFragment"
-        android:name="com.example.cashlite.ui.fragment.AddExpenceOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.AddExpenseOperationFragment"
         android:label="AddExpenceOperationFragment" />
 
     <fragment

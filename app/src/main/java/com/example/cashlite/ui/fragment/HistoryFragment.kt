@@ -1,6 +1,5 @@
 package com.example.cashlite.ui.fragment
 
-import android.content.Intent
 import com.example.cashlite.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -35,7 +34,13 @@ class HistoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
+        observeViewModel()
         onAddNewOperationButton()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setupAdapter() {
@@ -43,15 +48,16 @@ class HistoryFragment : Fragment() {
         binding.rvHistory.adapter = adapter
     }
 
+    private fun observeViewModel() {
+        viewModel.transactions.observe(viewLifecycleOwner) { list ->
+            adapter.submitList(list)
+        }
+    }
+
     private fun onAddNewOperationButton() {
         binding.btnAddOperation.setOnClickListener {
             findNavController()
                 .navigate(R.id.addNewOperationActivity)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

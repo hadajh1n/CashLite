@@ -1,0 +1,95 @@
+package com.example.cashlite.ui.fragment
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.cashlite.data.dataclass.IconExpenseCategory
+import com.example.cashlite.databinding.FragmentAddExpenseOperationBinding
+import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
+import com.example.cashlite.ui.adapter.AddExpenseOperationAdapter
+import com.example.cashlite.ui.viewModel.AddExpenseViewModel
+
+class AddExpenseOperationFragment : Fragment() {
+
+    private var _binding: FragmentAddExpenseOperationBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: AddExpenseViewModel by viewModels()
+    private var panelBinding: ViewAddCategoriesPanelBinding? = null
+
+    private val adapter = AddExpenseOperationAdapter { selectedCategory ->
+        showPanel(selectedCategory)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentAddExpenseOperationBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.initExpenseCategory()
+
+        setupAdapter()
+        observeViewModel()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        panelBinding = null
+    }
+
+    private fun setupAdapter() = with(binding) {
+        rvAddExpenseOperation.layoutManager = GridLayoutManager(requireContext(), 4)
+        rvAddExpenseOperation.adapter = adapter
+    }
+
+    private fun observeViewModel() {
+        viewModel.expenseCategories.observe(viewLifecycleOwner) { list ->
+            adapter.submitList(list)
+        }
+    }
+
+    private fun showPanel(categoryName: IconExpenseCategory) {
+
+        binding.bottomInputContainer.visibility = View.VISIBLE
+
+        if (panelBinding == null) {
+            panelBinding = ViewAddCategoriesPanelBinding.inflate(
+                layoutInflater,
+                binding.bottomInputContainer,
+                true
+            )
+        }
+
+        panelBinding?.apply {
+
+            tvTitlePanel.text = categoryName.categoryName
+            etAmount.text?.clear()
+            etNote.text?.clear()
+
+            imAddNewOperation.setOnClickListener {
+                val amountText = etAmount.text.toString()
+                val noteText = etNote.text.toString()
+                val amountDouble = amountText.toDoubleOrNull()
+
+                if (amountDouble != null) {
+                    viewModel.addOperation(
+                        category = categoryName,
+                        amount = amountDouble,
+                        note = noteText,
+                    )
+                }
+            }
+        }
+    }
+}

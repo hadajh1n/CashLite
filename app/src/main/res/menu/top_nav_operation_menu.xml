@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/addExpenceOperationFragment"
-        android:title="Расход" />
+        android:title="@string/addExpenceOperationFragment" />
     <item
         android:id="@id/addIncomeOperationFragment"
-        android:title="Доход" />
+        android:title="@string/addIncomeOperationFragment" />
     <item
         android:id="@id/addTransferOperationFragment"
-        android:title="Перевод" />
+        android:title="@string/addTransferOperationFragment" />
 </menu>
