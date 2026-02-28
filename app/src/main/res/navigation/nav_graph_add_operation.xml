@@ -19,4 +19,8 @@
         android:name="com.example.cashlite.ui.fragment.AddTransferOperationFragment"
         android:label="AddTransferOperationFragment" />
 
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.cashlite.ui.activity.MainActivity" />
+
 </navigation>

@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
 import com.example.cashlite.data.dataclass.NewExpenseTransaction
+import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemHistoryBinding
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
-    private var items = mutableListOf<NewExpenseTransaction>()
+    private var items = mutableListOf<Transaction>()
 
-    fun submitList(newItems: List<NewExpenseTransaction>) {
+    fun submitList(newItems: List<Transaction>) {
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()
@@ -21,11 +22,23 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
     inner class HistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemHistoryBinding.bind(view)
 
-        fun bind(item: NewExpenseTransaction) = with(binding) {
-            imCategory.setImageResource(item.category.imageId)
-            tvCategory.text = item.category.categoryName
-            tvNote.text = if (item.note.isNotEmpty()) item.note else ""
-            tvAmount.text = "-${item.amount} ₽"
+        fun bind(item: Transaction) = with(binding) {
+
+            when (item) {
+                is Transaction.Expense -> {
+                    imCategory.setImageResource(item.imageId)
+                    tvCategory.text = item.categoryName
+                    tvNote.text = item.note
+                    tvAmount.text = "-${item.amount} ₽"
+                }
+
+                is Transaction.Income -> {
+                    imCategory.setImageResource(item.imageId)
+                    tvCategory.text = item.categoryName
+                    tvNote.text = item.note
+                    tvAmount.text = "+${item.amount} ₽"
+                }
+            }
         }
     }
 

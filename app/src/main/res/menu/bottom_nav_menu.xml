@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@id/historyFragment"
-        android:icon="@drawable/icon_history"
+        android:icon="@drawable/icon_main_history"
         android:title="@string/historyFragment" />
     <item
         android:id="@id/graphsFragment"
-        android:icon="@drawable/icon_graphs"
+        android:icon="@drawable/icon_main_graphs"
         android:title="@string/graphsFragment" />
     <item
         android:id="@id/settingsFragment"
-        android:icon="@drawable/icon_settings"
+        android:icon="@drawable/icon_main_settings"
         android:title="@string/settingsFragment" />
 </menu>

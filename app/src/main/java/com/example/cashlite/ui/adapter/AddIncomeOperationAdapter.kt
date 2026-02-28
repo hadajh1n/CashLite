@@ -5,19 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.data.dataclass.IconExpenseCategory
-import com.example.cashlite.databinding.ItemAddNewExpenseOperationBinding
+import com.example.cashlite.data.dataclass.IconIncomeCategory
+import com.example.cashlite.databinding.ItemAddNewIncomeOperationBinding
 
-class AddExpenseOperationAdapter(
-    private val onCategoryClick: (IconExpenseCategory) -> Unit,
-) : RecyclerView.Adapter<AddExpenseOperationAdapter.AddExpenseViewHolder>() {
+class AddIncomeOperationAdapter(
+    private val onCategoryClick: (IconIncomeCategory) -> Unit,
+) : RecyclerView.Adapter<AddIncomeOperationAdapter.AddIncomeViewHolder>() {
 
-    private val expenseCategoriesList = mutableListOf<IconExpenseCategory>()
+    private val incomeCategoriesList = mutableListOf<IconIncomeCategory>()
     private var selectedPosition = RecyclerView.NO_POSITION
 
-    fun submitList(newList: List<IconExpenseCategory>) {
-        expenseCategoriesList.clear()
-        expenseCategoriesList.addAll(newList)
+    fun submitList(newList: List<IconIncomeCategory>) {
+        incomeCategoriesList.clear()
+        incomeCategoriesList.addAll(newList)
         notifyDataSetChanged()
     }
 
@@ -32,13 +32,13 @@ class AddExpenseOperationAdapter(
         notifyItemChanged(selectedPosition)
     }
 
-    inner class AddExpenseViewHolder(item: View) : RecyclerView.ViewHolder(item) {
-        private val binding = ItemAddNewExpenseOperationBinding.bind(item)
+    inner class AddIncomeViewHolder(item: View) : RecyclerView.ViewHolder(item) {
+        private val binding = ItemAddNewIncomeOperationBinding.bind(item)
 
-        fun bind(item: IconExpenseCategory, position: Int) = with(binding) {
+        fun bind(item: IconIncomeCategory, position: Int) = with(binding) {
             imIcon.setImageResource(item.imageId)
             imIcon.isSelected = position == selectedPosition
-            tvExpenseTitle.text = item.categoryName
+            tvIncomeTitle.text = item.categoryName
 
             root.setOnClickListener {
                 val currentPosition = bindingAdapterPosition
@@ -51,16 +51,16 @@ class AddExpenseOperationAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AddExpenseViewHolder {
+    ): AddIncomeViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.item_add_new_expense_operation, parent, false
+            R.layout.item_add_new_income_operation, parent, false
         )
-        return AddExpenseViewHolder(view)
+        return AddIncomeViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: AddExpenseViewHolder, position: Int) {
-        holder.bind(expenseCategoriesList[position], position)
+    override fun onBindViewHolder(holder: AddIncomeViewHolder, position: Int) {
+        holder.bind(incomeCategoriesList[position], position)
     }
 
-    override fun getItemCount(): Int = expenseCategoriesList.size
+    override fun getItemCount(): Int = incomeCategoriesList.size
 }

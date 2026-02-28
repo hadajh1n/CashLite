@@ -20,8 +20,8 @@ class AddExpenseViewModel : ViewModel() {
         isInitExpenseCategories = true
     }
 
-    fun addOperation(category: IconExpenseCategory, amount: Double, note: String) {
-        AppRepository.mapNewExpenseTransaction(category, amount, note)
+    fun addExpenseOperation(category: IconExpenseCategory, amount: Double, note: String) {
+        AppRepository.addExpenseTransaction(category, amount, note)
     }
 
 }

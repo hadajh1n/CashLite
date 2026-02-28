@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.cashlite.R
 import com.example.cashlite.data.dataclass.IconExpenseCategory
 import com.example.cashlite.databinding.FragmentAddExpenseOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
@@ -83,11 +85,9 @@ class AddExpenseOperationFragment : Fragment() {
                 val amountDouble = amountText.toDoubleOrNull()
 
                 if (amountDouble != null) {
-                    viewModel.addOperation(
-                        category = categoryName,
-                        amount = amountDouble,
-                        note = noteText,
-                    )
+                    viewModel.addExpenseOperation(categoryName, amountDouble, noteText)
+                    findNavController()
+                        .navigate(R.id.mainActivity)
                 }
             }
         }

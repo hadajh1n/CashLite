@@ -31,7 +31,7 @@
                 android:id="@+id/imCategory"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                tools:src="@drawable/icon_basket" />
+                tools:src="@drawable/icon_expense_basket" />
 
             <LinearLayout
                 android:id="@+id/llTitleCategory"
