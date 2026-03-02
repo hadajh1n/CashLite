@@ -19,6 +19,7 @@
     <color name="tvIncome">#4CAF50</color>
     <color name="tvExpenses">#F44336</color>
     <color name="tvBalance">#F4E5C2</color>
+    <color name="tvEmptyList">#FFFFFFFF</color>
 
     <color name="btnAddOperationBackground">#F4E5C2</color>
     <color name="btnAddOperation">#2F2E2E</color>

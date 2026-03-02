@@ -51,6 +51,8 @@ class HistoryFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.transactions.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
+            if (list.isEmpty()) binding.llEmptyList.visibility = View.VISIBLE else
+                binding.llEmptyList.visibility = View.GONE
         }
 
         viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->

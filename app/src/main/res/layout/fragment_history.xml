@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/gridIncomeExpenses">
+        app:layout_constraintBottom_toTopOf="@id/gridIncomeExpense">
 
         <TextView
             android:id="@+id/tvFinance"
@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <GridLayout
-        android:id="@+id/gridIncomeExpenses"
+        android:id="@+id/gridIncomeExpense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="3"
@@ -71,7 +71,7 @@
             android:layout_columnWeight="1"/>
 
         <TextView
-            android:id="@+id/tvExpensesTitle"
+            android:id="@+id/tvExpenseTitle"
             style="@style/tvExpensesTitle"
             android:gravity="center"
             android:text="@string/tvExpensesTitle"
@@ -111,8 +111,39 @@
         app:layout_constraintBottom_toTopOf="@+id/btnAddOperation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpenses"
-        tools:listitem="@layout/item_history" />
+        app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense" />
+        <!--tools:listitem="@layout/item_history"-->
+
+    <LinearLayout
+        android:id="@+id/llEmptyList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/rvHistory"
+        app:layout_constraintEnd_toEndOf="@+id/rvHistory"
+        app:layout_constraintStart_toStartOf="@+id/rvHistory"
+        app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense">
+
+        <ImageView
+            android:id="@+id/imEmptyList"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_empty_list"
+            app:layout_constraintBottom_toBottomOf="@+id/rvHistory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense" />
+
+        <TextView
+            android:id="@+id/tvEmptyList"
+            style="@style/tvEmptyList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvEmptyList" />
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/btnAddOperation"

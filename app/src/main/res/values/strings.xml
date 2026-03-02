@@ -16,6 +16,7 @@
     <string name="tvIncomeTitle">Доходы</string>
     <string name="tvBalanceTitle">Баланс</string>
     <string name="tvExpensesTitle">Расходы</string>
+    <string name="tvEmptyList">Список пуст</string>
 
     // fragment_add_new_operation
     <string name="btnExpensesTitle">Расход</string>

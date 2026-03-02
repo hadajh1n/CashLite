@@ -69,6 +69,11 @@
         <item name="android:textColor">@color/tvBalance</item>
     </style>
 
+    <style name="tvEmptyList" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/tvEmptyList</item>
+    </style>
+
         // fragment_add_new_operation.xml
 
     <style name="btnAddNewOperation" parent="ShapeAppearanceOverlay.Material3.Button">
