@@ -78,24 +78,27 @@
             android:layout_columnWeight="1"/>
 
         <TextView
-            android:id="@+id/tvIncome"
+            android:id="@+id/tvTotalIncome"
             style="@style/tvIncome"
             android:gravity="center"
             android:layout_columnWeight="1"
+            android:inputType="numberDecimal"
             android:text="0 ₽" />
 
         <TextView
-            android:id="@+id/tvBalance"
+            android:id="@+id/tvTotalBalance"
             style="@style/tvBalance"
             android:layout_columnWeight="1"
             android:gravity="center"
+            android:inputType="numberDecimal"
             android:text="0 ₽" />
 
         <TextView
-            android:id="@+id/tvExpenses"
+            android:id="@+id/tvTotalExpense"
             style="@style/tvExpenses"
-            android:gravity="center"
             android:layout_columnWeight="1"
+            android:gravity="center"
+            android:inputType="numberDecimal"
             android:text="0 ₽" />
     </GridLayout>
 

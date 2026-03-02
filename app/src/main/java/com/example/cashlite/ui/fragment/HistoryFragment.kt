@@ -52,6 +52,12 @@ class HistoryFragment : Fragment() {
         viewModel.transactions.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
         }
+
+        viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->
+            binding.tvTotalExpense.text = "${state.totalExpense}"
+            binding.tvTotalIncome.text  = "${state.totalIncome}"
+            binding.tvTotalBalance.text = "${state.totalBalance}"
+        }
     }
 
     private fun onAddNewOperationButton() {

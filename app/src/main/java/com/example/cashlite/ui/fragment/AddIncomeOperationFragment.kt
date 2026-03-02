@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cashlite.R
-import com.example.cashlite.data.dataclass.IconIncomeCategory
+import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.FragmentAddIncomeOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
 import com.example.cashlite.ui.adapter.AddIncomeOperationAdapter
@@ -62,7 +62,7 @@ class AddIncomeOperationFragment : Fragment() {
         }
     }
 
-    private fun showPanel(categoryName: IconIncomeCategory) {
+    private fun showPanel(categoryName: Transaction.Income) {
 
         binding.bottomInputContainer.visibility = View.VISIBLE
 
@@ -87,6 +87,7 @@ class AddIncomeOperationFragment : Fragment() {
 
                 if (amountDouble != null) {
                     viewModel.addIncomeOperation(categoryName, amountDouble, noteText)
+                    viewModel.totalIncome(amountDouble)
                     findNavController()
                         .navigate(R.id.mainActivity)
                 }

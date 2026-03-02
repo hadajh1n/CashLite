@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.data.dataclass.IconIncomeCategory
+import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemAddNewIncomeOperationBinding
 
 class AddIncomeOperationAdapter(
-    private val onCategoryClick: (IconIncomeCategory) -> Unit,
+    private val onCategoryClick: (Transaction.Income) -> Unit,
 ) : RecyclerView.Adapter<AddIncomeOperationAdapter.AddIncomeViewHolder>() {
 
-    private val incomeCategoriesList = mutableListOf<IconIncomeCategory>()
+    private val incomeCategoriesList = mutableListOf<Transaction.Income>()
     private var selectedPosition = RecyclerView.NO_POSITION
 
-    fun submitList(newList: List<IconIncomeCategory>) {
+    fun submitList(newList: List<Transaction.Income>) {
         incomeCategoriesList.clear()
         incomeCategoriesList.addAll(newList)
         notifyDataSetChanged()
@@ -35,7 +35,7 @@ class AddIncomeOperationAdapter(
     inner class AddIncomeViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemAddNewIncomeOperationBinding.bind(item)
 
-        fun bind(item: IconIncomeCategory, position: Int) = with(binding) {
+        fun bind(item: Transaction.Income, position: Int) = with(binding) {
             imIcon.setImageResource(item.imageId)
             imIcon.isSelected = position == selectedPosition
             tvIncomeTitle.text = item.categoryName

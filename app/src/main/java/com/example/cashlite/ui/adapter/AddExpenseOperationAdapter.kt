@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.data.dataclass.IconExpenseCategory
+import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemAddNewExpenseOperationBinding
 
 class AddExpenseOperationAdapter(
-    private val onCategoryClick: (IconExpenseCategory) -> Unit,
+    private val onCategoryClick: (Transaction.Expense) -> Unit,
 ) : RecyclerView.Adapter<AddExpenseOperationAdapter.AddExpenseViewHolder>() {
 
-    private val expenseCategoriesList = mutableListOf<IconExpenseCategory>()
+    private val expenseCategoriesList = mutableListOf<Transaction.Expense>()
     private var selectedPosition = RecyclerView.NO_POSITION
 
-    fun submitList(newList: List<IconExpenseCategory>) {
+    fun submitList(newList: List<Transaction.Expense>) {
         expenseCategoriesList.clear()
         expenseCategoriesList.addAll(newList)
         notifyDataSetChanged()
@@ -35,7 +35,7 @@ class AddExpenseOperationAdapter(
     inner class AddExpenseViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemAddNewExpenseOperationBinding.bind(item)
 
-        fun bind(item: IconExpenseCategory, position: Int) = with(binding) {
+        fun bind(item: Transaction.Expense, position: Int) = with(binding) {
             imIcon.setImageResource(item.imageId)
             imIcon.isSelected = position == selectedPosition
             tvExpenseTitle.text = item.categoryName

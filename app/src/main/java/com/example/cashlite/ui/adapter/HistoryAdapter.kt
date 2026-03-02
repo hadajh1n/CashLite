@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
-import com.example.cashlite.data.dataclass.NewExpenseTransaction
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemHistoryBinding
 

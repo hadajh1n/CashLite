@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cashlite.R
-import com.example.cashlite.data.dataclass.IconExpenseCategory
+import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.FragmentAddExpenseOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
 import com.example.cashlite.ui.adapter.AddExpenseOperationAdapter
@@ -61,7 +61,7 @@ class AddExpenseOperationFragment : Fragment() {
         }
     }
 
-    private fun showPanel(categoryName: IconExpenseCategory) {
+    private fun showPanel(categoryName: Transaction.Expense) {
 
         binding.bottomInputContainer.visibility = View.VISIBLE
 
@@ -86,6 +86,7 @@ class AddExpenseOperationFragment : Fragment() {
 
                 if (amountDouble != null) {
                     viewModel.addExpenseOperation(categoryName, amountDouble, noteText)
+                    viewModel.totalExpense(amountDouble)
                     findNavController()
                         .navigate(R.id.mainActivity)
                 }

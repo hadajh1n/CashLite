@@ -3,10 +3,7 @@ package com.example.cashlite.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.cashlite.R
-import com.example.cashlite.data.dataclass.IconExpenseCategory
-import com.example.cashlite.data.dataclass.IconIncomeCategory
-import com.example.cashlite.data.dataclass.NewExpenseTransaction
-import com.example.cashlite.data.dataclass.NewIncomeTransaction
+import com.example.cashlite.data.dataclass.TotalsState
 import com.example.cashlite.data.dataclass.Transaction
 
 object AppRepository {
@@ -16,46 +13,44 @@ object AppRepository {
     private val _transactions = MutableLiveData<List<Transaction>>()
     val transactions: LiveData<List<Transaction>> get() = _transactions
 
-//    private val transactionsExpenseList = mutableListOf<NewExpenseTransaction>()
-//    private val transactionsIncomeList = mutableListOf<NewIncomeTransaction>()
-//
-//    private val _transactionsExpense = MutableLiveData<List<NewExpenseTransaction>>()
-//    val transactionsExpense: LiveData<List<NewExpenseTransaction>> get() = _transactionsExpense
-//
-//    private val _transactionsIncome = MutableLiveData<List<NewIncomeTransaction>>()
-//    val transactionsIncome: LiveData<List<NewIncomeTransaction>> get() = _transactionsIncome
+    private val _updateTotalTransactions = MutableLiveData<TotalsState>()
+    val updateTotalTransactions: LiveData<TotalsState> get() = _updateTotalTransactions
 
-    fun getExpenseCategories(): List<IconExpenseCategory> {
+    private var currentTotalExpense: Double = 0.0
+    private var currentTotalIncome: Double = 0.0
+    private var currentTotalBalance: Double = 0.0
+
+    fun getExpenseCategories(): List<Transaction.Expense> {
         return listOf(
-            IconExpenseCategory(R.drawable.icon_expense_basket, "Супермаркет"),
-            IconExpenseCategory(R.drawable.icon_expense_food, "Еда"),
-            IconExpenseCategory(R.drawable.icon_expense_clothes, "Одежда"),
-            IconExpenseCategory(R.drawable.icon_expense_car, "Автомобиль"),
-            IconExpenseCategory(R.drawable.icon_expense_bus, "Транспорт"),
-            IconExpenseCategory(R.drawable.icon_expense_bicycle, "Спорт"),
-            IconExpenseCategory(R.drawable.icon_expense_housing, "Жилье"),
-            IconExpenseCategory(R.drawable.icon_expense_education, "Образование"),
-            IconExpenseCategory(R.drawable.icon_expense_flag, "Путешествие"),
-            IconExpenseCategory(R.drawable.icon_expense_laptop, "Электроника"),
-            IconExpenseCategory(R.drawable.icon_expense_phone, "Телефон"),
-            IconExpenseCategory(R.drawable.icon_expense_pharmacy, "Аптека"),
-            IconExpenseCategory(R.drawable.icon_expense_baby, "Детские"),
-            IconExpenseCategory(R.drawable.icon_expense_cat, "Домашний питомец"),
+            Transaction.Expense(R.drawable.icon_expense_basket, "Супермаркет"),
+            Transaction.Expense(R.drawable.icon_expense_food, "Еда"),
+            Transaction.Expense(R.drawable.icon_expense_clothes, "Одежда"),
+            Transaction.Expense(R.drawable.icon_expense_car, "Автомобиль"),
+            Transaction.Expense(R.drawable.icon_expense_bus, "Транспорт"),
+            Transaction.Expense(R.drawable.icon_expense_bicycle, "Спорт"),
+            Transaction.Expense(R.drawable.icon_expense_housing, "Жилье"),
+            Transaction.Expense(R.drawable.icon_expense_education, "Образование"),
+            Transaction.Expense(R.drawable.icon_expense_flag, "Путешествие"),
+            Transaction.Expense(R.drawable.icon_expense_laptop, "Электроника"),
+            Transaction.Expense(R.drawable.icon_expense_phone, "Телефон"),
+            Transaction.Expense(R.drawable.icon_expense_pharmacy, "Аптека"),
+            Transaction.Expense(R.drawable.icon_expense_baby, "Детские"),
+            Transaction.Expense(R.drawable.icon_expense_cat, "Домашний питомец"),
         )
     }
 
-    fun getIncomeCategories(): List<IconIncomeCategory> {
+    fun getIncomeCategories(): List<Transaction.Income> {
         return listOf(
-            IconIncomeCategory(R.drawable.icon_income_wallet, "Зарплата"),
-            IconIncomeCategory(R.drawable.icon_income_graph, "Инвестиции"),
-            IconIncomeCategory(R.drawable.icon_income_award, "Бонусы"),
+            Transaction.Income(R.drawable.icon_income_wallet, "Зарплата"),
+            Transaction.Income(R.drawable.icon_income_graph, "Инвестиции"),
+            Transaction.Income(R.drawable.icon_income_award, "Бонусы"),
         )
     }
 
     fun addExpenseTransaction(
-        category: IconExpenseCategory,
+        category: Transaction.Expense,
         amount: Double,
-        note: String
+        note: String,
     ) {
         val transaction = Transaction.Expense(
             imageId = category.imageId,
@@ -66,10 +61,14 @@ object AppRepository {
         addTransaction(transaction)
     }
 
+    fun updateTotalExpense(amount: Double) {
+        currentTotalExpense -= amount
+    }
+
     fun addIncomeTransaction(
-        category: IconIncomeCategory,
+        category: Transaction.Income,
         amount: Double,
-        note: String
+        note: String,
     ) {
         val transaction = Transaction.Income(
             imageId = category.imageId,
@@ -80,18 +79,22 @@ object AppRepository {
         addTransaction(transaction)
     }
 
+    fun updateTotalIncome(amount: Double) {
+        currentTotalIncome += amount
+    }
+
+    fun updateTotals() {
+        currentTotalBalance = currentTotalIncome + currentTotalExpense
+
+        _updateTotalTransactions.value = TotalsState(
+            totalExpense = currentTotalExpense,
+            totalIncome = currentTotalIncome,
+            totalBalance = currentTotalBalance
+        )
+    }
+
     private fun addTransaction(transaction: Transaction) {
         transactionsList.add(0, transaction)
         _transactions.value = transactionsList.toList()
     }
-
-//    private fun addExpenseTransactions(transaction: NewExpenseTransaction) {
-//        transactionsExpenseList.add(0, transaction)
-//        _transactionsExpense.value = transactionsExpenseList.toList()
-//    }
-//
-//    private fun addIncomeTransactions(transaction: NewIncomeTransaction) {
-//        transactionsIncomeList.add(0, transaction)
-//        _transactionsIncome.value = transactionsIncomeList.toList()
-//    }
 }
