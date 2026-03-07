@@ -43,22 +43,23 @@ class HistoryFragment : Fragment() {
         _binding = null
     }
 
-    private fun setupAdapter() {
-        binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvHistory.adapter = adapter
+    private fun setupAdapter() = with(binding) {
+        rvHistory.layoutManager = LinearLayoutManager(requireContext())
+        rvHistory.adapter = adapter
     }
 
-    private fun observeViewModel() {
-        viewModel.transactions.observe(viewLifecycleOwner) { list ->
+    private fun observeViewModel() = with(binding) {
+        viewModel.historyItems.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
-            if (list.isEmpty()) binding.llEmptyList.visibility = View.VISIBLE else
-                binding.llEmptyList.visibility = View.GONE
+
+            if (list.isEmpty()) llEmptyList.visibility = View.VISIBLE else
+                llEmptyList.visibility = View.GONE
         }
 
         viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->
-            binding.tvTotalExpense.text = "${state.totalExpense}"
-            binding.tvTotalIncome.text  = "${state.totalIncome}"
-            binding.tvTotalBalance.text = "${state.totalBalance}"
+            tvTotalExpense.text = "${state.totalExpense}"
+            tvTotalIncome.text  = "${state.totalIncome}"
+            tvTotalBalance.text = "${state.totalBalance}"
         }
     }
 

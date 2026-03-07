@@ -51,12 +51,14 @@ object AppRepository {
         category: Transaction.Expense,
         amount: Double,
         note: String,
+        date: String,
     ) {
         val transaction = Transaction.Expense(
             imageId = category.imageId,
             categoryName = category.categoryName,
             amount = amount,
             note = note,
+            date = date,
         )
         addTransaction(transaction)
     }
@@ -69,12 +71,14 @@ object AppRepository {
         category: Transaction.Income,
         amount: Double,
         note: String,
+        date: String,
     ) {
         val transaction = Transaction.Income(
             imageId = category.imageId,
             categoryName = category.categoryName,
             amount = amount,
             note = note,
+            date = date,
         )
         addTransaction(transaction)
     }

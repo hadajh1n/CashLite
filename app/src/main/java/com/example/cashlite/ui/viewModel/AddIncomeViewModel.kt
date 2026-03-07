@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.data.repository.AppRepository
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class AddIncomeViewModel : ViewModel() {
 
@@ -21,7 +23,8 @@ class AddIncomeViewModel : ViewModel() {
     }
 
     fun addIncomeOperation(category: Transaction.Income, amount: Double, note: String) {
-        AppRepository.addIncomeTransaction(category, amount, note)
+        val date = getCurrentDate()
+        AppRepository.addIncomeTransaction(category, amount, note, date)
     }
 
     fun totalIncome(amount: Double) {
@@ -29,4 +32,8 @@ class AddIncomeViewModel : ViewModel() {
         AppRepository.updateTotals()
     }
 
+    fun getCurrentDate(): String {
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yy")
+        return LocalDate.now().format(formatter)
+    }
 }
