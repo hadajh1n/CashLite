@@ -3,6 +3,7 @@ package com.example.cashlite.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
 import com.example.cashlite.data.dataclass.HistoryItem
@@ -20,9 +21,14 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items = mutableListOf<HistoryItem>()
 
     fun submitList(newItems: List<HistoryItem>) {
+
+        val diffCallback = HistoryDiffCallback(items, newItems)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
         items.clear()
         items.addAll(newItems)
-        notifyDataSetChanged()
+
+        diffResult.dispatchUpdatesTo(this@HistoryAdapter)
     }
 
     inner class DateViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -91,4 +97,34 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int = items.size
+}
+
+class HistoryDiffCallback(
+    private val oldList: List<HistoryItem>,
+    private val newList: List<HistoryItem>
+) : DiffUtil.Callback() {
+
+    override fun getOldListSize(): Int = oldList.size
+
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+
+        val oldItem = oldList[oldItemPosition]
+        val newItem = newList[newItemPosition]
+
+        return when {
+            oldItem is HistoryItem.DateHeader && newItem is HistoryItem.DateHeader ->
+                oldItem.date == newItem.date
+
+            oldItem is HistoryItem.TransactionItem && newItem is HistoryItem.TransactionItem ->
+                oldItem.transaction == newItem.transaction
+
+            else -> false
+        }
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
 }
