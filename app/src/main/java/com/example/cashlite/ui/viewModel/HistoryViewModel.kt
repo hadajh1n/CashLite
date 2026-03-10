@@ -26,22 +26,25 @@ class HistoryViewModel : ViewModel() {
 
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yy")
 
-        val sortedTransactions =
-            transactions.sortedWith(compareByDescending { LocalDate.parse(it.date, formatter) })
-
-        val historyItems = mutableListOf<HistoryItem>()
-
-        var currentDate = sortedTransactions.first().date
-        historyItems.add(HistoryItem.DateHeader(currentDate))
-
-        for (transaction in sortedTransactions) {
-            if (transaction.date != currentDate) {
-                currentDate = transaction.date
-                historyItems.add(HistoryItem.DateHeader(currentDate))
-            }
-            historyItems.add(HistoryItem.TransactionItem(transaction))
+        val sorted = transactions.sortedByDescending {
+            LocalDate.parse(it.date, formatter)
         }
 
-        return historyItems
+        val grouped = sorted.groupBy { it.date }
+        val result = mutableListOf<HistoryItem>()
+
+        for ((date, list) in grouped) {
+            result.add(HistoryItem.DateHeader(date))
+
+            list.forEach { transaction ->
+                result.add(HistoryItem.TransactionItem(transaction))
+            }
+        }
+
+        return result
+    }
+
+    fun onSwipeRemoveTransaction(transaction: Transaction) {
+        AppRepository.removeTransaction(transaction)
     }
 }

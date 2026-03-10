@@ -31,6 +31,10 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         diffResult.dispatchUpdatesTo(this@HistoryAdapter)
     }
 
+    fun getItem(position: Int): HistoryItem {
+        return items[position]
+    }
+
     inner class DateViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemDateHeaderHistoryBinding.bind(view)
 

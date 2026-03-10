@@ -101,4 +101,23 @@ object AppRepository {
         transactionsList.add(0, transaction)
         _transactions.value = transactionsList.toList()
     }
+
+    fun removeTransaction(transaction: Transaction) {
+
+        when (transaction) {
+            is Transaction.Expense -> currentTotalExpense += transaction.amount
+            is Transaction.Income -> currentTotalIncome -= transaction.amount
+        }
+
+        currentTotalBalance = currentTotalIncome + currentTotalExpense
+
+        transactionsList.remove(transaction)
+        _transactions.value = transactionsList.toList()
+
+        _updateTotalTransactions.value = TotalsState(
+            totalExpense = currentTotalExpense,
+            totalIncome = currentTotalIncome,
+            totalBalance = currentTotalBalance
+        )
+    }
 }
