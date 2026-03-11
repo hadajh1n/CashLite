@@ -105,7 +105,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 class HistoryDiffCallback(
     private val oldList: List<HistoryItem>,
-    private val newList: List<HistoryItem>
+    private val newList: List<HistoryItem>,
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int = oldList.size

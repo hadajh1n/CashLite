@@ -4,6 +4,7 @@ import com.example.cashlite.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemAddNewExpenseOperationBinding
@@ -16,9 +17,14 @@ class AddExpenseOperationAdapter(
     private var selectedPosition = RecyclerView.NO_POSITION
 
     fun submitList(newList: List<Transaction.Expense>) {
+
+        val diffCallback = ExpenseDiffCallback(expenseCategoriesList, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
         expenseCategoriesList.clear()
         expenseCategoriesList.addAll(newList)
-        notifyDataSetChanged()
+
+        diffResult.dispatchUpdatesTo(this@AddExpenseOperationAdapter)
     }
 
     private fun updateSelectedPosition(newPosition: Int) {
@@ -63,4 +69,27 @@ class AddExpenseOperationAdapter(
     }
 
     override fun getItemCount(): Int = expenseCategoriesList.size
+}
+
+class ExpenseDiffCallback(
+    private val oldList: List<Transaction.Expense>,
+    private val newList: List<Transaction.Expense>,
+) : DiffUtil.Callback() {
+
+    override fun getOldListSize(): Int = oldList.size
+
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+
+        val oldItem = oldList[oldItemPosition]
+        val newItem = newList[newItemPosition]
+
+        return oldItem.categoryName == newItem.categoryName                 // КОГДА ДОБАВИШЬ БД, ЗАМЕНИ НА ID ВМЕСТО ПРОВЕРКИ ПО КАТЕГОРИЯМ
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
+
 }
