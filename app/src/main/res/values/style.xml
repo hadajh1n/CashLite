@@ -18,6 +18,16 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+        // activity_add_new_operation.xml
+
+    <style name="btnAddNewOperationNav" parent="Widget.Material3.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@drawable/btn_text_add_new_operation_nav_selector</item>
+        <item name="android:backgroundTint">@drawable/btn_add_new_operation_nav_selector</item>
+        <item name="rippleColor">@color/transparent</item>
+        <item name="cornerRadius">5dp</item>
+    </style>
+
         // fragment_history.xml
 
     <style name="tvFinance" parent="Widget.AppCompat.TextView">

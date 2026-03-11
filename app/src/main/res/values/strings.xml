@@ -7,7 +7,7 @@
     <string name="settingsFragment">Настройки</string>
 
     // top_nav_operation_menu
-    <string name="addExpenceOperationFragment">Расход</string>
+    <string name="addExpenseOperationFragment">Расход</string>
     <string name="addIncomeOperationFragment">Доход</string>
     <string name="addTransferOperationFragment">Перевод</string>
 

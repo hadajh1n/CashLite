@@ -8,6 +8,13 @@
     <color name="fragAll">#2F2E2E</color>
     <color name="llNavigation">#1A1818</color>
 
+    // activity_add_new_operation
+
+    <color name="btnAddNewOperationNavSelector">#F4E5C2</color>
+    <color name="btnAddNewOperationNavDefault">#00FFFFFF</color>
+    <color name="btnTextAddNewOperationNavSelector">#FF000000</color>
+    <color name="btnTextAddNewOperationNavDefault">#FFFFFFFF</color>
+
     // fragment_history.xml
 
     <color name="tvFinance">#FFFFFFFF</color>
@@ -38,8 +45,8 @@
     // drawable icons
 
     <color name="iconsOfCategory">#EEEEEE</color>
-    <color name="icon_categories_selector">#F09E45</color>
-    <color name="icon_default">#EEEEEE</color>
-    <color name="icon_add_category">#F09E45</color>
+    <color name="iconCategoriesSelector">#F09E45</color>
+    <color name="iconDefault">#EEEEEE</color>
+    <color name="iconAddCategory">#F09E45</color>
 
 </resources>
