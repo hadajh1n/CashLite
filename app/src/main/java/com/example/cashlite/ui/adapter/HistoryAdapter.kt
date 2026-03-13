@@ -55,6 +55,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     tvCategory.text = item.categoryName
                     tvNote.text = item.note
                     tvAmount.text = "-${item.amount.formatMoney()} ₽"
+                    tvAmount.setTextColor(itemView.context.getColor(R.color.tvExpenses))
                 }
 
                 is Transaction.Income -> {
@@ -62,6 +63,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     tvCategory.text = item.categoryName
                     tvNote.text = item.note
                     tvAmount.text = "+${item.amount.formatMoney()} ₽"
+                    tvAmount.setTextColor(itemView.context.getColor(R.color.tvIncome))
                 }
             }
         }
