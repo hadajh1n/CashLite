@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.cashlite.R
-import com.example.cashlite.core.utils.setupAddOperationNavigation
+import com.example.cashlite.core.navigation.setupAddOperationNavigation
 import com.example.cashlite.databinding.FragmentAddOperationBinding
 
 class AddOperationFragment : Fragment() {

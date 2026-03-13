@@ -31,11 +31,12 @@
     <color name="btnAddOperationBackground">#F4E5C2</color>
     <color name="btnAddOperation">#2F2E2E</color>
 
-    // fragment_add_new_operation.xml
+    // fragment_add_operation.xml
 
     <color name="btnAddNewOperation">#FFFFFFFF</color>
     <color name="hint">#FF000000</color>
     <color name="panelAddNewOperation">#F4E5C2</color>
+    <color name="tilAmountError">#F44336</color>
 
     // item_history.xml
 

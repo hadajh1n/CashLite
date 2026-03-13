@@ -125,6 +125,8 @@ class HistoryDiffCallback(
             oldItem is HistoryItem.TransactionItem && newItem is HistoryItem.TransactionItem ->
                 oldItem.transaction == newItem.transaction
 
+            // СЕЙЧАС ЕСТЬ ПРОБЛЕМА, ПОКА В ТРАНЗАКЦИИ НЕТ УНИКАЛЬНОГО ID УДАЛЯТЬСЯ БУДУТ ВСЕ ТРАНЗАКЦИИ ОДНОЙ КАТЕГОРИИ С ОДИНАКОВЫМИ СУММАМИ!!!!!
+
             else -> false
         }
     }

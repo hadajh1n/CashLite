@@ -90,15 +90,28 @@ class AddExpenseOperationFragment : Fragment() {
 
             imAddNewOperation.setOnClickListener {
                 val amountText = etAmount.text.toString()
-                val noteText = etNote.text.toString()
+
+                if (amountText.isBlank()) {
+                    tilAmount.error = context?.getString(R.string.tilAmountOperationError)
+                    return@setOnClickListener
+                } else {
+                    tilAmount.error = null
+                }
+
                 val amountDouble = amountText.toDoubleOrNull()
 
-                if (amountDouble != null) {
-                    viewModel.addExpenseOperation(categoryName, amountDouble, noteText)
-                    viewModel.totalExpense(amountDouble)
-                    findNavController()
-                        .navigate(R.id.mainActivity)
+                if (amountDouble == null) {
+                    tilAmount.error = context?.getString(R.string.tilAmountNullError)
+                    return@setOnClickListener
                 }
+
+                val noteText = etNote.text.toString()
+
+                viewModel.addExpenseOperation(categoryName, amountDouble, noteText)
+                viewModel.totalExpense(amountDouble)
+
+                findNavController()
+                    .navigate(R.id.mainActivity)
             }
         }
     }

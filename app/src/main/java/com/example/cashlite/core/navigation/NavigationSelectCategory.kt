@@ -1,4 +1,4 @@
-package com.example.cashlite.core.utils
+package com.example.cashlite.core.navigation
 
 import androidx.fragment.app.Fragment
 import android.view.View

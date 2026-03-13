@@ -18,7 +18,7 @@
     <string name="tvExpensesTitle">Расходы</string>
     <string name="tvEmptyList">Список пуст</string>
 
-    // fragment_add_new_operation
+    // fragment_add_operation
     <string name="btnExpensesTitle">Расход</string>
     <string name="btnIncomeTitle">Доход</string>
     <string name="btnTransferTitle">Перевод</string>
@@ -37,6 +37,8 @@
     // view_add_categories_panel
     <string name="hintAmountOperation">Сумма операции</string>
     <string name="hintHote">Примечание</string>
+    <string name="tilAmountOperationError">Введите сумму</string>
+    <string name="tilAmountNullError">Некорректная сумма</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
