@@ -1,17 +1,17 @@
 package com.example.cashlite.core.utils
 
+import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.cashlite.R
-import com.example.cashlite.databinding.ActivityAddNewOperationBinding
+import com.example.cashlite.databinding.FragmentAddOperationBinding
 
-fun AppCompatActivity.setupAddOperationNavigation(
-    binding: ActivityAddNewOperationBinding
+fun Fragment.setupAddOperationNavigation(
+    binding: FragmentAddOperationBinding
 ) = with(binding) {
 
-    val navHostFragment = supportFragmentManager
-        .findFragmentById(R.id.nav_host_add_new_operation_fragment) as NavHostFragment
+    val navHostFragment = childFragmentManager
+        .findFragmentById(R.id.nav_host_category_operation_fragment) as NavHostFragment
 
     val navController = navHostFragment.navController
 
@@ -25,7 +25,7 @@ fun AppCompatActivity.setupAddOperationNavigation(
 
     btnExpense.setOnClickListener {
         selectButton(btnExpense)
-        navController.navigate(R.id.addExpenceOperationFragment)
+        navController.navigate(R.id.addExpenseOperationFragment)
     }
 
     btnIncome.setOnClickListener {

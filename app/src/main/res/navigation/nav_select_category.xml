@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_add_operation"
-    app:startDestination="@id/addExpenceOperationFragment">
+    android:id="@+id/nav_select_category"
+    app:startDestination="@id/addExpenseOperationFragment">
 
     <fragment
-        android:id="@+id/addExpenceOperationFragment"
+        android:id="@+id/addExpenseOperationFragment"
         android:name="com.example.cashlite.ui.fragment.AddExpenseOperationFragment"
-        android:label="AddExpenceOperationFragment" />
+        android:label="AddExpenseOperationFragment"/>
 
     <fragment
         android:id="@+id/addIncomeOperationFragment"
         android:name="com.example.cashlite.ui.fragment.AddIncomeOperationFragment"
-        android:label="AddIncomeOperationFragment" />
+        android:label="AddIncomeOperationFragment"/>
 
     <fragment
         android:id="@+id/addTransferOperationFragment"
         android:name="com.example.cashlite.ui.fragment.AddTransferOperationFragment"
-        android:label="AddTransferOperationFragment" />
+        android:label="AddTransferOperationFragment"/>
 
     <activity
         android:id="@+id/mainActivity"

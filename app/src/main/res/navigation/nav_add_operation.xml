@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_add_operation"
+    app:startDestination="@id/addOperationFragment">
+
+    <fragment
+        android:id="@+id/addOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.AddOperationFragment"
+        android:label="addOperationFragment" />
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.cashlite.ui.activity.MainActivity" />
+
+</navigation>

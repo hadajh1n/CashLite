@@ -30,7 +30,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                tools:text="Добавить операцию" />
+                tools:text="Название категории" />
 
             <ImageView
                 android:id="@+id/imAddNewOperation"
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/hint"
-            android:hint="Сумма операции"
+            android:hint="@string/hintAmountOperation"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/hint"
-            android:hint="Примечание">
+            android:hint="@string/hintHote">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNote"

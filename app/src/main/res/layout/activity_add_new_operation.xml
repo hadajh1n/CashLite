@@ -8,55 +8,17 @@
     android:background="@color/themes"
     tools:context=".ui.activity.AddNewOperationActivity">
 
-    <LinearLayout
-        android:id="@+id/topNavigationOperation"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="@color/transparent"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnExpense"
-            style="@style/btnAddNewOperationNav"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/addExpenseOperationFragment" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnIncome"
-            style="@style/btnAddNewOperationNav"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/addIncomeOperationFragment" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnTransfer"
-            style="@style/btnAddNewOperationNav"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/addTransferOperationFragment" />
-
-    </LinearLayout>
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_add_new_operation_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginVertical="20dp"
         android:background="@color/fragAll"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topNavigationOperation"
-        app:navGraph="@navigation/nav_graph_add_operation" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_add_operation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

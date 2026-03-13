@@ -34,5 +34,9 @@
     <string name="expense_phone">Телефон</string>
     <string name="expense_pharmacy">Аптека</string>
 
+    // view_add_categories_panel
+    <string name="hintAmountOperation">Сумма операции</string>
+    <string name="hintHote">Примечание</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
