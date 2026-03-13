@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
+import com.example.cashlite.core.utils.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemDateHeaderHistoryBinding
@@ -53,14 +54,14 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     imCategory.setImageResource(item.imageId)
                     tvCategory.text = item.categoryName
                     tvNote.text = item.note
-                    tvAmount.text = "-${item.amount} ₽"
+                    tvAmount.text = "-${item.amount.formatMoney()} ₽"
                 }
 
                 is Transaction.Income -> {
                     imCategory.setImageResource(item.imageId)
                     tvCategory.text = item.categoryName
                     tvNote.text = item.note
-                    tvAmount.text = "+${item.amount} ₽"
+                    tvAmount.text = "+${item.amount.formatMoney()} ₽"
                 }
             }
         }

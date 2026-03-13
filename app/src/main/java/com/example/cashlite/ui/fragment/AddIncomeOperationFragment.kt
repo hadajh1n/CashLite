@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cashlite.R
+import com.example.cashlite.core.utils.Constants
+import com.example.cashlite.core.utils.DecimalDigitsInputFilter
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.FragmentAddIncomeOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
@@ -79,6 +81,13 @@ class AddIncomeOperationFragment : Fragment() {
             tvTitlePanel.text = categoryName.categoryName
             etAmount.text?.clear()
             etNote.text?.clear()
+
+            etAmount.filters = arrayOf(
+                DecimalDigitsInputFilter(
+                    Constants.DigitFilter.DIGITS_BEFORE_ZERO,
+                    Constants.DigitFilter.DIGITS_AFTER_ZERO,
+                )
+            )
 
             imAddNewOperation.setOnClickListener {
                 val amountText = etAmount.text.toString()

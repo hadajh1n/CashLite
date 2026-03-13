@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cashlite.core.utils.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentHistoryBinding
@@ -61,9 +62,9 @@ class HistoryFragment : Fragment() {
         }
 
         viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->
-            tvTotalExpense.text = "${state.totalExpense}"
-            tvTotalIncome.text  = "${state.totalIncome}"
-            tvTotalBalance.text = "${state.totalBalance}"
+            tvTotalExpense.text = "${state.totalExpense.formatMoney()}"
+            tvTotalIncome.text  = "${state.totalIncome.formatMoney()}"
+            tvTotalBalance.text = "${state.totalBalance.formatMoney()}"
         }
     }
 
