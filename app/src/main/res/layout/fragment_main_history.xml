@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragAll"
-    tools:context=".ui.fragment.HistoryFragment">
+    tools:context=".ui.fragment.main.HistoryFragment">
 
     <LinearLayout
         android:id="@+id/llTitleFinance"
@@ -108,7 +108,7 @@
         android:layout_height="0dp"
         android:paddingHorizontal="8dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddOperation"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense" />
@@ -144,17 +144,5 @@
             android:text="@string/tvEmptyList" />
 
     </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/btnAddOperation"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:scaleType="centerCrop"
-        android:backgroundTint="@color/transparent"
-        android:src="@drawable/btn_add_operation"
-        app:layout_constraintTop_toBottomOf="@id/rvHistory"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

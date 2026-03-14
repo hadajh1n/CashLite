@@ -28,7 +28,15 @@
         <item name="cornerRadius">5dp</item>
     </style>
 
-        // fragment_history.xml
+        // fragment_main.xml
+
+    <style name="tvMainFragment" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@drawable/icon_main_fragment_selector</item>
+    </style>
+
+        // fragment_main_history.xml
 
     <style name="tvFinance" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">24sp</item>
@@ -92,7 +100,7 @@
         <item name="android:textColor">@color/btnAddNewOperation</item>
     </style>
 
-        // item_history.xml
+        // item_main_history.xml
 
     <style name="tvCategory" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>

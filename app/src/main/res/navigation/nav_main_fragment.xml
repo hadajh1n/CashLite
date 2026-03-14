@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main_fragment"
+    app:startDestination="@id/historyFragment">
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.cashlite.ui.fragment.main.HistoryFragment"
+        android:label="HistoryFragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/graphsFragment"
+        android:name="com.example.cashlite.ui.fragment.main.GraphsFragment"
+        android:label="GraphsFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.example.cashlite.ui.fragment.main.ReportFragment"
+        android:label="ReportFragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.cashlite.ui.fragment.main.SettingsFragment"
+        android:label="SettingsFragment">
+    </fragment>
+
+    <activity
+        android:id="@+id/addNewOperationActivity"
+        android:name="com.example.cashlite.ui.activity.AddNewOperationActivity" />
+
+</navigation>

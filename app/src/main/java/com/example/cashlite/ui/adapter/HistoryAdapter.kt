@@ -10,7 +10,7 @@ import com.example.cashlite.core.utils.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.ItemDateHeaderHistoryBinding
-import com.example.cashlite.databinding.ItemHistoryBinding
+import com.example.cashlite.databinding.ItemMainHistoryBinding
 
 class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -45,7 +45,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     inner class HistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = ItemHistoryBinding.bind(view)
+        private val binding = ItemMainHistoryBinding.bind(view)
 
         fun bind(item: Transaction) = with(binding) {
 
@@ -86,7 +86,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 DateViewHolder(view)
             }
             else -> {
-                val view = inflater.inflate(R.layout.item_history, parent, false)
+                val view = inflater.inflate(R.layout.item_main_history, parent, false)
                 HistoryViewHolder(view)
             }
         }

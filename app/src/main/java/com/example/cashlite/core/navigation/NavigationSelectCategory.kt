@@ -15,7 +15,7 @@ fun Fragment.setupAddOperationNavigation(
 
     val navController = navHostFragment.navController
 
-    fun selectButton(selected: View) = with(binding) {
+    fun selectButton(selected: View) {
         btnExpense.isSelected = false
         btnIncome.isSelected = false
         btnTransfer.isSelected = false

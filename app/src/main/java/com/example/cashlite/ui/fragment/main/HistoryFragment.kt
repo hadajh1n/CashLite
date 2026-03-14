@@ -1,25 +1,23 @@
-package com.example.cashlite.ui.fragment
+package com.example.cashlite.ui.fragment.main
 
-import com.example.cashlite.R
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.core.utils.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.ui.adapter.HistoryAdapter
-import com.example.cashlite.databinding.FragmentHistoryBinding
+import com.example.cashlite.databinding.FragmentMainHistoryBinding
 import com.example.cashlite.ui.viewModel.HistoryViewModel
 
 class HistoryFragment : Fragment() {
 
-    private var _binding: FragmentHistoryBinding? = null
+    private var _binding: FragmentMainHistoryBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: HistoryViewModel by viewModels()
@@ -30,7 +28,7 @@ class HistoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        _binding = FragmentMainHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,7 +37,6 @@ class HistoryFragment : Fragment() {
 
         setupAdapter()
         observeViewModel()
-        onAddNewOperationButton()
         setupItemTouchHelper()
     }
 
@@ -65,13 +62,6 @@ class HistoryFragment : Fragment() {
             tvTotalExpense.text = "${state.totalExpense.formatMoney()}"
             tvTotalIncome.text  = "${state.totalIncome.formatMoney()}"
             tvTotalBalance.text = "${state.totalBalance.formatMoney()}"
-        }
-    }
-
-    private fun onAddNewOperationButton() {
-        binding.btnAddOperation.setOnClickListener {
-            findNavController()
-                .navigate(R.id.addNewOperationActivity)
         }
     }
 

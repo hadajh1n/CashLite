@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragAll"
+    tools:context=".ui.fragment.main.MainFragment">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_main_set_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/fragAll"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_main_fragment" />
+
+    <LinearLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@color/black"
+        android:gravity="center"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/btnFragmentHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imHistory"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_main_history"
+                android:tint="@drawable/icon_main_fragment_selector"/>
+
+            <TextView
+                android:id="@+id/tvHistory"
+                style="@style/tvMainFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvHistoryFragment" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnFragmentGraphs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imGraphs"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_main_graphs"
+                android:tint="@drawable/icon_main_fragment_selector"/>
+
+            <TextView
+                android:id="@+id/tvGraphs"
+                style="@style/tvMainFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvGraphsFragment" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnAddNewOperation"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/btn_add_operation"
+            android:scaleType="centerInside"/>
+
+        <LinearLayout
+            android:id="@+id/btnFragmentReport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imReport"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_main_report"
+                android:tint="@drawable/icon_main_fragment_selector"/>
+
+            <TextView
+                android:id="@+id/tvReport"
+                style="@style/tvMainFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvReportFragment" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnFragmentSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imSettings"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_main_settings"
+                android:tint="@drawable/icon_main_fragment_selector"/>
+
+            <TextView
+                android:id="@+id/tvSettings"
+                style="@style/tvMainFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvSettingsFragment" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
