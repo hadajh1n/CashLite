@@ -5,17 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragAll"
-    tools:context=".ui.fragment.main.GraphsFragment">
+    tools:context=".ui.fragment.main.GraphsMainFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilTypeTransaction"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Фрагмент 2"
-        android:textColor="@color/white"
-        android:textSize="26sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/typeDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            tools:text="Расходы"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tilTypeTransaction" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

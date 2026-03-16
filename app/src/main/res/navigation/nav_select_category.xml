@@ -6,17 +6,17 @@
 
     <fragment
         android:id="@+id/addExpenseOperationFragment"
-        android:name="com.example.cashlite.ui.fragment.AddExpenseOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.newOperation.AddExpenseOperationFragment"
         android:label="AddExpenseOperationFragment"/>
 
     <fragment
         android:id="@+id/addIncomeOperationFragment"
-        android:name="com.example.cashlite.ui.fragment.AddIncomeOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.newOperation.AddIncomeOperationFragment"
         android:label="AddIncomeOperationFragment"/>
 
     <fragment
         android:id="@+id/addTransferOperationFragment"
-        android:name="com.example.cashlite.ui.fragment.AddTransferOperationFragment"
+        android:name="com.example.cashlite.ui.fragment.newOperation.AddTransferOperationFragment"
         android:label="AddTransferOperationFragment"/>
 
     <activity

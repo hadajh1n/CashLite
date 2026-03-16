@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/themes"
-    tools:context=".ui.fragment.AddOperationFragment">
+    tools:context=".ui.fragment.newOperation.AddOperationFragment">
 
     <ImageView
         android:id="@+id/imBack"

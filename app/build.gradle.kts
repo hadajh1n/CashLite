@@ -77,6 +77,9 @@ dependencies {
     // Serialization
     implementation(libs.serialization.json)
 
+    // MPAndroidChart
+    implementation(libs.mpandroidchart)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

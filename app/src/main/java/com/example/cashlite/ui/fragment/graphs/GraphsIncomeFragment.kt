@@ -1,32 +1,29 @@
-package com.example.cashlite.ui.fragment
+package com.example.cashlite.ui.fragment.graphs
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cashlite.databinding.FragmentAddTransferOperationBinding
+import com.example.cashlite.R
+import com.example.cashlite.databinding.FragmentGraphsIncomeBinding
 
-class AddTransferOperationFragment : Fragment() {
+class GraphsIncomeFragment : Fragment() {
 
-    private var _binding: FragmentAddTransferOperationBinding? = null
+    private var _binding: FragmentGraphsIncomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddTransferOperationBinding.inflate(inflater, container, false)
+        _binding = FragmentGraphsIncomeBinding.inflate(inflater)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

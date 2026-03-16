@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragAll"
-    tools:context=".ui.fragment.main.HistoryFragment">
+    tools:context=".ui.fragment.main.HistoryMainFragment">
 
     <LinearLayout
         android:id="@+id/llTitleFinance"

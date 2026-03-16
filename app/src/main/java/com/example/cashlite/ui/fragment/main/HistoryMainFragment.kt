@@ -15,7 +15,7 @@ import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
 import com.example.cashlite.ui.viewModel.HistoryViewModel
 
-class HistoryFragment : Fragment() {
+class HistoryMainFragment : Fragment() {
 
     private var _binding: FragmentMainHistoryBinding? = null
     private val binding get() = _binding!!

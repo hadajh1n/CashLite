@@ -1,4 +1,4 @@
-package com.example.cashlite.ui.fragment
+package com.example.cashlite.ui.fragment.newOperation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

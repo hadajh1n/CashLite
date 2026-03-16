@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.cashlite.databinding.FragmentMainSettingsBinding
 
-class SettingsFragment : Fragment() {
+class SettingsMainFragment : Fragment() {
 
     private var _binding: FragmentMainSettingsBinding? = null
     private val binding get() = _binding!!
