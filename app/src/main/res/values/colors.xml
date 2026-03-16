@@ -55,4 +55,23 @@
     <color name="iconDefault">#EEEEEE</color>
     <color name="iconAddCategory">#F09E45</color>
 
+    <color name="icon_expense_basket">#F09E45</color>
+    <color name="icon_expense_food">#FF6B6B</color>
+    <color name="icon_expense_clothes">#4ECDC4</color>
+    <color name="icon_expense_car">#5DADE2</color>
+    <color name="icon_expense_bus">#AF7AC5</color>
+    <color name="icon_expense_bicycle">#58D68D</color>
+    <color name="icon_expense_housing">#F5B041</color>
+    <color name="icon_expense_education">#EC7063</color>
+    <color name="icon_expense_flag">#48C9B0</color>
+    <color name="icon_expense_laptop">#5499C7</color>
+    <color name="icon_expense_phone">#A569BD</color>
+    <color name="icon_expense_pharmacy">#DC7633</color>
+    <color name="icon_expense_baby">#F4D03F</color>
+    <color name="icon_expense_cat">#EB984E</color>
+
+    <color name="icon_income_wallet">#52BE80</color>
+    <color name="icon_income_graph">#7FB3D5</color>
+    <color name="icon_income_award">#76D7C4</color>
+
 </resources>

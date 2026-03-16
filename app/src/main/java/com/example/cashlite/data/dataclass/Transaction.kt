@@ -5,6 +5,7 @@ sealed class Transaction {
 
     data class Expense(
         val imageId: Int,
+        val color: Int,
         val categoryName: String,
         val amount: Double = 0.0,
         val note: String = "",
@@ -13,6 +14,7 @@ sealed class Transaction {
 
     data class Income(
         val imageId: Int,
+        val color: Int,
         val categoryName: String,
         val amount: Double = 0.0,
         val note: String = "",
