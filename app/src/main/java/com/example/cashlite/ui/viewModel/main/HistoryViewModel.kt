@@ -1,4 +1,4 @@
-package com.example.cashlite.ui.viewModel
+package com.example.cashlite.ui.viewModel.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -9,6 +9,7 @@ import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.data.repository.AppRepository
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.collections.iterator
 
 class HistoryViewModel : ViewModel() {
 

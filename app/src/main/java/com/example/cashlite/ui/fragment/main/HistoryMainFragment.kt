@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.core.utils.formatMoney
+import com.example.cashlite.core.utils.filters.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
-import com.example.cashlite.ui.viewModel.HistoryViewModel
+import com.example.cashlite.ui.viewModel.main.HistoryViewModel
 
 class HistoryMainFragment : Fragment() {
 

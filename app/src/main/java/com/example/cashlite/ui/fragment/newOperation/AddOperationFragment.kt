@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.cashlite.R
-import com.example.cashlite.core.navigation.setupAddOperationNavigation
+import com.example.cashlite.core.navigation.setupAddOperationNav
 import com.example.cashlite.databinding.FragmentAddOperationBinding
 
 class AddOperationFragment : Fragment() {
@@ -19,14 +19,14 @@ class AddOperationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAddOperationBinding.inflate(inflater)
+        _binding = FragmentAddOperationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupAddOperationNavigation(binding)
+        setupAddOperationNav(binding)
         setupBackButton()
     }
 

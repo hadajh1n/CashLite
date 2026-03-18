@@ -41,5 +41,9 @@
     <string name="tilAmountOperationError">Введите сумму</string>
     <string name="tilAmountNullError">Некорректная сумма</string>
 
+    // fragment_main_graphs
+    <string name="selectGraphsExpense">Расход</string>
+    <string name="selectGraphsIncome">Доход</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

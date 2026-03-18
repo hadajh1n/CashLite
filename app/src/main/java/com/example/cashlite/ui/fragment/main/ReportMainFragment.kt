@@ -16,7 +16,7 @@ class ReportMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainReportBinding.inflate(inflater)
+        _binding = FragmentMainReportBinding.inflate(inflater, container, false)
         return binding.root
     }
 

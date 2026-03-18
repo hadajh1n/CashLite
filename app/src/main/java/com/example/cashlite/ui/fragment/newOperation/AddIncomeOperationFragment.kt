@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cashlite.R
 import com.example.cashlite.core.utils.Constants
-import com.example.cashlite.core.utils.DecimalDigitsInputFilter
+import com.example.cashlite.core.utils.filters.DecimalDigitsInputFilter
 import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.databinding.FragmentAddIncomeOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
 import com.example.cashlite.ui.adapter.AddIncomeOperationAdapter
-import com.example.cashlite.ui.viewModel.AddIncomeViewModel
+import com.example.cashlite.ui.viewModel.newOperation.AddIncomeViewModel
 import kotlin.getValue
 
 class AddIncomeOperationFragment : Fragment() {

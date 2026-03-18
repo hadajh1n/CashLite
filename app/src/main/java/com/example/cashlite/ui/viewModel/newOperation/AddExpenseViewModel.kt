@@ -1,4 +1,4 @@
-package com.example.cashlite.ui.viewModel
+package com.example.cashlite.ui.viewModel.newOperation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.example.cashlite.ui.viewModel
+package com.example.cashlite.ui.viewModel.graphs
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -7,7 +7,7 @@ import com.example.cashlite.data.dataclass.Transaction
 import com.example.cashlite.data.repository.AppRepository
 import com.github.mikephil.charting.data.PieEntry
 
-class GraphsViewModel : ViewModel() {
+class GraphsExpenseViewModel : ViewModel() {
 
     private val transactions: LiveData<List<Transaction>> = AppRepository.transactions
 

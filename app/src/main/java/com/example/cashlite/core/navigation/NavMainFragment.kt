@@ -1,17 +1,18 @@
 package com.example.cashlite.core.navigation
 
+import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.cashlite.R
 import com.example.cashlite.databinding.FragmentMainBinding
+import com.example.cashlite.ui.activity.AddNewOperationActivity
 
-fun Fragment.setupBottomNavigation(
-    binding: FragmentMainBinding
-) = with(binding) {
+fun Fragment.setupBottomNav(binding: FragmentMainBinding) = with(binding) {
 
     val navHostFragment = childFragmentManager
-        .findFragmentById(R.id.nav_host_main_set_fragment) as NavHostFragment
+        .findFragmentById(R.id.nav_host_main_set_fragment) as? NavHostFragment
+        ?: return@with
 
     val navController = navHostFragment.navController
 
@@ -22,7 +23,6 @@ fun Fragment.setupBottomNavigation(
         btnFragmentGraphs.isSelected = false
         btnFragmentReport.isSelected = false
         btnFragmentSettings.isSelected = false
-
         selected.isSelected = true
     }
 
@@ -36,10 +36,6 @@ fun Fragment.setupBottomNavigation(
         navController.navigate(R.id.graphsFragment)
     }
 
-    btnAddNewOperation.setOnClickListener {
-        navController.navigate(R.id.addNewOperationActivity)
-    }
-
     btnFragmentReport.setOnClickListener {
         selectButton(btnFragmentReport)
         navController.navigate(R.id.reportFragment)
@@ -48,5 +44,10 @@ fun Fragment.setupBottomNavigation(
     btnFragmentSettings.setOnClickListener {
         selectButton(btnFragmentSettings)
         navController.navigate(R.id.settingsFragment)
+    }
+
+    btnAddNewOperation.setOnClickListener {
+        val intent = Intent(requireContext(), AddNewOperationActivity::class.java)
+        startActivity(intent)
     }
 }

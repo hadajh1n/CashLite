@@ -6,13 +6,12 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.cashlite.R
 import com.example.cashlite.databinding.FragmentAddOperationBinding
 
-fun Fragment.setupAddOperationNavigation(
+fun Fragment.setupAddOperationNav(
     binding: FragmentAddOperationBinding
 ) = with(binding) {
 
     val navHostFragment = childFragmentManager
         .findFragmentById(R.id.nav_host_category_operation_fragment) as NavHostFragment
-
     val navController = navHostFragment.navController
 
     fun selectButton(selected: View) {
