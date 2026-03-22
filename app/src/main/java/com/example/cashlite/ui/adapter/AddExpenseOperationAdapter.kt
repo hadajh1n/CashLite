@@ -44,7 +44,7 @@ class AddExpenseOperationAdapter(
         fun bind(item: Transaction.Expense, position: Int) = with(binding) {
             imIcon.setImageResource(item.imageId)
             imIcon.isSelected = position == selectedPosition
-            tvExpenseTitle.text = item.categoryName
+            tvExpenseTitle.text = itemView.context.getString(item.categoryNameRes)
 
             root.setOnClickListener {
                 val currentPosition = bindingAdapterPosition
@@ -85,7 +85,7 @@ class ExpenseDiffCallback(
         val oldItem = oldList[oldItemPosition]
         val newItem = newList[newItemPosition]
 
-        return oldItem.categoryName == newItem.categoryName                 // КОГДА ДОБАВИШЬ БД, ЗАМЕНИ НА ID ВМЕСТО ПРОВЕРКИ ПО КАТЕГОРИЯМ
+        return oldItem.categoryNameRes == newItem.categoryNameRes                 // КОГДА ДОБАВИШЬ БД, ЗАМЕНИ НА ID ВМЕСТО ПРОВЕРКИ ПО КАТЕГОРИЯМ
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

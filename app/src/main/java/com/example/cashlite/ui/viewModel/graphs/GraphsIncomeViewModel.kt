@@ -1,5 +1,6 @@
 package com.example.cashlite.ui.viewModel.graphs
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
@@ -18,9 +19,11 @@ class GraphsIncomeViewModel : ViewModel() {
     }
 
     private fun buildIncomePieEntries(transactions: List<Transaction>): List<PieEntry> {
+
+        Log.e("LogTest", "Построение графика доходов")
         val incomeMap = transactions
             .filterIsInstance<Transaction.Income>()
-            .groupBy { it.categoryName }
+            .groupBy { it.categoryNameRes }
             .mapValues { (_, list) -> list.sumOf { it.amount } }
             .filterValues { it > 0.0 }
 

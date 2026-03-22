@@ -53,7 +53,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 is Transaction.Expense -> {
                     imCategory.setImageResource(item.imageId)
                     imCategory.setColorFilter(itemView.context.getColor(item.color))
-                    tvCategory.text = item.categoryName
+                    tvCategory.text = itemView.context.getString(item.categoryNameRes)
                     tvNote.text = item.note
                     tvAmount.text = "-${item.amount.formatMoney()} ₽"
                     tvAmount.setTextColor(itemView.context.getColor(R.color.tvExpenses))
@@ -62,7 +62,7 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 is Transaction.Income -> {
                     imCategory.setImageResource(item.imageId)
                     imCategory.setColorFilter(itemView.context.getColor(item.color))
-                    tvCategory.text = item.categoryName
+                    tvCategory.text = itemView.context.getString(item.categoryNameRes)
                     tvNote.text = item.note
                     tvAmount.text = "+${item.amount.formatMoney()} ₽"
                     tvAmount.setTextColor(itemView.context.getColor(R.color.tvIncome))

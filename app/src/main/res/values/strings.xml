@@ -28,16 +28,24 @@
     <string name="expense_food">Еда</string>
     <string name="expense_clothes">Одежда</string>
     <string name="expense_car">Автомобиль</string>
-    <string name="expense_sport">Спорт</string>
+    <string name="expense_bus">Транспорт</string>
+    <string name="expense_bicycle">Спорт</string>
+    <string name="expense_housing">Жилье</string>
     <string name="expense_education">Образование</string>
-    <string name="expense_travel">Путешествие</string>
+    <string name="expense_flag">Путешествие</string>
     <string name="expense_electronics">Электроника</string>
     <string name="expense_phone">Телефон</string>
     <string name="expense_pharmacy">Аптека</string>
+    <string name="expense_baby">Детские</string>
+    <string name="expense_cat">Домашний питомец</string>
+
+    <string name="income_wallet">Зарплата</string>
+    <string name="income_graph">Инвестиции</string>
+    <string name="income_award">Бонусы</string>
 
     // view_add_categories_panel
     <string name="hintAmountOperation">Сумма операции</string>
-    <string name="hintHote">Примечание</string>
+    <string name="hintNote">Примечание</string>
     <string name="tilAmountOperationError">Введите сумму</string>
     <string name="tilAmountNullError">Некорректная сумма</string>
 

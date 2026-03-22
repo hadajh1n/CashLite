@@ -78,7 +78,7 @@ class AddIncomeOperationFragment : Fragment() {
 
         panelBinding?.apply {
 
-            tvTitlePanel.text = categoryName.categoryName
+            tvTitlePanel.text = getString(categoryName.categoryNameRes)
             etAmount.text?.clear()
             etNote.text?.clear()
 

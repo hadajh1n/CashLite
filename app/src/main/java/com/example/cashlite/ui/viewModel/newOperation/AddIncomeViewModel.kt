@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cashlite.data.dataclass.Transaction
+import com.example.cashlite.data.local.CategoryProvider
 import com.example.cashlite.data.repository.AppRepository
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -18,7 +19,7 @@ class AddIncomeViewModel : ViewModel() {
     fun initIncomeCategory() {
         if (isInitIncomeCategories) return
 
-        _incomeCategories.value = AppRepository.getIncomeCategories()
+        _incomeCategories.value = CategoryProvider.getIncomeCategories()
         isInitIncomeCategories = true
     }
 

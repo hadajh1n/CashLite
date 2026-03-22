@@ -1,5 +1,6 @@
 package com.example.cashlite.ui.viewModel.main
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
@@ -25,6 +26,8 @@ class HistoryViewModel : ViewModel() {
     private fun buildHistoryItems(transactions: List<Transaction>): List<HistoryItem> {
         if (transactions.isEmpty()) return emptyList()
 
+        Log.e("LogTest", "Построение списка истории")
+
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yy")
 
         val sorted = transactions.sortedByDescending {
@@ -46,6 +49,7 @@ class HistoryViewModel : ViewModel() {
     }
 
     fun onSwipeRemoveTransaction(transaction: Transaction) {
+        Log.e("LogTest", "Удаление транзакции")
         AppRepository.removeTransaction(transaction)
     }
 }
