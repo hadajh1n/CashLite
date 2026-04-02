@@ -43,6 +43,8 @@
     <string name="income_graph">Инвестиции</string>
     <string name="income_award">Бонусы</string>
 
+    <string name="unknown">Другое</string>
+
     // view_add_categories_panel
     <string name="hintAmountOperation">Сумма операции</string>
     <string name="hintNote">Примечание</string>

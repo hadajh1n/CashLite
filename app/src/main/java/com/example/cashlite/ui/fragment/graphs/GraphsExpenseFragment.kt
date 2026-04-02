@@ -58,62 +58,62 @@ class GraphsExpenseFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.pieEntries.observe(viewLifecycleOwner) { entries ->
-            val pieChart = binding.pieChart
-            pieChart.setExtraOffsets(5f, 5f, 5f, 5f)
-
-            if (entries.isEmpty()) {
-                pieChart.setNoDataText("Транзакций нет")
-                pieChart.setNoDataTextColor(Color.WHITE)
-                pieChart.invalidate()
-                return@observe
-            }
-
-            val dataSet = PieDataSet(entries, null)
-            dataSet.setColors(*ColorTemplate.MATERIAL_COLORS)
-            dataSet.setDrawValues(false)
-            dataSet.sliceSpace = 3f
-
-            val pieData = PieData(dataSet)
-            pieData.setValueFormatter(PercentFormatter(pieChart))
-
-            pieChart.data = pieData
-
-            val total = entries.sumOf { it.value.toDouble() }.toFloat()
-
-            val legendEntries = entries.mapIndexed { index, entry ->
-
-                val percent = (entry.value / total) * 100
-                val labelWithPercent = "${entry.label} ${"%.1f".format(percent)}%"
-
-                LegendEntry(
-                    labelWithPercent,
-                    Legend.LegendForm.CIRCLE,
-                    14f,
-                    14f,
-                    null,
-                    dataSet.colors[index % dataSet.colors.size]
-                )
-            }
-
-            pieChart.legend.apply {
-                isEnabled = true
-                setCustom(legendEntries)
-
-                orientation = Legend.LegendOrientation.VERTICAL
-                verticalAlignment = Legend.LegendVerticalAlignment.CENTER
-                horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-
-                textSize = 16f
-                textColor = Color.WHITE
-                formSize = 14f
-                xEntrySpace = 0f
-                yEntrySpace = 0f
-                xOffset = 0f
-                yOffset = 0f
-            }
-
-            pieChart.invalidate()
-        }
+//        viewModel.pieEntries.observe(viewLifecycleOwner) { entries ->
+//            val pieChart = binding.pieChart
+//            pieChart.setExtraOffsets(5f, 5f, 5f, 5f)
+//
+//            if (entries.isEmpty()) {
+//                pieChart.setNoDataText("Транзакций нет")
+//                pieChart.setNoDataTextColor(Color.WHITE)
+//                pieChart.invalidate()
+//                return@observe
+//            }
+//
+//            val dataSet = PieDataSet(entries, null)
+//            dataSet.setColors(*ColorTemplate.MATERIAL_COLORS)
+//            dataSet.setDrawValues(false)
+//            dataSet.sliceSpace = 3f
+//
+//            val pieData = PieData(dataSet)
+//            pieData.setValueFormatter(PercentFormatter(pieChart))
+//
+//            pieChart.data = pieData
+//
+//            val total = entries.sumOf { it.value.toDouble() }.toFloat()
+//
+//            val legendEntries = entries.mapIndexed { index, entry ->
+//
+//                val percent = (entry.value / total) * 100
+//                val labelWithPercent = "${entry.label} ${"%.1f".format(percent)}%"
+//
+//                LegendEntry(
+//                    labelWithPercent,
+//                    Legend.LegendForm.CIRCLE,
+//                    14f,
+//                    14f,
+//                    null,
+//                    dataSet.colors[index % dataSet.colors.size]
+//                )
+//            }
+//
+//            pieChart.legend.apply {
+//                isEnabled = true
+//                setCustom(legendEntries)
+//
+//                orientation = Legend.LegendOrientation.VERTICAL
+//                verticalAlignment = Legend.LegendVerticalAlignment.CENTER
+//                horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+//
+//                textSize = 16f
+//                textColor = Color.WHITE
+//                formSize = 14f
+//                xEntrySpace = 0f
+//                yEntrySpace = 0f
+//                xOffset = 0f
+//                yOffset = 0f
+//            }
+//
+//            pieChart.invalidate()
+//        }
     }
 }

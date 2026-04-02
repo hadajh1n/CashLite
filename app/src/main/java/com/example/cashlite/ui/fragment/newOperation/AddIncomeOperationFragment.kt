@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.cashlite.R
 import com.example.cashlite.core.utils.Constants
 import com.example.cashlite.core.utils.filters.DecimalDigitsInputFilter
-import com.example.cashlite.data.dataclass.Transaction
+import com.example.cashlite.data.dataclass.CategoryUI
+import com.example.cashlite.data.dataclass.TransactionUI
+import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.FragmentAddIncomeOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
 import com.example.cashlite.ui.adapter.AddIncomeOperationAdapter
@@ -41,8 +43,6 @@ class AddIncomeOperationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.initIncomeCategory()
-
         setupAdapter()
         observeViewModel()
     }
@@ -64,7 +64,7 @@ class AddIncomeOperationFragment : Fragment() {
         }
     }
 
-    private fun showPanel(categoryName: Transaction.Income) {
+    private fun showPanel(categoryName: CategoryUI) {
 
         binding.bottomInputContainer.visibility = View.VISIBLE
 
@@ -78,7 +78,9 @@ class AddIncomeOperationFragment : Fragment() {
 
         panelBinding?.apply {
 
-            tvTitlePanel.text = getString(categoryName.categoryNameRes)
+            tvTitlePanel.text = context?.getString(
+                CategoryKeys.getCategoryNameRes(categoryName.categoryName)
+            ) ?: categoryName.categoryName
             etAmount.text?.clear()
             etNote.text?.clear()
 
@@ -109,7 +111,6 @@ class AddIncomeOperationFragment : Fragment() {
                 val noteText = etNote.text.toString()
 
                 viewModel.addIncomeOperation(categoryName, amountDouble, noteText)
-                viewModel.totalIncome(amountDouble)
 
                 findNavController()
                     .navigate(R.id.mainActivity)

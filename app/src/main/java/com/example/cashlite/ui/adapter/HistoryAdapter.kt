@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
 import com.example.cashlite.core.utils.filters.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
-import com.example.cashlite.data.dataclass.Transaction
+import com.example.cashlite.data.dataclass.TransactionUI
+import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.ItemDateHeaderHistoryBinding
 import com.example.cashlite.databinding.ItemMainHistoryBinding
 
@@ -47,27 +48,17 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class HistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemMainHistoryBinding.bind(view)
 
-        fun bind(item: Transaction) = with(binding) {
+        fun bind(item: TransactionUI) = with(binding) {
+            imCategory.setImageResource(item.imageId)
+            imCategory.setColorFilter(itemView.context.getColor(item.color))
 
-            when (item) {
-                is Transaction.Expense -> {
-                    imCategory.setImageResource(item.imageId)
-                    imCategory.setColorFilter(itemView.context.getColor(item.color))
-                    tvCategory.text = itemView.context.getString(item.categoryNameRes)
-                    tvNote.text = item.note
-                    tvAmount.text = "-${item.amount.formatMoney()} ₽"
-                    tvAmount.setTextColor(itemView.context.getColor(R.color.tvExpenses))
-                }
+            tvCategory.text = itemView.context.getString(
+                CategoryKeys.getCategoryNameRes(item.categoryName)
+            )
+            tvNote.text = item.note ?: ""
 
-                is Transaction.Income -> {
-                    imCategory.setImageResource(item.imageId)
-                    imCategory.setColorFilter(itemView.context.getColor(item.color))
-                    tvCategory.text = itemView.context.getString(item.categoryNameRes)
-                    tvNote.text = item.note
-                    tvAmount.text = "+${item.amount.formatMoney()} ₽"
-                    tvAmount.setTextColor(itemView.context.getColor(R.color.tvIncome))
-                }
-            }
+            tvAmount.text = "${item.amount.formatMoney()} ₽"
+//            tvAmount.setTextColor(itemView.context.getColor(R.color.tvExpenses))
         }
     }
 
@@ -125,12 +116,8 @@ class HistoryDiffCallback(
         return when {
             oldItem is HistoryItem.DateHeader && newItem is HistoryItem.DateHeader ->
                 oldItem.date == newItem.date
-
             oldItem is HistoryItem.TransactionItem && newItem is HistoryItem.TransactionItem ->
-                oldItem.transaction == newItem.transaction
-
-            // СЕЙЧАС ЕСТЬ ПРОБЛЕМА, ПОКА В ТРАНЗАКЦИИ НЕТ УНИКАЛЬНОГО ID УДАЛЯТЬСЯ БУДУТ ВСЕ ТРАНЗАКЦИИ ОДНОЙ КАТЕГОРИИ С ОДИНАКОВЫМИ СУММАМИ!!!!!
-
+                oldItem.transaction.idTransaction == newItem.transaction.idTransaction
             else -> false
         }
     }

@@ -1,21 +1,20 @@
 package com.example.cashlite.ui.viewModel.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.cashlite.data.dataclass.HistoryItem
-import com.example.cashlite.data.dataclass.TotalsState
-import com.example.cashlite.data.dataclass.Transaction
+import com.example.cashlite.data.dataclass.TotalsStateUI
+import com.example.cashlite.data.dataclass.TransactionUI
 import com.example.cashlite.data.repository.AppRepository
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import kotlinx.coroutines.launch
 import kotlin.collections.iterator
 
 class HistoryViewModel : ViewModel() {
 
-    private val transactions: LiveData<List<Transaction>> = AppRepository.transactions
-    val totalTransaction: LiveData<TotalsState> = AppRepository.updateTotalTransactions
+    private val transactions: LiveData<List<TransactionUI>> = AppRepository.transactions
+    val totalTransaction: LiveData<TotalsStateUI> = AppRepository.totalTransaction
 
     val historyItems: LiveData<List<HistoryItem>> = MediatorLiveData<List<HistoryItem>>().apply {
         addSource(transactions) { input ->
@@ -23,18 +22,10 @@ class HistoryViewModel : ViewModel() {
         }
     }
 
-    private fun buildHistoryItems(transactions: List<Transaction>): List<HistoryItem> {
+    private fun buildHistoryItems(transactions: List<TransactionUI>): List<HistoryItem> {
         if (transactions.isEmpty()) return emptyList()
 
-        Log.e("LogTest", "Построение списка истории")
-
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yy")
-
-        val sorted = transactions.sortedByDescending {
-            LocalDate.parse(it.date, formatter)
-        }
-
-        val grouped = sorted.groupBy { it.date }
+        val grouped = transactions.groupBy { it.date }
         val result = mutableListOf<HistoryItem>()
 
         for ((date, list) in grouped) {
@@ -44,12 +35,12 @@ class HistoryViewModel : ViewModel() {
                 result.add(HistoryItem.TransactionItem(transaction))
             }
         }
-
         return result
     }
 
-    fun onSwipeRemoveTransaction(transaction: Transaction) {
-        Log.e("LogTest", "Удаление транзакции")
-        AppRepository.removeTransaction(transaction)
+    fun onSwipeRemoveTransaction(transaction: TransactionUI) {
+        viewModelScope.launch {
+            AppRepository.removeTransaction(transaction.idTransaction)
+        }
     }
 }

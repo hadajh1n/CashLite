@@ -1,40 +1,19 @@
 package com.example.cashlite.ui.viewModel.newOperation
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cashlite.data.dataclass.Transaction
-import com.example.cashlite.data.local.CategoryProvider
+import androidx.lifecycle.viewModelScope
+import com.example.cashlite.data.dataclass.CategoryUI
 import com.example.cashlite.data.repository.AppRepository
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import kotlinx.coroutines.launch
 
 class AddExpenseViewModel : ViewModel() {
 
-    private var _expenseCategories = MutableLiveData<List<Transaction.Expense>>()
-    val expenseCategories: LiveData<List<Transaction.Expense>> get() = _expenseCategories
+    val expenseCategories: LiveData<List<CategoryUI>> = AppRepository.expenseCategories
 
-    private var isInitExpenseCategories = false
-
-    fun initExpenseCategory() {
-        if (isInitExpenseCategories) return
-
-        _expenseCategories.value = CategoryProvider.getExpenseCategories()
-        isInitExpenseCategories = true
-    }
-
-    fun addExpenseOperation(category: Transaction.Expense, amount: Double, note: String) {
-        val date = getCurrentDate()
-        AppRepository.addExpenseTransaction(category, amount, note, date)
-    }
-
-    fun totalExpense(amount: Double) {
-        AppRepository.updateTotalExpense(amount)
-        AppRepository.updateTotals()
-    }
-
-    fun getCurrentDate(): String {
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yy")
-        return LocalDate.now().format(formatter)
+    fun addExpenseOperation(category: CategoryUI, amount: Double, note: String) {
+        viewModelScope.launch {
+            AppRepository.addTransaction(category, amount, note)
+        }
     }
 }

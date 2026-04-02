@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.data.dataclass.Transaction
+import com.example.cashlite.data.dataclass.CategoryUI
+import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.ItemAddNewExpenseOperationBinding
 
 class AddExpenseOperationAdapter(
-    private val onCategoryClick: (Transaction.Expense) -> Unit,
+    private val onCategoryClick: (CategoryUI) -> Unit,
 ) : RecyclerView.Adapter<AddExpenseOperationAdapter.AddExpenseViewHolder>() {
 
-    private val expenseCategoriesList = mutableListOf<Transaction.Expense>()
-    private var selectedPosition = RecyclerView.NO_POSITION
+    private val expenseCategoriesList = mutableListOf<CategoryUI>()
+    private var selectedCategoryId: Int? = null
 
-    fun submitList(newList: List<Transaction.Expense>) {
+    fun submitList(newList: List<CategoryUI>) {
 
         val diffCallback = ExpenseDiffCallback(expenseCategoriesList, newList)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
@@ -27,28 +28,19 @@ class AddExpenseOperationAdapter(
         diffResult.dispatchUpdatesTo(this@AddExpenseOperationAdapter)
     }
 
-    private fun updateSelectedPosition(newPosition: Int) {
-        if (newPosition == selectedPosition) return
-
-        val previousPosition = selectedPosition
-        selectedPosition = newPosition
-
-        if (previousPosition != RecyclerView.NO_POSITION) notifyItemChanged(previousPosition)
-
-        notifyItemChanged(selectedPosition)
-    }
-
     inner class AddExpenseViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ItemAddNewExpenseOperationBinding.bind(item)
 
-        fun bind(item: Transaction.Expense, position: Int) = with(binding) {
+        fun bind(item: CategoryUI) = with(binding) {
             imIcon.setImageResource(item.imageId)
-            imIcon.isSelected = position == selectedPosition
-            tvExpenseTitle.text = itemView.context.getString(item.categoryNameRes)
+            imIcon.isSelected = item.idCategory == selectedCategoryId
+            tvExpenseTitle.text = itemView.context.getString(
+                CategoryKeys.getCategoryNameRes(item.categoryName)
+            )
 
             root.setOnClickListener {
-                val currentPosition = bindingAdapterPosition
-                updateSelectedPosition(currentPosition)
+                selectedCategoryId = item.idCategory
+                notifyDataSetChanged()
                 onCategoryClick(item)
             }
         }
@@ -65,15 +57,15 @@ class AddExpenseOperationAdapter(
     }
 
     override fun onBindViewHolder(holder: AddExpenseViewHolder, position: Int) {
-        holder.bind(expenseCategoriesList[position], position)
+        holder.bind(expenseCategoriesList[position])
     }
 
     override fun getItemCount(): Int = expenseCategoriesList.size
 }
 
 class ExpenseDiffCallback(
-    private val oldList: List<Transaction.Expense>,
-    private val newList: List<Transaction.Expense>,
+    private val oldList: List<CategoryUI>,
+    private val newList: List<CategoryUI>,
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int = oldList.size
@@ -81,11 +73,7 @@ class ExpenseDiffCallback(
     override fun getNewListSize(): Int = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-
-        val oldItem = oldList[oldItemPosition]
-        val newItem = newList[newItemPosition]
-
-        return oldItem.categoryNameRes == newItem.categoryNameRes                 // КОГДА ДОБАВИШЬ БД, ЗАМЕНИ НА ID ВМЕСТО ПРОВЕРКИ ПО КАТЕГОРИЯМ
+        return oldList[oldItemPosition].idCategory == newList[newItemPosition].idCategory
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

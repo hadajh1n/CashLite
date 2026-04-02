@@ -7,6 +7,6 @@ sealed class HistoryItem {
     ) : HistoryItem()
 
     data class TransactionItem(
-        val transaction: Transaction,
+        val transaction: TransactionUI,
     ) : HistoryItem()
 }
