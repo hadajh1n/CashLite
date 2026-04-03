@@ -8,15 +8,16 @@ import com.example.cashlite.data.dataclass.CategoryUI
 import com.example.cashlite.data.dataclass.TotalsStateUI
 import com.example.cashlite.data.dataclass.TransactionUI
 import com.example.cashlite.data.mapper.CategoryEntityMapper
+import com.example.cashlite.data.mapper.TransactionEntityMapper
 import com.example.cashlite.data.room.AppDatabase
 import com.example.cashlite.data.room.category.CategoryType
-import com.example.cashlite.data.room.transaction.TransactionEntity
 import com.example.cashlite.ui.mapper.CategoryUiMapper
 import com.example.cashlite.ui.mapper.TransactionUiMapper
 
 object AppRepository {
 
     private val categoryEntityMapper = CategoryEntityMapper()
+    private val transactionEntityMapper = TransactionEntityMapper()
     private val categoryUiMapper = CategoryUiMapper()
     private val transactionUiMapper = TransactionUiMapper()
 
@@ -97,13 +98,7 @@ object AppRepository {
         amount: Double,
         note: String
     ) {
-        val entity = TransactionEntity(
-            idCategory = category.idCategory,
-            amount = amount,
-            note = note,
-            date = System.currentTimeMillis(),
-            isImport = false,
-        )
+        val entity = transactionEntityMapper.transactionToEntity(category, amount, note)
         transactionDao.insert(entity)
     }
 

@@ -7,7 +7,7 @@ import com.example.cashlite.data.room.category.CategoryType
 
 class CategoryEntityMapper {
 
-    private fun getExpenseCategories(): List<CategoryEntity> {
+    private fun expenseCategoryToEntity(): List<CategoryEntity> {
         return listOf(
             CategoryEntity(
                 type = CategoryType.EXPENSE,
@@ -110,7 +110,7 @@ class CategoryEntityMapper {
         )
     }
 
-    private fun getIncomeCategories(): List<CategoryEntity> {
+    private fun incomeCategoryToEntity(): List<CategoryEntity> {
         return listOf(
             CategoryEntity(
                 type = CategoryType.INCOME,
@@ -137,5 +137,5 @@ class CategoryEntityMapper {
     }
 
     fun getAllSystemCategories(): List<CategoryEntity> =
-        getExpenseCategories() + getIncomeCategories()
+        expenseCategoryToEntity() + incomeCategoryToEntity()
 }
