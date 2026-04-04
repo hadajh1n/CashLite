@@ -47,8 +47,9 @@ class AddExpenseOperationFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding?.rvAddExpenseOperation?.adapter = null
         panelBinding = null
+        _binding = null
     }
 
     private fun setupAdapter() = with(binding) {

@@ -22,6 +22,7 @@ class HistoryMainFragment : Fragment() {
 
     private val viewModel: HistoryViewModel by viewModels()
     private val adapter = HistoryAdapter()
+    private var itemTouchHelper: ItemTouchHelper? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +43,9 @@ class HistoryMainFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding?.rvHistory?.adapter = null
+        itemTouchHelper?.attachToRecyclerView(null)
+        itemTouchHelper = null
         _binding = null
     }
 
@@ -83,7 +87,7 @@ class HistoryMainFragment : Fragment() {
                 direction: Int
             ) {
                 val position = viewHolder.adapterPosition
-                val item = adapter.getItem(position)
+                val item = adapter?.getItem(position)
 
                 if (item is HistoryItem.TransactionItem) {
                     viewModel.onSwipeRemoveTransaction(item.transaction)
@@ -100,7 +104,7 @@ class HistoryMainFragment : Fragment() {
             }
         }
 
-        val itemTouchHelper = ItemTouchHelper(callback)
-        itemTouchHelper.attachToRecyclerView(binding.rvHistory)
+        itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper?.attachToRecyclerView(binding.rvHistory)
     }
 }

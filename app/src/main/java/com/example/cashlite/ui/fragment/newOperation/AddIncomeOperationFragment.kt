@@ -49,8 +49,9 @@ class AddIncomeOperationFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding?.rvAddIncomeOperation?.adapter = null
         panelBinding = null
+        _binding = null
     }
 
     private fun setupAdapter() = with(binding) {
