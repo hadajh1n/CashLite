@@ -2,7 +2,11 @@ package com.example.cashlite.core.navigation
 
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import com.example.cashlite.R
 import com.example.cashlite.databinding.FragmentMainGraphsBinding
 
@@ -11,25 +15,47 @@ fun Fragment.setupGraphsTypeTransactionNav(
 ) = with(binding) {
 
     val navHostFragment = childFragmentManager
-        .findFragmentById(R.id.nav_main_graphs_type) as NavHostFragment
+        .findFragmentById(R.id.nav_main_graphs_type) as? NavHostFragment
+        ?: return@with
+
     val navController = navHostFragment.navController
 
     fun selectButton(selected: View) {
         btnExpense.isSelected = false
         btnIncome.isSelected = false
-
         selected.isSelected = true
     }
 
+    fun navigateSafe(destinationId: Int) {
+        if (navController.currentDestination?.id == destinationId) return
+
+        navController.navigate(destinationId, null, navOptions {
+            launchSingleTop = true
+        })
+    }
+
+    val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
+        when (destination.id) {
+            R.id.graphsExpenseFragment -> selectButton(btnExpense)
+            R.id.graphsIncomeFragment -> selectButton(btnIncome)
+        }
+    }
+
+    navController.addOnDestinationChangedListener(listener)
+
     btnExpense.setOnClickListener {
-        selectButton(btnExpense)
-        navController.navigate(R.id.graphsExpenseFragment)
+        navigateSafe(R.id.graphsExpenseFragment)
     }
 
     btnIncome.setOnClickListener {
-        selectButton(btnIncome)
-        navController.navigate(R.id.graphsIncomeFragment)
+        navigateSafe(R.id.graphsIncomeFragment)
     }
 
-    btnExpense.isSelected = true
+    viewLifecycleOwner.lifecycle.addObserver(
+        object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) {
+                navController.removeOnDestinationChangedListener(listener)
+            }
+        }
+    )
 }
