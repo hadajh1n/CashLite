@@ -48,6 +48,7 @@
     // view_add_categories_panel
     <string name="hintAmountOperation">Сумма операции</string>
     <string name="hintNote">Примечание</string>
+    <string name="hintDate">Дата</string>
     <string name="tilAmountOperationError">Введите сумму</string>
     <string name="tilAmountNullError">Некорректная сумма</string>
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.cashlite.core.utils.format.formatDate
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.data.dataclass.TotalsStateUI
 import com.example.cashlite.data.dataclass.TransactionUI
@@ -25,7 +26,8 @@ class HistoryViewModel : ViewModel() {
     private fun buildHistoryItems(transactions: List<TransactionUI>): List<HistoryItem> {
         if (transactions.isEmpty()) return emptyList()
 
-        val grouped = transactions.groupBy { it.date }
+        val sorted = transactions.sortedByDescending { it.date }
+        val grouped = sorted.groupBy { formatDate(it.date) }
         val result = mutableListOf<HistoryItem>()
 
         for ((date, list) in grouped) {

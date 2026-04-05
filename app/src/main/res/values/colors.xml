@@ -15,6 +15,10 @@
     <color name="btnTextAddNewOperationNavSelector">#FF000000</color>
     <color name="btnTextAddNewOperationNavDefault">#FFFFFFFF</color>
 
+    // view_add_categories_panel
+
+    <color name="edtDate">#FF000000</color>
+
     // fragment_main.xml
 
     <color name="btnMainFragmentNavSelector">#FFEB3B</color>

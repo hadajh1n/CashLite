@@ -39,8 +39,16 @@ class AddExpenseOperationAdapter(
             )
 
             root.setOnClickListener {
+                val oldPosition = expenseCategoriesList
+                    .indexOfFirst { it.idCategory == selectedCategoryId }
+
                 selectedCategoryId = item.idCategory
-                notifyDataSetChanged()
+
+                val newPosition = adapterPosition
+
+                if (oldPosition != -1) notifyItemChanged(oldPosition)
+                notifyItemChanged(newPosition)
+
                 onCategoryClick(item)
             }
         }

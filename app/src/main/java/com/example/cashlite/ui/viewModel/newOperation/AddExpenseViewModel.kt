@@ -11,9 +11,9 @@ class AddExpenseViewModel : ViewModel() {
 
     val expenseCategories: LiveData<List<CategoryUI>> = AppRepository.expenseCategories
 
-    fun addExpenseOperation(category: CategoryUI, amount: Double, note: String) {
+    fun addExpenseOperation(category: CategoryUI, amount: Double, note: String, date: Long) {
         viewModelScope.launch {
-            AppRepository.addTransaction(category, amount, note)
+            AppRepository.addTransaction(category, amount, note, date)
         }
     }
 }

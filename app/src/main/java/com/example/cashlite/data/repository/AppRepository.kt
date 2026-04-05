@@ -96,9 +96,10 @@ object AppRepository {
     suspend fun addTransaction(
         category: CategoryUI,
         amount: Double,
-        note: String
+        note: String,
+        date: Long,
     ) {
-        val entity = transactionEntityMapper.transactionToEntity(category, amount, note)
+        val entity = transactionEntityMapper.transactionToEntity(category, amount, note, date)
         transactionDao.insert(entity)
     }
 

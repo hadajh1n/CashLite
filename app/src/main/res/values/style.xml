@@ -114,6 +114,13 @@
         <item name="android:textColor">@color/tvAmount</item>
     </style>
 
+        // view_add_categories_panel.xml
+
+    <style name="edtDate" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/edtDate</item>
+    </style>
+
         // fragment_main_graphs.xml
 
     <style name="btnSelectGraphsNav" parent="Widget.Material3.Button">

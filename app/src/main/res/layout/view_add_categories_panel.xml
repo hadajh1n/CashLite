@@ -32,6 +32,23 @@
                 android:textColor="@color/black"
                 tools:text="Название категории" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/hint"
+                android:hint="@string/hintDate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDate"
+                    style="@style/edtDate"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:gravity="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <ImageView
                 android:id="@+id/imAddNewOperation"
                 android:layout_width="wrap_content"

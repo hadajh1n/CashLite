@@ -8,14 +8,15 @@ class TransactionEntityMapper {
     fun transactionToEntity(
         category: CategoryUI,
         amount: Double,
-        note: String
+        note: String,
+        date: Long,
     ): TransactionEntity {
 
         return TransactionEntity(
             idCategory = category.idCategory,
             amount = amount,
             note = note,
-            date = System.currentTimeMillis(),
+            date = date,
             isImport = false,
         )
     }

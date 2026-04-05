@@ -7,5 +7,5 @@ data class TransactionUI(
     val categoryName: String,
     val amount: Double,
     val note: String? = null,
-    val date: String,
+    val date: Long,
 )

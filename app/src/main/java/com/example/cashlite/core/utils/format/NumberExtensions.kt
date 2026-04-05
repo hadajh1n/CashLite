@@ -1,4 +1,4 @@
-package com.example.cashlite.core.utils.filters
+package com.example.cashlite.core.utils.format
 
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols

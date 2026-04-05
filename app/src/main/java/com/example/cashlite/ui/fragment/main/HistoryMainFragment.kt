@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.core.utils.filters.formatMoney
+import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding

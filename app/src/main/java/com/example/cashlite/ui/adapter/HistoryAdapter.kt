@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
-import com.example.cashlite.core.utils.filters.formatMoney
+import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.data.dataclass.TransactionUI
 import com.example.cashlite.data.local.CategoryKeys

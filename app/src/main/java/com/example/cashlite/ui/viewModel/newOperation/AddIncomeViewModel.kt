@@ -11,9 +11,9 @@ class AddIncomeViewModel : ViewModel() {
 
     val incomeCategories: LiveData<List<CategoryUI>> = AppRepository.incomeCategories
 
-    fun addIncomeOperation(category: CategoryUI, amount: Double, note: String) {
+    fun addIncomeOperation(category: CategoryUI, amount: Double, note: String, date: Long) {
         viewModelScope.launch {
-            AppRepository.addTransaction(category, amount, note)
+            AppRepository.addTransaction(category, amount, note, date)
         }
     }
 }
