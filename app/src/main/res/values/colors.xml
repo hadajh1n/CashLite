@@ -47,6 +47,21 @@
     <color name="panelAddNewOperation">#F4E5C2</color>
     <color name="tilAmountError">#F44336</color>
 
+    // fragment_add_transfer_operation.xml
+
+    <color name="cgTransferText">#EEEEEE</color>
+    <color name="cgTransferBackgroundSelector">#F4E5C2</color>
+    <color name="cgTransferBackgroundDefault">#00FFFFFF</color>
+    <color name="cgTransferTextSelector">#FF000000</color>
+    <color name="cgTransferTextDefault">#EEEEEE</color>
+    <color name="edtInputTransferSelector">#EEEEEE</color>
+    <color name="edtInputTransferDefault">#EEEEEE</color>
+    <color name="tvBackgroundTransfer">#F4E5C2</color>
+    <color name="btnAddTransfer">#F4E5C2</color>
+    <color name="btnTextAddTransfer">#FF000000</color>
+    <color name="edtDateTransfer">#EEEEEE</color>
+    <color name="tilErrorEdt">#F44336</color>
+
     // item_history.xml
 
     <color name="tvCategory">#FF000000</color>

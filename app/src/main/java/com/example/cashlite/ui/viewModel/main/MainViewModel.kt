@@ -10,9 +10,8 @@ class MainViewModel : ViewModel() {
     private var isInitSystemCategories = false
 
     fun initSystemCategories() {
-        if (isInitSystemCategories) {
-            return
-        }
+        if (isInitSystemCategories) return
+
         isInitSystemCategories = true
 
         viewModelScope.launch {

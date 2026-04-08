@@ -52,6 +52,15 @@
     <string name="tilAmountOperationError">Введите сумму</string>
     <string name="tilAmountNullError">Некорректная сумма</string>
 
+    // view_add_categories_panel
+    <string name="contact_expense">Отправить</string>
+    <string name="contact_income">Получить</string>
+    <string name="hintSum">Сумма</string>
+    <string name="hintContact">Кому/От кого</string>
+    <string name="hintNoteTrans">Примечание</string>
+    <string name="hintDateTrans">Дата</string>
+    <string name="btnAddTransfer">Добавить</string>
+
     // fragment_main_graphs
     <string name="selectGraphsExpense">Расход</string>
     <string name="selectGraphsIncome">Доход</string>

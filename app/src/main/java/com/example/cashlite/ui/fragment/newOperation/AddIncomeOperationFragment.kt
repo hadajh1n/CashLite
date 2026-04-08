@@ -85,13 +85,13 @@ class AddIncomeOperationFragment : Fragment() {
             tvTitlePanel.text = context?.getString(
                 CategoryKeys.getCategoryNameRes(categoryName.categoryName)
             ) ?: categoryName.categoryName
-            etAmount.text?.clear()
+            edtAmount.text?.clear()
             etNote.text?.clear()
             edtDate.setText(formatDate(selectedDate))
 
             setupDatePicker()
 
-            etAmount.filters = arrayOf(
+            edtAmount.filters = arrayOf(
                 DecimalDigitsInputFilter(
                     Constants.DigitFilter.DIGITS_BEFORE_ZERO,
                     Constants.DigitFilter.DIGITS_AFTER_ZERO,
@@ -99,7 +99,7 @@ class AddIncomeOperationFragment : Fragment() {
             )
 
             imAddNewOperation.setOnClickListener {
-                val amountText = etAmount.text.toString()
+                val amountText = edtAmount.text.toString()
 
                 if (amountText.isBlank()) {
                     tilAmount.error = context?.getString(R.string.tilAmountOperationError)
