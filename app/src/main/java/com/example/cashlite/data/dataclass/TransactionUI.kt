@@ -8,4 +8,5 @@ data class TransactionUI(
     val amount: Double,
     val note: String? = null,
     val date: Long,
+    val contact: String? = null,
 )

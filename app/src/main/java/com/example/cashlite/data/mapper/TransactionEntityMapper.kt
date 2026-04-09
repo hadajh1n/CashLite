@@ -10,6 +10,7 @@ class TransactionEntityMapper {
         amount: Double,
         note: String,
         date: Long,
+        contact: String? = null,
     ): TransactionEntity {
 
         return TransactionEntity(
@@ -18,6 +19,7 @@ class TransactionEntityMapper {
             note = note,
             date = date,
             isImport = false,
+            contact = contact,
         )
     }
 }

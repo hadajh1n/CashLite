@@ -7,6 +7,7 @@ import com.example.cashlite.core.app.CashLiteApp
 import com.example.cashlite.data.dataclass.CategoryUI
 import com.example.cashlite.data.dataclass.TotalsStateUI
 import com.example.cashlite.data.dataclass.TransactionUI
+import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.data.mapper.CategoryEntityMapper
 import com.example.cashlite.data.mapper.TransactionEntityMapper
 import com.example.cashlite.data.room.AppDatabase
@@ -35,14 +36,18 @@ object AppRepository {
     val expenseCategories: LiveData<List<CategoryUI>> = MediatorLiveData<List<CategoryUI>>().apply {
         val source = categoryDao.getCategoriesByType(CategoryType.EXPENSE)
         addSource(source) { categories ->
-            value = categories.map { categoryUiMapper.fromEntityToUI(it) }
+            value = categories
+                .filter { it.categoryName !in CategoryKeys.TRANSFER_CATEGORIES }
+                .map { categoryUiMapper.fromEntityToUI(it) }
         }
     }
 
     val incomeCategories: LiveData<List<CategoryUI>> = MediatorLiveData<List<CategoryUI>>().apply {
         val source = categoryDao.getCategoriesByType(CategoryType.INCOME)
         addSource(source) { categories ->
-            value = categories.map { categoryUiMapper.fromEntityToUI(it) }
+            value = categories
+                .filter { it.categoryName !in CategoryKeys.TRANSFER_CATEGORIES }
+                .map { categoryUiMapper.fromEntityToUI(it) }
         }
     }
 
@@ -93,13 +98,20 @@ object AppRepository {
         }
     }
 
+    suspend fun getCategoryByName(categoryName: String): CategoryUI? {
+        val entity = categoryDao.getByName(categoryName) ?: return null
+        return categoryUiMapper.fromEntityToUI(entity)
+    }
+
     suspend fun addTransaction(
         category: CategoryUI,
         amount: Double,
         note: String,
         date: Long,
+        contact: String? = null,
     ) {
-        val entity = transactionEntityMapper.transactionToEntity(category, amount, note, date)
+        val entity = transactionEntityMapper
+            .transactionToEntity(category, amount, note, date, contact)
         transactionDao.insert(entity)
     }
 

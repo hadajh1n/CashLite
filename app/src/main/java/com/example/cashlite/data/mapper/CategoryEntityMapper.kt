@@ -136,6 +136,31 @@ class CategoryEntityMapper {
         )
     }
 
+    private fun expenseTransferToEntity(): List<CategoryEntity> {
+        return listOf(
+            CategoryEntity(
+                type = CategoryType.EXPENSE,
+                categoryName = CategoryKeys.TRANSFER_EXPENSE,
+                imageId = R.drawable.icon_transfer,
+                color = R.color.icon_transfer_expense,
+                isSystem = true,
+            ),
+        )
+    }
+
+    private fun incomeTransferToEntity(): List<CategoryEntity> {
+        return listOf(
+            CategoryEntity(
+                type = CategoryType.INCOME,
+                categoryName = CategoryKeys.TRANSFER_INCOME,
+                imageId = R.drawable.icon_transfer,
+                color = R.color.icon_transfer_income,
+                isSystem = true,
+            ),
+        )
+    }
+
     fun getAllSystemCategories(): List<CategoryEntity> =
-        expenseCategoryToEntity() + incomeCategoryToEntity()
+        expenseCategoryToEntity() + incomeCategoryToEntity() +
+                expenseTransferToEntity() + incomeTransferToEntity()
 }

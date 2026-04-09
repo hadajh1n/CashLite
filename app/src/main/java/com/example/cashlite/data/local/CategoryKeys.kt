@@ -23,6 +23,11 @@ object CategoryKeys {
     const val INCOME_GRAPH = "income_graph"
     const val INCOME_AWARD = "income_award"
 
+    const val TRANSFER_EXPENSE = "transfer_expense"
+    const val TRANSFER_INCOME = "transfer_income"
+
+    val TRANSFER_CATEGORIES = listOf(TRANSFER_EXPENSE, TRANSFER_INCOME)
+
     fun getCategoryNameRes(key: String): Int = when (key) {
         EXPENSE_SUPERMARKET -> R.string.expense_supermarket
         EXPENSE_FOOD -> R.string.expense_food
@@ -42,6 +47,9 @@ object CategoryKeys {
         INCOME_WALLET -> R.string.income_wallet
         INCOME_GRAPH -> R.string.income_graph
         INCOME_AWARD -> R.string.income_award
+
+        TRANSFER_EXPENSE -> R.string.transfer_expense
+        TRANSFER_INCOME -> R.string.transfer_income
 
         else -> R.string.unknown
     }

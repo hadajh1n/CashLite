@@ -93,6 +93,9 @@
     <color name="icon_income_graph">#7FB3D5</color>
     <color name="icon_income_award">#76D7C4</color>
 
+    <color name="icon_transfer_expense">#F44336</color>
+    <color name="icon_transfer_income">#52BE80</color>
+
     // fragment_main_graphs
     <color name="btnSelectGraphsNavSelector">#F4E5C2</color>
     <color name="btnSelectGraphsNavDefault">#00FFFFFF</color>

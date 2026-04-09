@@ -43,6 +43,9 @@
     <string name="income_graph">Инвестиции</string>
     <string name="income_award">Бонусы</string>
 
+    <string name="transfer_expense">Отправка</string>
+    <string name="transfer_income">Получение</string>
+
     <string name="unknown">Другое</string>
 
     // view_add_categories_panel
@@ -60,6 +63,9 @@
     <string name="hintNoteTrans">Примечание</string>
     <string name="hintDateTrans">Дата</string>
     <string name="btnAddTransfer">Добавить</string>
+
+    <string name="tilContactOperationTransferError">Введите отправителя/получателя</string>
+    <string name="tilAmountOperationTransferError">Введите сумму</string>
 
     // fragment_main_graphs
     <string name="selectGraphsExpense">Расход</string>

@@ -15,6 +15,9 @@ interface CategoryDao {
     @Query("SELECT COUNT(*) FROM categories")
     suspend fun getCount(): Int
 
+    @Query("SELECT * FROM categories WHERE categoryName = :categoryName LIMIT 1")
+    suspend fun getByName(categoryName: String): CategoryEntity?
+
     @Query("SELECT * FROM categories WHERE type = :type")
     fun getCategoriesByType(type: CategoryType): LiveData<List<CategoryEntity>>
 

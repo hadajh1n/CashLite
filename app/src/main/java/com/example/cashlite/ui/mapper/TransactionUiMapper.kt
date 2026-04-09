@@ -19,6 +19,7 @@ class TransactionUiMapper {
             amount = entityTrans.amount,
             note = entityTrans.note,
             date = entityTrans.date,
+            contact = entityTrans.contact,
         )
     }
 }

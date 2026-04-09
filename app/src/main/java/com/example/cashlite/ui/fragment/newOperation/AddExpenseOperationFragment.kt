@@ -85,7 +85,7 @@ class AddExpenseOperationFragment : Fragment() {
                 CategoryKeys.getCategoryNameRes(categoryName.categoryName)
             ) ?: categoryName.categoryName
             edtAmount.text?.clear()
-            etNote.text?.clear()
+            edtNote.text?.clear()
             edtDate.setText(formatDate(selectedDate))
 
             setupDatePicker()
@@ -114,7 +114,7 @@ class AddExpenseOperationFragment : Fragment() {
                     return@setOnClickListener
                 }
 
-                val noteText = etNote.text.toString()
+                val noteText = edtNote.text.toString()
 
                 viewModel.addExpenseOperation(categoryName, amountDouble, noteText, selectedDate)
 

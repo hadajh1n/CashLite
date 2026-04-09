@@ -86,7 +86,7 @@ class AddIncomeOperationFragment : Fragment() {
                 CategoryKeys.getCategoryNameRes(categoryName.categoryName)
             ) ?: categoryName.categoryName
             edtAmount.text?.clear()
-            etNote.text?.clear()
+            edtNote.text?.clear()
             edtDate.setText(formatDate(selectedDate))
 
             setupDatePicker()
@@ -115,7 +115,7 @@ class AddIncomeOperationFragment : Fragment() {
                     return@setOnClickListener
                 }
 
-                val noteText = etNote.text.toString()
+                val noteText = edtNote.text.toString()
 
                 viewModel.addIncomeOperation(categoryName, amountDouble, noteText, selectedDate)
 

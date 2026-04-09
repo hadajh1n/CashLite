@@ -23,5 +23,6 @@ data class TransactionEntity(
     val amount: Double,
     val note: String? = null,
     val date: Long = System.currentTimeMillis(),
+    val contact: String? = null,
     val isImport: Boolean = false,
 )
