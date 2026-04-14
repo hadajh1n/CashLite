@@ -43,8 +43,8 @@
     <string name="income_graph">Инвестиции</string>
     <string name="income_award">Бонусы</string>
 
-    <string name="transfer_expense">Отправка</string>
-    <string name="transfer_income">Получение</string>
+    <string name="transfer_expense">Перевод - Отправка</string>
+    <string name="transfer_income">Перевод - Получение</string>
 
     <string name="unknown">Другое</string>
 

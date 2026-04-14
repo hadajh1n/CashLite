@@ -70,6 +70,7 @@ class AddTransferOperationFragment : Fragment() {
             val contactText = edtContact.text.toString()
             val amountText = edtAmount.text.toString()
             val noteText = edtNote.text.toString()
+            edtDate.setText(formatDate(selectedDate))
 
             if (contactText.isBlank()) {
                 tilContact.error = context?.getString(R.string.tilContactOperationTransferError)

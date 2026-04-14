@@ -10,6 +10,7 @@ import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.data.dataclass.TransactionUI
 import com.example.cashlite.data.local.CategoryKeys
+import com.example.cashlite.data.room.category.CategoryType
 import com.example.cashlite.databinding.ItemDateHeaderHistoryBinding
 import com.example.cashlite.databinding.ItemMainHistoryBinding
 
@@ -55,10 +56,24 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             tvCategory.text = itemView.context.getString(
                 CategoryKeys.getCategoryNameRes(item.categoryName)
             )
-            tvNote.text = item.note ?: ""
+            if (item.note.isNullOrBlank()) {
+                tvNote.visibility = View.GONE
+            } else {
+                tvNote.visibility = View.VISIBLE
+                tvNote.text = item.note
+            }
 
-            tvAmount.text = "${item.amount.formatMoney()} ₽"
-//            tvAmount.setTextColor(itemView.context.getColor(R.color.tvExpenses))
+            val isExpense = item.type == CategoryType.EXPENSE
+
+            val sign = if (isExpense) "-" else "+"
+            val colorRes = if (isExpense) {
+                R.color.tvExpenses
+            } else {
+                R.color.tvIncome
+            }
+
+            tvAmount.text = "$sign${item.amount.formatMoney()} ₽"
+            tvAmount.setTextColor(itemView.context.getColor(colorRes))
         }
     }
 

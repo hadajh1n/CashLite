@@ -64,7 +64,8 @@
 
     // item_history.xml
 
-    <color name="tvCategory">#FF000000</color>
+    <color name="tvNote">#FF000000</color>
+    <color name="tvCategory">#020203</color>
     <color name="tvAmount">#1A1818</color>
 
     // drawable icons

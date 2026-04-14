@@ -16,6 +16,7 @@ class TransactionUiMapper {
             imageId = entityCategory.imageId,
             color = entityCategory.color,
             categoryName = entityCategory.categoryName,
+            type = entityCategory.type,
             amount = entityTrans.amount,
             note = entityTrans.note,
             date = entityTrans.date,

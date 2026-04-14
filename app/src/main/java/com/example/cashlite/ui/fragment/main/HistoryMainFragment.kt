@@ -63,9 +63,13 @@ class HistoryMainFragment : Fragment() {
         }
 
         viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->
-            tvTotalExpense.text = "${state.totalExpense.formatMoney()}"
-            tvTotalIncome.text  = "${state.totalIncome.formatMoney()}"
-            tvTotalBalance.text = "${state.totalBalance.formatMoney()}"
+            tvTotalExpense.text = if (state.totalExpense == 0.0) {
+                "${state.totalExpense.formatMoney()} ₽"
+            } else {
+                "-${state.totalExpense.formatMoney()} ₽"
+            }
+            tvTotalIncome.text  = "${state.totalIncome.formatMoney()} ₽"
+            tvTotalBalance.text = "${state.totalBalance.formatMoney()} ₽"
         }
     }
 
@@ -87,7 +91,7 @@ class HistoryMainFragment : Fragment() {
                 direction: Int
             ) {
                 val position = viewHolder.adapterPosition
-                val item = adapter?.getItem(position)
+                val item = adapter.getItem(position)
 
                 if (item is HistoryItem.TransactionItem) {
                     viewModel.onSwipeRemoveTransaction(item.transaction)
