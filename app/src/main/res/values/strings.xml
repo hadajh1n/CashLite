@@ -48,6 +48,8 @@
 
     <string name="unknown">Другое</string>
 
+    <string name="btnImport">Импорт выписки</string>
+
     // view_add_categories_panel
     <string name="hintAmountOperation">Сумма операции</string>
     <string name="hintNote">Примечание</string>

@@ -12,6 +12,7 @@ import com.example.cashlite.data.mapper.CategoryEntityMapper
 import com.example.cashlite.data.mapper.TransactionEntityMapper
 import com.example.cashlite.data.room.AppDatabase
 import com.example.cashlite.data.room.category.CategoryType
+import com.example.cashlite.data.room.transaction.TransactionEntity
 import com.example.cashlite.ui.mapper.CategoryUiMapper
 import com.example.cashlite.ui.mapper.TransactionUiMapper
 
@@ -101,6 +102,10 @@ object AppRepository {
     suspend fun getCategoryByName(categoryName: String): CategoryUI? {
         val entity = categoryDao.getByName(categoryName) ?: return null
         return categoryUiMapper.fromEntityToUI(entity)
+    }
+
+    suspend fun insertImportedTransactions(transactions: List<TransactionEntity>) {
+        transactionDao.insertAllImport(transactions)
     }
 
     suspend fun addTransaction(

@@ -26,6 +26,8 @@ object CategoryKeys {
     const val TRANSFER_EXPENSE = "transfer_expense"
     const val TRANSFER_INCOME = "transfer_income"
 
+    const val UNKNOWN = "unknown"
+
     val TRANSFER_CATEGORIES = listOf(TRANSFER_EXPENSE, TRANSFER_INCOME)
 
     fun getCategoryNameRes(key: String): Int = when (key) {

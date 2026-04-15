@@ -49,6 +49,7 @@
 
     // fragment_add_transfer_operation.xml
 
+    <color name="btnImport">#F4E5C2</color>
     <color name="cgTransferText">#EEEEEE</color>
     <color name="cgTransferBackgroundSelector">#F4E5C2</color>
     <color name="cgTransferBackgroundDefault">#00FFFFFF</color>

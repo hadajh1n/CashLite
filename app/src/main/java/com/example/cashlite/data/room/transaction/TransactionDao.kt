@@ -24,4 +24,7 @@ interface TransactionDao {
         "WHERE c.type = :type"
     )
     fun getSumByType(type: CategoryType): LiveData<Double>
+
+    @Insert
+    suspend fun insertAllImport(transactions: List<TransactionEntity>)
 }

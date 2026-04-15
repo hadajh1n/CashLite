@@ -80,6 +80,9 @@ dependencies {
     // MPAndroidChart
     implementation(libs.mpandroidchart)
 
+    // PDFBox
+    implementation(libs.pdfboxAndroid)
+
     // LeakCanary
     debugImplementation(libs.leakcanary.android)
 

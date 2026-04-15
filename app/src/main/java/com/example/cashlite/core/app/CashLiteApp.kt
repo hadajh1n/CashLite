@@ -1,6 +1,8 @@
 package com.example.cashlite.core.app
 
 import android.app.Application
+import android.util.Log
+import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 
 class CashLiteApp : Application() {
 
@@ -11,5 +13,7 @@ class CashLiteApp : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this@CashLiteApp
+        PDFBoxResourceLoader.init(this)
+        Log.e("LOG_TESTING", "PDFBoxResourceLoader инициализирован")
     }
 }
