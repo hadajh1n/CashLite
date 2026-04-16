@@ -4,24 +4,24 @@
         // activity_main.xml
     
     <style name="tvHistory" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="tvGraphs" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="tvSettings" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
         // activity_add_new_operation.xml
 
     <style name="btnAddNewOperationNav" parent="Widget.Material3.Button">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@drawable/btn_text_add_new_operation_nav_selector</item>
         <item name="android:backgroundTint">@drawable/btn_add_new_operation_nav_selector</item>
         <item name="rippleColor">@color/transparent</item>
@@ -31,7 +31,7 @@
         // fragment_add_transfer_operation.xml
 
     <style name="cgTransfer" parent="Widget.Material3.ChipGroup">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textColor">@drawable/btn_add_transfer_operation_text_selector</item>
         <item name="android:textStyle">bold</item>
         <item name="chipBackgroundColor">@drawable/btn_add_transfer_operation_selector</item>
@@ -39,14 +39,14 @@
     </style>
 
     <style name="edtDateTransfer" parent="Widget.AppCompat.EditText">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/edtDateTransfer</item>
     </style>
 
         // fragment_main.xml
 
     <style name="tvMainFragment" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@drawable/icon_main_fragment_selector</item>
     </style>
@@ -54,63 +54,63 @@
         // fragment_main_history.xml
 
     <style name="tvFinance" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">24dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvFinance</item>
     </style>
 
     <style name="tvMonth" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/tvMonth</item>
     </style>
 
     <style name="tvYear" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/tvYear</item>
     </style>
 
     <style name="tvIncomeTitle" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvIncomeTitle</item>
     </style>
 
     <style name="tvExpensesTitle" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvExpensesTitle</item>
     </style>
 
     <style name="tvBalanceTitle" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvBalanceTitle</item>
     </style>
 
     <style name="tvIncome" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/tvIncome</item>
     </style>
 
     <style name="tvExpenses" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/tvExpenses</item>
     </style>
 
     <style name="tvBalance" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/tvBalance</item>
     </style>
 
     <style name="tvEmptyList" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/tvEmptyList</item>
     </style>
 
         // fragment_add_new_operation.xml
 
     <style name="btnAddNewOperation" parent="ShapeAppearanceOverlay.Material3.Button">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/btnAddNewOperation</item>
     </style>
@@ -118,19 +118,19 @@
         // item_main_history.xml
 
     <style name="tvNote" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvNote</item>
     </style>
 
     <style name="tvCategory" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvCategory</item>
     </style>
 
     <style name="tvAmount" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvAmount</item>
     </style>
@@ -138,14 +138,14 @@
         // view_add_categories_panel.xml
 
     <style name="edtDate" parent="Widget.AppCompat.EditText">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/edtDate</item>
     </style>
 
         // fragment_main_graphs.xml
 
     <style name="btnSelectGraphsNav" parent="Widget.Material3.Button">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@drawable/btn_select_graphs_text_nav_selector</item>
         <item name="android:backgroundTint">@drawable/btn_select_graphs_nav_selector</item>
         <item name="rippleColor">@color/transparent</item>

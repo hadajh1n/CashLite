@@ -112,7 +112,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense" />
-        <!--tools:listitem="@layout/item_history"-->
 
     <LinearLayout
         android:id="@+id/llEmptyList"
@@ -142,7 +141,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tvEmptyList" />
-
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarForHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/progressBar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rvHistory"
+        app:layout_constraintEnd_toEndOf="@+id/rvHistory"
+        app:layout_constraintStart_toStartOf="@+id/rvHistory"
+        app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense"
+        tools:visibility="visible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

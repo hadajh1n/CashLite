@@ -59,7 +59,7 @@
                 android:id="@+id/edtContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textColor="@drawable/btn_add_transfer_operation_text_selector"
                 android:textStyle="bold"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textColor="@drawable/btn_add_transfer_operation_text_selector"
                 android:textStyle="bold"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +103,7 @@
                 android:id="@+id/edtNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textColor="@drawable/btn_add_transfer_operation_text_selector"
                 android:textStyle="bold"
                 android:maxLines="3"/>
@@ -124,7 +124,7 @@
                 style="@style/edtDateTransfer"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:focusable="false"
                 android:clickable="true"
                 android:gravity="center" />
@@ -139,7 +139,7 @@
             android:backgroundTint="@color/btnAddTransfer"
             android:text="@string/btnAddTransfer"
             android:textColor="@color/btnTextAddTransfer"
-            android:textSize="16sp"/>
+            android:textSize="16dp"/>
 
     </LinearLayout>
 </FrameLayout>

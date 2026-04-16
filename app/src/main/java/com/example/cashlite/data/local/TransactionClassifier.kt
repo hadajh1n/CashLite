@@ -7,7 +7,8 @@ object TransactionClassifier {
     private val supermarketKeywords = listOf(
         "krasnoe", "magni", "пятерочка", "pyaterochka", "lenta",
         "spar", "fixprice", "дикси", "dixy", "верный", "auchan",
-        "ашан", "перекресток", "perekrestok", "optovichok", "zajdi", "M- 1", "EVROPA"
+        "ашан", "перекресток", "perekrestok", "optovichok", "zajdi", "M- 1", "EVROPA",
+        "CH57008"
     )
 
     private val foodKeywords = listOf(
@@ -19,7 +20,7 @@ object TransactionClassifier {
 
     private val clothesKeywords = listOf(
         "kari", "zara", "hm", "h&m", "bershka", "pull&bear",
-        "reserved", "gloria jeans", "ostin", "uniqlo"
+        "reserved", "gloria jeans", "ostin", "uniqlo", "sunlight"
     )
 
     private val carKeywords = listOf(

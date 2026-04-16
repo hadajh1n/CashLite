@@ -47,6 +47,8 @@
     <color name="panelAddNewOperation">#F4E5C2</color>
     <color name="tilAmountError">#F44336</color>
 
+    <color name="progressBar">#FFFFFFFF</color>
+
     // fragment_add_transfer_operation.xml
 
     <color name="btnImport">#F4E5C2</color>

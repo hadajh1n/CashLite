@@ -12,14 +12,26 @@ import com.example.cashlite.data.repository.AppRepository
 import kotlinx.coroutines.launch
 import kotlin.collections.iterator
 
+sealed class HistoryUiState {
+    object Loading : HistoryUiState()
+    object Empty : HistoryUiState()
+    data class Content(val items: List<HistoryItem>) : HistoryUiState()
+}
+
 class HistoryViewModel : ViewModel() {
 
     private val transactions: LiveData<List<TransactionUI>> = AppRepository.transactions
     val totalTransaction: LiveData<TotalsStateUI> = AppRepository.totalTransaction
 
-    val historyItems: LiveData<List<HistoryItem>> = MediatorLiveData<List<HistoryItem>>().apply {
-        addSource(transactions) { input ->
-            value = buildHistoryItems(input)
+    val uiHistoryState: LiveData<HistoryUiState> = MediatorLiveData<HistoryUiState>().apply {
+
+        value = HistoryUiState.Loading
+
+        addSource(transactions) { list ->
+            value = when {
+                list.isEmpty() -> HistoryUiState.Empty
+                else -> HistoryUiState.Content(buildHistoryItems(list))
+            }
         }
     }
 

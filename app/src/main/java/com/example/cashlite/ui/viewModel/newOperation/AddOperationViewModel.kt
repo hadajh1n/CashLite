@@ -10,9 +10,18 @@ import com.example.cashlite.core.PDFManager
 import com.example.cashlite.core.app.CashLiteApp
 import kotlinx.coroutines.launch
 
+sealed class ImportUiState {
+
+    object Loading: ImportUiState()
+    object Standard: ImportUiState()
+}
+
 class AddOperationViewModel : ViewModel() {
 
     private val pdfManager = PDFManager(CashLiteApp.instance)
+
+    private val _importState = MutableLiveData<ImportUiState>()
+    val importState: LiveData<ImportUiState> = _importState
 
     private val _importSuccess = MutableLiveData<Boolean>()
     val importSuccess: LiveData<Boolean> = _importSuccess
@@ -22,13 +31,16 @@ class AddOperationViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 Log.e("LOG_TESTING", "Запускаем pdfManager.importPdf...")
-                val isSuccess = pdfManager.importPdf(uri)   // ← теперь возвращает Boolean
+                _importState.value = ImportUiState.Loading
+                val isSuccess = pdfManager.importPdf(uri)
                 _importSuccess.value = isSuccess
+                _importState.value = ImportUiState.Standard
                 Log.e("LOG_TESTING", "importPdf завершён с результатом: $isSuccess")
             } catch (e: Exception) {
                 Log.e("LOG_TESTING", "КРИТИЧЕСКАЯ ОШИБКА в importPdf: ${e.message}")
                 e.printStackTrace()
                 _importSuccess.value = false
+                _importState.value = ImportUiState.Standard
             }
         }
     }

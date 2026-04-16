@@ -13,6 +13,7 @@ import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
+import com.example.cashlite.ui.viewModel.main.HistoryUiState
 import com.example.cashlite.ui.viewModel.main.HistoryViewModel
 
 class HistoryMainFragment : Fragment() {
@@ -55,11 +56,27 @@ class HistoryMainFragment : Fragment() {
     }
 
     private fun observeViewModel() = with(binding) {
-        viewModel.historyItems.observe(viewLifecycleOwner) { list ->
-            adapter.submitList(list)
+        viewModel.uiHistoryState.observe(viewLifecycleOwner) { state ->
 
-            if (list.isEmpty()) llEmptyList.visibility = View.VISIBLE else
-                llEmptyList.visibility = View.GONE
+            when (state) {
+
+                is HistoryUiState.Loading -> {
+                    progressBarForHistory.visibility = View.VISIBLE
+                    llEmptyList.visibility = View.GONE
+                }
+
+                is HistoryUiState.Empty -> {
+                    progressBarForHistory.visibility = View.GONE
+                    llEmptyList.visibility = View.VISIBLE
+                    adapter.submitList(emptyList())
+                }
+
+                is HistoryUiState.Content -> {
+                    progressBarForHistory.visibility = View.GONE
+                    llEmptyList.visibility = View.GONE
+                    adapter.submitList(state.items)
+                }
+            }
         }
 
         viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->
