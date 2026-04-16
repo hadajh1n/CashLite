@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@color/iconsOfCategory"
+        android:pathData="
+        M12,2
+        C8.686,2 6,4.238 6,7.2
+        C6,7.776 6.224,8.2 6.8,8.2
+        C7.376,8.2 7.6,7.776 7.6,7.2
+        C7.6,5.2 9.4,3.6 12,3.6
+        C14.6,3.6 16.4,5.2 16.4,7.2
+        C16.4,9.2 14.8,10.2 13.6,11.1
+        C12.4,12 11.6,12.8 11.6,14.2
+        L11.6,15
+        C11.6,15.6 12.4,15.6 12.4,15
+        L12.4,14.4
+        C12.4,13.4 13.1,12.9 14.2,12.1
+        C15.8,10.9 18,9.7 18,7.2
+        C18,4.238 15.314,2 12,2
+        Z
+
+        M11.2,18.5
+        A0.8,0.8 0 1,0 12.8,18.5
+        A0.8,0.8 0 1,0 11.2,18.5
+        Z"/>
+</vector>

@@ -31,6 +31,8 @@
     <string name="expense_bus">Транспорт</string>
     <string name="expense_bicycle">Спорт</string>
     <string name="expense_housing">Жилье</string>
+    <string name="expense_marketplace">Маркетплейс</string>
+    <string name="expense_taxi">Такси</string>
     <string name="expense_education">Образование</string>
     <string name="expense_flag">Путешествие</string>
     <string name="expense_electronics">Электроника</string>
@@ -40,13 +42,16 @@
     <string name="expense_cat">Домашний питомец</string>
 
     <string name="income_wallet">Зарплата</string>
+    <string name="income_cashback">Кэшбэк</string>
     <string name="income_graph">Инвестиции</string>
     <string name="income_award">Бонусы</string>
 
     <string name="transfer_expense">Перевод - Отправка</string>
     <string name="transfer_income">Перевод - Получение</string>
 
-    <string name="unknown">Другое</string>
+    <string name="unknown_expense">Другое</string>
+    <string name="unknown_income">Другое</string>
+    <string name="unknown_general">Другое</string>
 
     <string name="btnImport">Импорт выписки</string>
 

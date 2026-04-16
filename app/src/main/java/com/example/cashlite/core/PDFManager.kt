@@ -17,24 +17,20 @@ import java.util.Locale
 
 class PDFManager(private val context: Context) {
 
-    /** Возвращает true, если хотя бы одна транзакция была добавлена */
     suspend fun importPdf(uri: Uri): Boolean = withContext(Dispatchers.IO) {
         Log.e("LOG_TESTING", "=== НАЧАЛО ИМПОРТА PDF ===")
         Log.e("LOG_TESTING", "URI: $uri")
 
         val text = readPdfText(uri)
         if (text.isBlank()) {
-            Log.e("LOG_TESTING", "ОШИБКА: PDF текст пустой после извлечения!")
+            Log.e("LOG_TESTING", "ОШИБКА: PDF текст пустой!")
             return@withContext false
         }
 
         val parsedList = parseBankStatement(text)
-        Log.e("LOG_TESTING", "Парсинг завершён. Найдено сырых транзакций: ${parsedList.size}")
+        Log.e("LOG_TESTING", "Найдено транзакций: ${parsedList.size}")
 
-        if (parsedList.isEmpty()) {
-            Log.e("LOG_TESTING", "ОШИБКА: Ни одной транзакции не распарсено!")
-            return@withContext false
-        }
+        if (parsedList.isEmpty()) return@withContext false
 
         val mapper = TransactionImportMapper()
         val entities = mutableListOf<TransactionEntity>()
@@ -43,21 +39,20 @@ class PDFManager(private val context: Context) {
             val entity = mapper.mapToEntity(parsed)
             if (entity != null) {
                 entities.add(entity)
-                Log.e("LOG_TESTING", "✅ Маппинг успешен: ${parsed.note} | ${parsed.amount}")
+                Log.e("LOG_TESTING", "✅ ${parsed.note} | ${parsed.amount}")
             } else {
-                Log.e("LOG_TESTING", "ПРОПУЩЕНО: категория не найдена для '${parsed.note}'")
+                Log.e("LOG_TESTING", "❌ Нет категории: ${parsed.note}")
             }
         }
 
         if (entities.isNotEmpty()) {
             AppRepository.insertImportedTransactions(entities)
-            Log.e("LOG_TESTING", "✅ УСПЕШНО ЗАПИСАНО В БАЗУ: ${entities.size} транзакций")
-            Log.e("LOG_TESTING", "=== ИМПОРТ ЗАВЕРШЁН УСПЕШНО ===")
+            Log.e("LOG_TESTING", "✅ Сохранено: ${entities.size}")
             return@withContext true
         }
 
-        Log.e("LOG_TESTING", "ОШИБКА: нет сущностей для записи")
-        return@withContext false
+        Log.e("LOG_TESTING", "❌ Нет данных для записи")
+        false
     }
 
     private fun readPdfText(uri: Uri): String {
@@ -73,11 +68,11 @@ class PDFManager(private val context: Context) {
             }
 
             val text = stripper.getText(document)
-            Log.e("LOG_TESTING", "PDFTextStripper.getText → получено ${text.length} символов")
+            Log.e("LOG_TESTING", "PDF → ${text.length} символов")
             text
+
         } catch (e: Throwable) {
-            Log.e("LOG_TESTING", "ОШИБКА чтения PDF: ${e.javaClass.simpleName} → ${e.message}")
-            e.printStackTrace()
+            Log.e("LOG_TESTING", "ОШИБКА PDF: ${e.message}")
             ""
         } finally {
             document?.close()
@@ -85,10 +80,36 @@ class PDFManager(private val context: Context) {
         }
     }
 
+    private fun mergeLines(text: String): List<String> {
+        val mergedLines = mutableListOf<String>()
+        var currentLine = StringBuilder()
+
+        val dateRegex = Regex("""^\d{2}\.\d{2}\.\d{4}""")
+
+        text.lines().forEach { raw ->
+            val line = raw.trim()
+            if (line.isBlank()) return@forEach
+
+            if (dateRegex.containsMatchIn(line)) {
+                if (currentLine.isNotEmpty()) {
+                    mergedLines.add(currentLine.toString())
+                }
+                currentLine = StringBuilder(line)
+            } else {
+                currentLine.append(" ").append(line)
+            }
+        }
+
+        if (currentLine.isNotEmpty()) {
+            mergedLines.add(currentLine.toString())
+        }
+
+        return mergedLines
+    }
+
     private fun parseBankStatement(text: String): List<ParseBankTransaction> {
         val result = mutableListOf<ParseBankTransaction>()
 
-        // Более гибкий regex специально под твою выписку
         val regex = Regex(
             """(\d{2}\.\d{2}\.\d{4})\s+\d{2}\.\d{2}\.\d{4}\s+([+-]?\s*[\d\s]+[.,]\d{2})\s+₽\s+[+-]?\s*[\d\s]+[.,]\d{2}\s+₽\s+(.+)"""
         )
@@ -99,42 +120,54 @@ class PDFManager(private val context: Context) {
             "итого", "баланс", "остаток", "входящий", "исходящий",
             "поступление", "списание", "комиссия", "курс", "всего",
             "операции", "выписка", "период", "клиент", "движение",
-            "средств", "дата и время", "сумма в валюте", "номер карты"
+            "средств", "дата и время", "сумма в валюте", "номер карты", "внутренний перевод",
+            "внутрибанковский перевод", "закрытие вклада", "пополнение", "пополнения", "расходы",
+            "с карты другого банка", "с карты на карту"
         )
 
-        text.lines().forEach { originalLine ->
-            val line = originalLine.trim()
+        val lines = mergeLines(text)
+
+        lines.forEach { originalLine ->
+
+            val line = originalLine
+                .replace(Regex("\\s+"), " ")
+                .trim()
+
             if (line.isBlank()) return@forEach
 
-            // Пропускаем шапки и итоги
             if (skipKeywords.any { line.lowercase().contains(it) }) {
-                Log.e("LOG_TESTING", "ПРОПУЩЕНА (skipKeyword): $line")
+                Log.e("LOG_TESTING", "⛔ skip: $line")
                 return@forEach
             }
+
+            Log.e("LOG_TESTING", "📄 LINE: $line")
 
             val match = regex.find(line) ?: return@forEach
 
             val dateStr = match.groupValues[1]
             val amountRaw = match.groupValues[2]
-            val description = match.groupValues[3].trim()
                 .replace(" ", "")
                 .replace(",", ".")
+            val description = match.groupValues[3].trim()
 
-            Log.e("LOG_TESTING", "✅ КОРРЕКТНЫЙ МАТЧ → дата=$dateStr | сумма=$amountRaw | описание='$description' | строка: '$line'")
+            Log.e("LOG_TESTING", "✅ MATCH → $description | $amountRaw")
 
             val date = try {
                 dateFormat.parse(dateStr)?.time ?: return@forEach
             } catch (e: Exception) {
-                Log.e("LOG_TESTING", "Ошибка парсинга даты: $dateStr")
+                Log.e("LOG_TESTING", "❌ date parse: $dateStr")
                 return@forEach
             }
 
-            val amount = amountRaw.toDoubleOrNull() ?: run {
-                Log.e("LOG_TESTING", "Ошибка конвертации суммы: $amountRaw")
-                return@forEach
-            }
+            val amount = amountRaw.toDoubleOrNull() ?: return@forEach
 
-            result.add(ParseBankTransaction(date = date, amount = amount, note = description))
+            result.add(
+                ParseBankTransaction(
+                    date = date,
+                    amount = amount,
+                    note = description
+                )
+            )
         }
 
         return result

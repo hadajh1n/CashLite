@@ -53,9 +53,14 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             imCategory.setImageResource(item.imageId)
             imCategory.setColorFilter(itemView.context.getColor(item.color))
 
-            tvCategory.text = itemView.context.getString(
-                CategoryKeys.getCategoryNameRes(item.categoryName)
-            )
+            val isUnknown = item.categoryName == CategoryKeys.UNKNOWN_EXPENSE ||
+                    item.categoryName == CategoryKeys.UNKNOWN_INCOME
+
+            tvCategory.text = if (isUnknown) {
+                itemView.context.getString(R.string.unknown_general)
+            } else {
+                itemView.context.getString(CategoryKeys.getCategoryNameRes(item.categoryName))
+            }
             if (item.note.isNullOrBlank()) {
                 tvNote.visibility = View.GONE
             } else {

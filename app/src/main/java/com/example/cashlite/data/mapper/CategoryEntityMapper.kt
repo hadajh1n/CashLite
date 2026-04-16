@@ -60,6 +60,20 @@ class CategoryEntityMapper {
             ),
             CategoryEntity(
                 type = CategoryType.EXPENSE,
+                categoryName = CategoryKeys.EXPENSE_MARKETPLACE,
+                imageId = R.drawable.icon_expense_marketplace,
+                color = R.color.icon_expense_marketplace,
+                isSystem = true,
+            ),
+            CategoryEntity(
+                type = CategoryType.EXPENSE,
+                categoryName = CategoryKeys.EXPENSE_TAXI,
+                imageId = R.drawable.icon_expense_taxi,
+                color = R.color.icon_expense_taxi,
+                isSystem = true,
+            ),
+            CategoryEntity(
+                type = CategoryType.EXPENSE,
                 categoryName = CategoryKeys.EXPENSE_EDUCATION,
                 imageId = R.drawable.icon_expense_education,
                 color = R.color.icon_expense_education,
@@ -121,6 +135,13 @@ class CategoryEntityMapper {
             ),
             CategoryEntity(
                 type = CategoryType.INCOME,
+                categoryName = CategoryKeys.INCOME_CASHBACK,
+                imageId = R.drawable.icon_income_cashback,
+                color = R.color.icon_income_cashback,
+                isSystem = true,
+            ),
+            CategoryEntity(
+                type = CategoryType.INCOME,
                 categoryName = CategoryKeys.INCOME_GRAPH,
                 imageId = R.drawable.icon_income_graph,
                 color = R.color.icon_income_graph,
@@ -160,7 +181,28 @@ class CategoryEntityMapper {
         )
     }
 
+    private fun unknownExpenseCategory(): CategoryEntity {
+        return CategoryEntity(
+            type = CategoryType.EXPENSE,
+            categoryName = CategoryKeys.UNKNOWN_EXPENSE,
+            imageId = R.drawable.icon_unknown,
+            color = R.color.icon_expense_unknown,
+            isSystem = true,
+        )
+    }
+
+    private fun unknownIncomeCategory(): CategoryEntity {
+        return CategoryEntity(
+            type = CategoryType.INCOME,
+            categoryName = CategoryKeys.UNKNOWN_INCOME,
+            imageId = R.drawable.icon_unknown,
+            color = R.color.icon_income_unknown,
+            isSystem = true,
+        )
+    }
+
     fun getAllSystemCategories(): List<CategoryEntity> =
         expenseCategoryToEntity() + incomeCategoryToEntity() +
-                expenseTransferToEntity() + incomeTransferToEntity()
+                expenseTransferToEntity() + incomeTransferToEntity() +
+                unknownExpenseCategory() + unknownIncomeCategory()
 }

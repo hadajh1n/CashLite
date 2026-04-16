@@ -7,13 +7,14 @@ object TransactionClassifier {
     private val supermarketKeywords = listOf(
         "krasnoe", "magni", "пятерочка", "pyaterochka", "lenta",
         "spar", "fixprice", "дикси", "dixy", "верный", "auchan",
-        "ашан", "перекресток", "perekrestok"
+        "ашан", "перекресток", "perekrestok", "optovichok", "zajdi", "M- 1", "EVROPA"
     )
 
     private val foodKeywords = listOf(
         "burger", "kfc", "mcdonald", "вкусно и точка", "restaurant",
-        "кафе", "coffee", "starbucks", "шоколадница", "coffee like",
-        "додо", "dodo", "pizza", "роллы", "sushi", "bar", "pub"
+        "кафе", "kafe", "coffee", "starbucks", "шоколадница", "coffee like",
+        "додо", "dodo", "pizza", "роллы", "sushi", "bar", "pub", "kofe",
+        "farfor", "rizzachile"
     )
 
     private val clothesKeywords = listOf(
@@ -30,7 +31,7 @@ object TransactionClassifier {
     private val busKeywords = listOf(
         "ric_orel", "transport", "metro", "метро",
         "bus", "автобус", "trolley", "tram",
-        "проезд", "подорожник"
+        "проезд", "подорожник", "transp"
     )
 
     private val bicycleKeywords = listOf(
@@ -41,6 +42,14 @@ object TransactionClassifier {
     private val housingKeywords = listOf(
         "жкх", "kvartplata", "коммунал", "electricity",
         "water", "газ", "тепло", "ук", "housing"
+    )
+
+    private val marketplaceKeywords = listOf(
+        "wildberries", "ozon",
+    )
+
+    private val taxiKeywords = listOf(
+        "taxi", "Яндекс Go", "taximaxim"
     )
 
     private val educationKeywords = listOf(
@@ -82,7 +91,10 @@ object TransactionClassifier {
 
     private val walletKeywords = listOf(
         "зарплата", "salary", "payroll", "income",
-        "кэшбэк", "cashback"
+    )
+
+    private val cashbackKeywords = listOf(
+        "cashback", "кэшбэк"
     )
 
     private val graphKeywords = listOf(
@@ -112,6 +124,8 @@ object TransactionClassifier {
             containsAny(note, busKeywords) -> CategoryKeys.EXPENSE_BUS
             containsAny(note, bicycleKeywords) -> CategoryKeys.EXPENSE_BICYCLE
             containsAny(note, housingKeywords) -> CategoryKeys.EXPENSE_HOUSING
+            containsAny(note, marketplaceKeywords) -> CategoryKeys.EXPENSE_MARKETPLACE
+            containsAny(note, taxiKeywords) -> CategoryKeys.EXPENSE_TAXI
             containsAny(note, educationKeywords) -> CategoryKeys.EXPENSE_EDUCATION
             containsAny(note, flagKeywords) -> CategoryKeys.EXPENSE_FLAG
             containsAny(note, electronicsKeywords) -> CategoryKeys.EXPENSE_ELECTRONICS
@@ -121,6 +135,7 @@ object TransactionClassifier {
             containsAny(note, catKeywords) -> CategoryKeys.EXPENSE_CAT
 
             containsAny(note, walletKeywords) -> CategoryKeys.INCOME_WALLET
+            containsAny(note, cashbackKeywords) -> CategoryKeys.INCOME_CASHBACK
             containsAny(note, graphKeywords) -> CategoryKeys.INCOME_GRAPH
             containsAny(note, awardKeywords) -> CategoryKeys.INCOME_AWARD
 
@@ -129,7 +144,10 @@ object TransactionClassifier {
                 else CategoryKeys.TRANSFER_INCOME
             }
 
-            else -> CategoryKeys.UNKNOWN
+            else -> {
+                if (isExpense) CategoryKeys.UNKNOWN_EXPENSE
+                else CategoryKeys.UNKNOWN_INCOME
+            }
         }
     }
 

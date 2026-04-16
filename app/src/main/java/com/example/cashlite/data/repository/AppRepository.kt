@@ -38,7 +38,11 @@ object AppRepository {
         val source = categoryDao.getCategoriesByType(CategoryType.EXPENSE)
         addSource(source) { categories ->
             value = categories
-                .filter { it.categoryName !in CategoryKeys.TRANSFER_CATEGORIES }
+                .filter {
+                    it.categoryName !in CategoryKeys.TRANSFER_CATEGORIES &&
+                            it.categoryName != CategoryKeys.UNKNOWN_EXPENSE &&
+                            it.categoryName != CategoryKeys.UNKNOWN_INCOME
+                }
                 .map { categoryUiMapper.fromEntityToUI(it) }
         }
     }
@@ -47,7 +51,11 @@ object AppRepository {
         val source = categoryDao.getCategoriesByType(CategoryType.INCOME)
         addSource(source) { categories ->
             value = categories
-                .filter { it.categoryName !in CategoryKeys.TRANSFER_CATEGORIES }
+                .filter {
+                    it.categoryName !in CategoryKeys.TRANSFER_CATEGORIES &&
+                            it.categoryName != CategoryKeys.UNKNOWN_EXPENSE &&
+                            it.categoryName != CategoryKeys.UNKNOWN_INCOME
+                }
                 .map { categoryUiMapper.fromEntityToUI(it) }
         }
     }

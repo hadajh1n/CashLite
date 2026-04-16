@@ -83,6 +83,8 @@
     <color name="icon_expense_bus">#AF7AC5</color>
     <color name="icon_expense_bicycle">#58D68D</color>
     <color name="icon_expense_housing">#F5B041</color>
+    <color name="icon_expense_marketplace">#A569BD</color>
+    <color name="icon_expense_taxi">#F4D03F</color>
     <color name="icon_expense_education">#EC7063</color>
     <color name="icon_expense_flag">#48C9B0</color>
     <color name="icon_expense_laptop">#5499C7</color>
@@ -92,11 +94,15 @@
     <color name="icon_expense_cat">#EB984E</color>
 
     <color name="icon_income_wallet">#52BE80</color>
+    <color name="icon_income_cashback">#52BE80</color>
     <color name="icon_income_graph">#7FB3D5</color>
     <color name="icon_income_award">#76D7C4</color>
 
     <color name="icon_transfer_expense">#F44336</color>
     <color name="icon_transfer_income">#52BE80</color>
+
+    <color name="icon_expense_unknown">#F44336</color>
+    <color name="icon_income_unknown">#F44336</color>
 
     // fragment_main_graphs
     <color name="btnSelectGraphsNavSelector">#F4E5C2</color>
