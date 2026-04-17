@@ -26,7 +26,8 @@
 
     // fragment_history.xml
 
-    <color name="tvFinance">#FFFFFFFF</color>
+    <color name="iconButtonHamburger">#EEEEEE</color>
+
     <color name="tvMonth">#FFFFFFFF</color>
     <color name="tvYear">#FFFFFFFF</color>
     <color name="tvIncomeTitle">#FFFFFFFF</color>

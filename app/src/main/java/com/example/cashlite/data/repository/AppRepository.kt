@@ -131,4 +131,12 @@ object AppRepository {
     suspend fun removeTransaction(idTransaction: Int) {
         transactionDao.deleteById(idTransaction)
     }
+
+    suspend fun deleteAllTransactions() {
+        transactionDao.deleteAll()
+    }
+
+    suspend fun deleteImportedTransactions() {
+        transactionDao.deleteAllImported()
+    }
 }

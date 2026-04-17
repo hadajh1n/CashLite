@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cashlite.core.PDFManager
+import com.example.cashlite.core.manager.PDFManager
 import com.example.cashlite.core.app.CashLiteApp
 import kotlinx.coroutines.launch
 

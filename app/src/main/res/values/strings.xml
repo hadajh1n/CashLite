@@ -13,7 +13,15 @@
     <string name="addTransferOperationFragment">Перевод</string>
 
     // fragment_main_history
-    <string name="tvFinance">Финансы</string>
+
+    <string name="menu_delete_all">Удалить все транзакции</string>
+    <string name="menu_delete_import">Удалить импортированные транзакции</string>
+
+    <string name="dialogDeleteAllTransactions">Подтвердить удаление всех транзакций?</string>
+    <string name="dialogDeleteImportedTransactions">Подтвердить удаление импортируемых транзакций?</string>
+    <string name="dialogButtonYes">Да</string>
+    <string name="dialogButtonNo">Нет</string>
+
     <string name="tvIncomeTitle">Доходы</string>
     <string name="tvBalanceTitle">Баланс</string>
     <string name="tvExpensesTitle">Расходы</string>

@@ -7,6 +7,17 @@
     android:background="@color/fragAll"
     tools:context=".ui.fragment.main.HistoryMainFragment">
 
+    <ImageButton
+        android:id="@+id/btnHamburger"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/transparent"
+        android:src="@drawable/icon_history_hamburger"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/llTitleFinance"
         android:layout_width="match_parent"
@@ -18,13 +29,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/gridIncomeExpense">
-
-        <TextView
-            android:id="@+id/tvFinance"
-            style="@style/tvFinance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tvFinance" />
 
         <TextView
             android:id="@+id/tvMonth"

@@ -53,12 +53,6 @@
 
         // fragment_main_history.xml
 
-    <style name="tvFinance" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">24dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/tvFinance</item>
-    </style>
-
     <style name="tvMonth" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/tvMonth</item>

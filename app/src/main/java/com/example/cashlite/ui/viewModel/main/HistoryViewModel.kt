@@ -57,4 +57,16 @@ class HistoryViewModel : ViewModel() {
             AppRepository.removeTransaction(transaction.idTransaction)
         }
     }
+
+    fun onDeleteAllTransactions() {
+        viewModelScope.launch {
+            AppRepository.deleteAllTransactions()
+        }
+    }
+
+    fun onDeleteImportedTransactions() {
+        viewModelScope.launch {
+            AppRepository.deleteImportedTransactions()
+        }
+    }
 }

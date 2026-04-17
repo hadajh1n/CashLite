@@ -1,14 +1,18 @@
 package com.example.cashlite.ui.fragment.main
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cashlite.R
 import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.ui.adapter.HistoryAdapter
@@ -39,6 +43,7 @@ class HistoryMainFragment : Fragment() {
 
         setupAdapter()
         observeViewModel()
+        onButtonHamburger()
         setupItemTouchHelper()
     }
 
@@ -88,6 +93,52 @@ class HistoryMainFragment : Fragment() {
             tvTotalIncome.text  = "${state.totalIncome.formatMoney()} ₽"
             tvTotalBalance.text = "${state.totalBalance.formatMoney()} ₽"
         }
+    }
+
+    private fun onButtonHamburger() = with(binding) {
+        btnHamburger.setOnClickListener { showMenu(it) }
+    }
+
+    private fun showMenu(anchor: View) {
+        val popup = PopupMenu(requireContext(), anchor, Gravity.END)
+        popup.menuInflater.inflate(R.menu.history_hamburger_menu, popup.menu)
+
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menu_delete_all -> {
+                    showConfirmationDeleteAllTransactionsDialog()
+                    true
+                }
+                R.id.menu_delete_import -> {
+                    showConfirmationDeleteImportedTransactionsDialog()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popup.setForceShowIcon(true)
+        popup.show()
+    }
+
+    private fun showConfirmationDeleteAllTransactionsDialog() {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.dialogDeleteAllTransactions)
+            .setPositiveButton(R.string.dialogButtonYes) { _, _ ->
+                viewModel.onDeleteAllTransactions()
+            }
+            .setNegativeButton(R.string.dialogButtonNo, null)
+            .show()
+    }
+
+    private fun showConfirmationDeleteImportedTransactionsDialog() {
+        AlertDialog.Builder(requireContext())
+            .setMessage(R.string.dialogDeleteImportedTransactions)
+            .setPositiveButton(R.string.dialogButtonYes) { _, _ ->
+                viewModel.onDeleteImportedTransactions()
+            }
+            .setNegativeButton(R.string.dialogButtonNo, null)
+            .show()
     }
 
     private fun setupItemTouchHelper() = with(binding) {

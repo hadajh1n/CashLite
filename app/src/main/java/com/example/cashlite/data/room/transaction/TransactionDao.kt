@@ -11,9 +11,6 @@ interface TransactionDao {
     @Insert
     suspend fun insert(transaction: TransactionEntity)
 
-    @Query("DELETE FROM transactions WHERE idTransaction = :idTransaction")
-    suspend fun deleteById(idTransaction: Int)
-
     @Query("SELECT * FROM transactions ORDER BY idTransaction DESC")
     fun getAll(): LiveData<List<TransactionEntity>>
 
@@ -27,4 +24,13 @@ interface TransactionDao {
 
     @Insert
     suspend fun insertAllImport(transactions: List<TransactionEntity>)
+
+    @Query("DELETE FROM transactions WHERE idTransaction = :idTransaction")
+    suspend fun deleteById(idTransaction: Int)
+
+    @Query("DELETE FROM transactions")
+    suspend fun deleteAll()
+
+    @Query("DELETE FROM transactions WHERE isImport = 1")
+    suspend fun deleteAllImported()
 }

@@ -1,4 +1,4 @@
-package com.example.cashlite.core
+package com.example.cashlite.core.manager
 
 import android.content.Context
 import android.net.Uri
