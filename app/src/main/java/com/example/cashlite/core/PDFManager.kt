@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import android.util.Log
 import com.example.cashlite.data.dataclass.ParseBankTransaction
+import com.example.cashlite.data.local.TransactionNameNormalizer
 import com.example.cashlite.data.mapper.TransactionImportMapper
 import com.example.cashlite.data.repository.AppRepository
 import com.example.cashlite.data.room.transaction.TransactionEntity
@@ -18,17 +19,11 @@ import java.util.Locale
 class PDFManager(private val context: Context) {
 
     suspend fun importPdf(uri: Uri): Boolean = withContext(Dispatchers.IO) {
-        Log.e("LOG_TESTING", "=== НАЧАЛО ИМПОРТА PDF ===")
-        Log.e("LOG_TESTING", "URI: $uri")
 
         val text = readPdfText(uri)
-        if (text.isBlank()) {
-            Log.e("LOG_TESTING", "ОШИБКА: PDF текст пустой!")
-            return@withContext false
-        }
+        if (text.isBlank()) return@withContext false
 
         val parsedList = parseBankStatement(text)
-        Log.e("LOG_TESTING", "Найдено транзакций: ${parsedList.size}")
 
         if (parsedList.isEmpty()) return@withContext false
 
@@ -39,19 +34,16 @@ class PDFManager(private val context: Context) {
             val entity = mapper.mapToEntity(parsed)
             if (entity != null) {
                 entities.add(entity)
-                Log.e("LOG_TESTING", "✅ ${parsed.note} | ${parsed.amount}")
             } else {
-                Log.e("LOG_TESTING", "❌ Нет категории: ${parsed.note}")
+                Log.e("LOG_TESTING", "Нет категории: ${parsed.displayNote}")
             }
         }
 
         if (entities.isNotEmpty()) {
             AppRepository.insertImportedTransactions(entities)
-            Log.e("LOG_TESTING", "✅ Сохранено: ${entities.size}")
             return@withContext true
         }
 
-        Log.e("LOG_TESTING", "❌ Нет данных для записи")
         false
     }
 
@@ -68,9 +60,7 @@ class PDFManager(private val context: Context) {
             }
 
             val text = stripper.getText(document)
-            Log.e("LOG_TESTING", "PDF → ${text.length} символов")
             text
-
         } catch (e: Throwable) {
             Log.e("LOG_TESTING", "ОШИБКА PDF: ${e.message}")
             ""
@@ -111,7 +101,11 @@ class PDFManager(private val context: Context) {
         val result = mutableListOf<ParseBankTransaction>()
 
         val regex = Regex(
-            """(\d{2}\.\d{2}\.\d{4})\s+\d{2}\.\d{2}\.\d{4}\s+([+-]?\s*[\d\s]+[.,]\d{2})\s+₽\s+[+-]?\s*[\d\s]+[.,]\d{2}\s+₽\s+(.+)"""
+            """(\d{2}\.\d{2}\.\d{4})\s+""" +
+                    """\d{2}\.\d{2}\.\d{4}\s+""" +
+                    """([+-]?\s*[\d\s]+[.,]\d{2})\s+₽\s+""" +
+                    """[+-]?\s*[\d\s]+[.,]\d{2}\s+₽\s+""" +
+                    """(.+)"""
         )
 
         val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
@@ -135,12 +129,7 @@ class PDFManager(private val context: Context) {
 
             if (line.isBlank()) return@forEach
 
-            if (skipKeywords.any { line.lowercase().contains(it) }) {
-                Log.e("LOG_TESTING", "⛔ skip: $line")
-                return@forEach
-            }
-
-            Log.e("LOG_TESTING", "📄 LINE: $line")
+            if (skipKeywords.any { line.lowercase().contains(it) }) return@forEach
 
             val match = regex.find(line) ?: return@forEach
 
@@ -148,14 +137,14 @@ class PDFManager(private val context: Context) {
             val amountRaw = match.groupValues[2]
                 .replace(" ", "")
                 .replace(",", ".")
-            val description = match.groupValues[3].trim()
+            val raw = match.groupValues[3].trim()
+            val display = TransactionNameNormalizer.normalize(raw)
 
-            Log.e("LOG_TESTING", "✅ MATCH → $description | $amountRaw")
+            Log.e("LOG_TESTING", "MATCH → $display | $amountRaw")
 
             val date = try {
                 dateFormat.parse(dateStr)?.time ?: return@forEach
             } catch (e: Exception) {
-                Log.e("LOG_TESTING", "❌ date parse: $dateStr")
                 return@forEach
             }
 
@@ -165,7 +154,8 @@ class PDFManager(private val context: Context) {
                 ParseBankTransaction(
                     date = date,
                     amount = amount,
-                    note = description
+                    rawNote = raw,
+                    displayNote = display,
                 )
             )
         }

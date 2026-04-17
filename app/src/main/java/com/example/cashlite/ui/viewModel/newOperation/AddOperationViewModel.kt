@@ -1,7 +1,6 @@
 package com.example.cashlite.ui.viewModel.newOperation
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,17 +26,13 @@ class AddOperationViewModel : ViewModel() {
     val importSuccess: LiveData<Boolean> = _importSuccess
 
     fun importPdf(uri: Uri) {
-        Log.e("LOG_TESTING", "AddOperationViewModel: importPdf вызван")
         viewModelScope.launch {
             try {
-                Log.e("LOG_TESTING", "Запускаем pdfManager.importPdf...")
                 _importState.value = ImportUiState.Loading
                 val isSuccess = pdfManager.importPdf(uri)
                 _importSuccess.value = isSuccess
                 _importState.value = ImportUiState.Standard
-                Log.e("LOG_TESTING", "importPdf завершён с результатом: $isSuccess")
             } catch (e: Exception) {
-                Log.e("LOG_TESTING", "КРИТИЧЕСКАЯ ОШИБКА в importPdf: ${e.message}")
                 e.printStackTrace()
                 _importSuccess.value = false
                 _importState.value = ImportUiState.Standard

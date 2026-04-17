@@ -113,7 +113,7 @@ object TransactionClassifier {
     )
 
     fun classify(parsed: ParseBankTransaction): String {
-        val note = parsed.note.lowercase()
+        val note = parsed.rawNote.lowercase()
         val isExpense = parsed.amount < 0
 
         return when {
