@@ -34,6 +34,9 @@
     <string name="tvContactTitleDetails">Кому / От кого</string>
     <string name="tvNoteTitleDetails">Примечание</string>
 
+    <string name="dialogDeleteTransactionTitle">Удалить операцию?</string>
+    <string name="dialogDeleteTransactionMessage">Эта операция будет удалена без возможности восстановления.</string>
+
     // fragment_add_operation
     <string name="btnExpensesTitle">Расход</string>
     <string name="btnIncomeTitle">Доход</string>

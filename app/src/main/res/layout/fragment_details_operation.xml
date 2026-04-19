@@ -171,7 +171,20 @@
                     android:maxLines="15"
                     tools:text="Продукты на неделю" />
             </LinearLayout>
-        </LinearLayout>
 
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnDeleteOperation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/btnDeleteOperation"
+        android:text="Удалить операцию"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/cardDetails"
+        app:layout_constraintStart_toStartOf="@+id/cardDetails"
+        app:layout_constraintTop_toBottomOf="@+id/cardDetails" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

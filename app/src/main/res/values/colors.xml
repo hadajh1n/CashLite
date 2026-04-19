@@ -47,6 +47,8 @@
     <color name="tvTitleDetails">#AFFFFFFF</color>
     <color name="tvDetails">#FFFFFFFF</color>
 
+    <color name="btnDeleteOperation">#F4E5C2</color>
+
     // fragment_add_operation.xml
 
     <color name="btnAddNewOperation">#FFFFFFFF</color>
