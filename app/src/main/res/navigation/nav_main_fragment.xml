@@ -6,7 +6,13 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.cashlite.ui.fragment.main.HistoryMainFragment" />
+        android:name="com.example.cashlite.ui.fragment.main.HistoryMainFragment">
+
+        <action
+            android:id="@+id/actionHistoryToTransactionDetail"
+            app:destination="@id/detailsOperationActivity" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/graphsFragment"
@@ -23,5 +29,14 @@
     <activity
         android:id="@+id/addNewOperationActivity"
         android:name="com.example.cashlite.ui.activity.AddNewOperationActivity" />
+
+    <activity
+        android:id="@+id/detailsOperationActivity"
+        android:name="com.example.cashlite.ui.activity.DetailsOperationActivity">
+
+        <argument
+            android:name="transaction"
+            app:argType="com.example.cashlite.data.dataclass.TransactionUI" />
+    </activity>
 
 </navigation>

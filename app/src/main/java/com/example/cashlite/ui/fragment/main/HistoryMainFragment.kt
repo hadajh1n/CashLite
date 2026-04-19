@@ -1,6 +1,7 @@
 package com.example.cashlite.ui.fragment.main
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -9,14 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
 import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.HistoryItem
+import com.example.cashlite.data.dataclass.TransactionUI
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
+import com.example.cashlite.ui.activity.DetailsOperationActivity
 import com.example.cashlite.ui.viewModel.main.HistoryUiState
 import com.example.cashlite.ui.viewModel.main.HistoryViewModel
 
@@ -26,7 +30,9 @@ class HistoryMainFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: HistoryViewModel by viewModels()
-    private val adapter = HistoryAdapter()
+    private val adapter = HistoryAdapter { transaction ->
+        openDetails(transaction)
+    }
     private var itemTouchHelper: ItemTouchHelper? = null
 
     override fun onCreateView(
@@ -58,6 +64,13 @@ class HistoryMainFragment : Fragment() {
     private fun setupAdapter() = with(binding) {
         rvHistory.layoutManager = LinearLayoutManager(requireContext())
         rvHistory.adapter = adapter
+    }
+
+    private fun openDetails(transaction: TransactionUI) {
+        val action = HistoryMainFragmentDirections
+            .actionHistoryToTransactionDetail(transaction)
+
+        findNavController().navigate(action)
     }
 
     private fun observeViewModel() = with(binding) {

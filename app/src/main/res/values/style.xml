@@ -101,6 +101,20 @@
         <item name="android:textColor">@color/tvEmptyList</item>
     </style>
 
+        // fragment_details.xml
+
+    <style name="tvTitleDetails" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvTitleDetails</item>
+    </style>
+
+    <style name="tvDetails" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvDetails</item>
+    </style>
+
         // fragment_add_new_operation.xml
 
     <style name="btnAddNewOperation" parent="ShapeAppearanceOverlay.Material3.Button">

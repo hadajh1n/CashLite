@@ -14,7 +14,9 @@ import com.example.cashlite.data.room.category.CategoryType
 import com.example.cashlite.databinding.ItemDateHeaderHistoryBinding
 import com.example.cashlite.databinding.ItemMainHistoryBinding
 
-class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HistoryAdapter(
+    private val onItemClick: (TransactionUI) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         const val TYPE_HEADER = 0
@@ -79,6 +81,10 @@ class HistoryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             tvAmount.text = "$sign${item.amount.formatMoney()} ₽"
             tvAmount.setTextColor(itemView.context.getColor(colorRes))
+
+            root.setOnClickListener {
+                onItemClick(item)
+            }
         }
     }
 

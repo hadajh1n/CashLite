@@ -41,6 +41,12 @@
     <color name="btnAddOperationBackground">#FFEB3B</color>
     <color name="btnAddOperation">#FF000000</color>
 
+    // fragment_details.xml
+
+    <color name="cvDetails">#1A1818</color>
+    <color name="tvTitleDetails">#AFFFFFFF</color>
+    <color name="tvDetails">#FFFFFFFF</color>
+
     // fragment_add_operation.xml
 
     <color name="btnAddNewOperation">#FFFFFFFF</color>
