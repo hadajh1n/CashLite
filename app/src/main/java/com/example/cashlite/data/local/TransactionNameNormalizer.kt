@@ -5,6 +5,7 @@ object TransactionNameNormalizer {
     private val replacements = listOf(
 
         "krasnoe&beloe" to "Красное & Белое",
+        "krasnoe beloe" to "Красное & Белое",
         "magnit" to "Магнит",
         "pyaterochka" to "Пятёрочка",
         "пятерочка" to "Пятёрочка",
@@ -19,6 +20,14 @@ object TransactionNameNormalizer {
         "перекресток" to "Перекрёсток",
         "verny" to "Верный",
         "верный" to "Верный",
+        "evropa" to "Европа",
+        "m 1" to "Продуктовый магазин",
+        "optovichok" to "Оптовичок",
+        "zajdi" to "Zajdi",
+        "ch57008" to "Чижик",
+        "alex orel" to "Magazin-Salon Alex",
+        "otradnaja" to "Otradnaja",
+        "poznakhirin" to "Гавана",
 
         "kfc" to "KFC",
         "mcdonald" to "McDonald's",
@@ -30,6 +39,10 @@ object TransactionNameNormalizer {
         "coffee like" to "Coffee Like",
         "starbucks" to "Starbucks",
         "шоколадница" to "Шоколадница",
+        "picca chili" to "Чили Пицца",
+        "babl ti dva" to "Babl Ti Dva",
+        "xplat kofe" to "Вендинговый автомат",
+        "nastoyashhaya pekarnya" to "Настоящая пекарня",
 
         "zara" to "ZARA",
         "hm" to "H&M",
@@ -48,6 +61,9 @@ object TransactionNameNormalizer {
         "rosneft" to "Роснефть",
         "shell" to "Shell",
 
+        "sbertroika" to "СберТройка",
+        "ric orel oryol" to "Городской транспорт Орёл",
+
         "yandex go" to "Яндекс Go",
         "taxi" to "Такси",
         "taximaxim" to "Максим",
@@ -56,15 +72,19 @@ object TransactionNameNormalizer {
         "t2" to "Tele2",
         "megafon" to "МегаФон",
         "mts" to "МТС",
+        "lgs" to "МТС",
         "beeline" to "Билайн",
         "yota" to "YOTA",
         "netflix" to "Netflix",
         "spotify" to "Spotify",
         "youtube" to "YouTube",
+        "vk music" to "Подписка VK Music",
+        "edadeal" to "Едадил",
 
         "rigla" to "Ригла",
         "36.6" to "Аптека 36.6",
         "здравсити" to "Здравсити",
+        "melzdrav" to "Аптека Мелодия здоровья",
 
         "wildberries" to "Wildberries",
         "ozon" to "Ozon",
@@ -76,13 +96,13 @@ object TransactionNameNormalizer {
         "four paws" to "Четыре Лапы",
 
         "salary" to "Зарплата",
-        "cashback" to "Кэшбэк",
-        "кэшбэк" to "Кэшбэк",
+        "cashback" to "Зачисление кэшбэка",
+        "кэшбэк" to "Зачисление кэшбэка",
         "dividend" to "Дивиденды",
         "bonus" to "Бонус",
 
-        "transfer" to "Перевод",
-        "перевод" to "Перевод"
+        "внешний перевод" to "Внешний перевод",
+        "перевод на карту другого банка" to "Перевод на карту другого банка"
     )
 
     fun normalize(raw: String): String {

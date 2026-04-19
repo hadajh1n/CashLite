@@ -7,15 +7,15 @@ object TransactionClassifier {
     private val supermarketKeywords = listOf(
         "krasnoe", "magni", "пятерочка", "pyaterochka", "lenta",
         "spar", "fixprice", "дикси", "dixy", "верный", "auchan",
-        "ашан", "перекресток", "perekrestok", "optovichok", "zajdi", "M- 1", "EVROPA",
-        "CH57008"
+        "ашан", "перекресток", "perekrestok", "optovichok", "zajdi", "m 1", "evropa",
+        "ch57008"
     )
 
     private val foodKeywords = listOf(
         "burger", "kfc", "mcdonald", "вкусно и точка", "restaurant",
         "кафе", "kafe", "coffee", "starbucks", "шоколадница", "coffee like",
         "додо", "dodo", "pizza", "роллы", "sushi", "bar", "pub", "kofe",
-        "farfor", "rizzachile"
+        "farfor", "rizzachile", "picca chili", "Babl Ti Dva", "nastoyashhaya pekarnya"
     )
 
     private val clothesKeywords = listOf(
@@ -32,7 +32,7 @@ object TransactionClassifier {
     private val busKeywords = listOf(
         "ric_orel", "transport", "metro", "метро",
         "bus", "автобус", "trolley", "tram",
-        "проезд", "подорожник", "transp"
+        "проезд", "подорожник", "transp", "tpp", "sbertroika"
     )
 
     private val bicycleKeywords = listOf(
@@ -70,14 +70,14 @@ object TransactionClassifier {
 
     private val phoneKeywords = listOf(
         "t2", "tele2", "megafon", "мегафон", "mts",
-        "мтс", "beeline", "билайн", "yota",
+        "мтс", "lgs", "beeline", "билайн", "yota",
         "apple", "google", "subscription", "netflix",
         "spotify", "youtube", "vk"
     )
 
     private val pharmacyKeywords = listOf(
         "аптека", "apteka", "rigla", "36.6",
-        "горздрав", "здравсити"
+        "горздрав", "здравсити", "melzdrav"
     )
 
     private val babyKeywords = listOf(
@@ -109,7 +109,7 @@ object TransactionClassifier {
 
     private val transferKeywords = listOf(
         "перевод", "внешний перевод", "transfer",
-        "card to card", "по номеру карты"
+        "card to card", "по номеру карты", "edadeal"
     )
 
     fun classify(parsed: ParseBankTransaction): String {
