@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cashlite.core.navigation.setupGraphsTypeTransactionNav
+import com.example.cashlite.core.navigation.graphs.setupGraphsTypeTransactionNav
 import com.example.cashlite.databinding.FragmentMainGraphsBinding
 
 class GraphsMainFragment : Fragment() {

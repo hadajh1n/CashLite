@@ -99,5 +99,16 @@
     <string name="selectGraphsExpense">Расход</string>
     <string name="selectGraphsIncome">Доход</string>
 
+    // fragment_graphs_expense
+    <string name="selectGraphsExpenseWeek">Неделя</string>
+    <string name="selectGraphsExpenseMonth">Месяц</string>
+    <string name="selectGraphsExpenseYear">Год</string>
+
+    // fragment_graphs_income
+    <string name="selectGraphsIncomeWeek">Неделя</string>
+    <string name="selectGraphsIncomeMonth">Месяц</string>
+    <string name="selectGraphsIncomeYear">Год</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

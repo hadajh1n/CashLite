@@ -6,10 +6,10 @@
 
         <fragment
             android:id="@+id/graphsExpenseFragment"
-            android:name="com.example.cashlite.ui.fragment.graphs.GraphsExpenseFragment" />
+            android:name="com.example.cashlite.ui.fragment.graphs.main.GraphsExpenseFragment" />
 
         <fragment
             android:id="@+id/graphsIncomeFragment"
-            android:name="com.example.cashlite.ui.fragment.graphs.GraphsIncomeFragment" />
+            android:name="com.example.cashlite.ui.fragment.graphs.main.GraphsIncomeFragment" />
 
 </navigation>

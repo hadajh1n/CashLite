@@ -20,7 +20,6 @@ import com.example.cashlite.data.dataclass.HistoryItem
 import com.example.cashlite.data.dataclass.TransactionUI
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
-import com.example.cashlite.ui.activity.DetailsOperationActivity
 import com.example.cashlite.ui.viewModel.main.HistoryUiState
 import com.example.cashlite.ui.viewModel.main.HistoryViewModel
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graphs_income_sort"
+    app:startDestination="@id/graphsIncomeYearFragment">
+
+    <fragment
+        android:id="@+id/graphsIncomeWeekFragment"
+        android:name="com.example.cashlite.ui.fragment.graphs.incomeSort.GraphsIncomeWeekFragment" />
+
+    <fragment
+        android:id="@+id/graphsIncomeMonthFragment"
+        android:name="com.example.cashlite.ui.fragment.graphs.incomeSort.GraphsIncomeMonthFragment" />
+
+    <fragment
+        android:id="@+id/graphsIncomeYearFragment"
+        android:name="com.example.cashlite.ui.fragment.graphs.incomeSort.GraphsIncomeYearFragment" />
+
+</navigation>
