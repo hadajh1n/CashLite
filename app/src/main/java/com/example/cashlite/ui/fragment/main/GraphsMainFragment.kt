@@ -147,15 +147,17 @@ class GraphsMainFragment : Fragment() {
                 colors = resolvedColors
                 sliceSpace = 3f
                 setDrawValues(false)
+                selectionShift = 5f
             }
 
             pieChart.apply {
                 this.data = PieData(dataSet)
 
                 minOffset = 0f
-                setExtraOffsets(10f, 5f, 85f, 5f)
 
-                holeRadius = 52f
+                setExtraOffsets(15f, 10f, 105f, 10f)
+
+                holeRadius = 55f
                 transparentCircleRadius = 0f
                 setHoleColor(android.graphics.Color.TRANSPARENT)
                 setDrawEntryLabels(false)
@@ -164,18 +166,23 @@ class GraphsMainFragment : Fragment() {
 
                 legend.apply {
                     isEnabled = true
-                    textSize = 14f
-                    formSize = 14f
-                    yEntrySpace = 10f
+
+                    setDrawInside(true)
+
+                    textSize = 13f
+                    formSize = 13f
+                    yEntrySpace = 8f
                     textColor = android.graphics.Color.WHITE
+
                     orientation = Legend.LegendOrientation.VERTICAL
                     verticalAlignment = Legend.LegendVerticalAlignment.CENTER
                     horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+
+                    maxSizePercent = 0.4f
                     isWordWrapEnabled = true
-                    maxSizePercent = 0.45f
                 }
 
-                animateY(700)
+                animateY(800)
                 invalidate()
             }
             adapter.submitList(data.categoryDetails)
