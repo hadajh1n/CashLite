@@ -160,4 +160,42 @@
         <item name="cornerRadius">5dp</item>
     </style>
 
+        // item_category_chart.xml
+
+    <style name="tvCategoryChart" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="tvPercentChart" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="tvAmountChart" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+        // item_category_details.xml
+
+    <style name="tvCategoryDetailsChart" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="tvPercentDetailsChart" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="tvAmountDetailsChart" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

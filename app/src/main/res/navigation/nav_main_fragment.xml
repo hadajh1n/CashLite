@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/graphsFragment"
-        android:name="com.example.cashlite.ui.fragment.main.GraphsMainFragment" />
+        android:name="com.example.cashlite.ui.fragment.main.GraphsMainFragment"/>
 
     <fragment
         android:id="@+id/reportFragment"

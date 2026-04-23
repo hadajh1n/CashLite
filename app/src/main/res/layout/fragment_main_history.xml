@@ -112,6 +112,7 @@
         android:layout_height="0dp"
         android:paddingHorizontal="8dp"
         android:visibility="visible"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,13 +122,13 @@
         android:id="@+id/llEmptyList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/rvHistory"
         app:layout_constraintEnd_toEndOf="@+id/rvHistory"
         app:layout_constraintStart_toStartOf="@+id/rvHistory"
-        app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense">
+        app:layout_constraintTop_toTopOf="@+id/rvHistory">
 
         <ImageView
             android:id="@+id/imEmptyList"
@@ -156,7 +157,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/rvHistory"
         app:layout_constraintEnd_toEndOf="@+id/rvHistory"
         app:layout_constraintStart_toStartOf="@+id/rvHistory"
-        app:layout_constraintTop_toBottomOf="@+id/gridIncomeExpense"
-        tools:visibility="visible"/>
+        app:layout_constraintTop_toTopOf="@+id/rvHistory"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
