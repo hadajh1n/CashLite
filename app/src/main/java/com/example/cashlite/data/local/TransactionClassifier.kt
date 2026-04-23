@@ -1,6 +1,6 @@
 package com.example.cashlite.data.local
 
-import com.example.cashlite.data.dataclass.ParseBankTransaction
+import com.example.cashlite.data.dataclass.parse.ParseBankTransaction
 
 object TransactionClassifier {
 

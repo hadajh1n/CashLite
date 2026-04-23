@@ -5,9 +5,9 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cashlite.core.utils.format.formatDate
-import com.example.cashlite.data.dataclass.HistoryItem
-import com.example.cashlite.data.dataclass.TotalsStateUI
-import com.example.cashlite.data.dataclass.TransactionUI
+import com.example.cashlite.data.dataclass.history.HistoryItem
+import com.example.cashlite.data.dataclass.history.TotalsStateUI
+import com.example.cashlite.data.dataclass.history.TransactionUI
 import com.example.cashlite.data.repository.AppRepository
 import kotlinx.coroutines.launch
 import kotlin.collections.iterator

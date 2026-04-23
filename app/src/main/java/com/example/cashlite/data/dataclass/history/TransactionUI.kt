@@ -1,4 +1,4 @@
-package com.example.cashlite.data.dataclass
+package com.example.cashlite.data.dataclass.history
 
 import android.os.Parcelable
 import com.example.cashlite.data.room.category.CategoryType

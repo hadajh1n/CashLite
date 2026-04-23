@@ -1,4 +1,4 @@
-package com.example.cashlite.data.room
+package com.example.cashlite.data.room.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

@@ -36,7 +36,7 @@
 
         <argument
             android:name="transaction"
-            app:argType="com.example.cashlite.data.dataclass.TransactionUI" />
+            app:argType="com.example.cashlite.data.dataclass.history.TransactionUI" />
     </activity>
 
 </navigation>

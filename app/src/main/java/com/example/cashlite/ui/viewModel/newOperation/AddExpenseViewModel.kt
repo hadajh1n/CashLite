@@ -3,7 +3,7 @@ package com.example.cashlite.ui.viewModel.newOperation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cashlite.data.dataclass.CategoryUI
+import com.example.cashlite.data.dataclass.history.CategoryUI
 import com.example.cashlite.data.repository.AppRepository
 import kotlinx.coroutines.launch
 

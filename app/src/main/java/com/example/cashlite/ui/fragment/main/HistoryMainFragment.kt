@@ -1,7 +1,6 @@
 package com.example.cashlite.ui.fragment.main
 
 import android.app.AlertDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -16,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.R
 import com.example.cashlite.core.utils.format.formatMoney
-import com.example.cashlite.data.dataclass.HistoryItem
-import com.example.cashlite.data.dataclass.TransactionUI
+import com.example.cashlite.data.dataclass.history.HistoryItem
+import com.example.cashlite.data.dataclass.history.TransactionUI
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
 import com.example.cashlite.ui.viewModel.main.HistoryUiState

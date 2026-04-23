@@ -1,4 +1,4 @@
-package com.example.cashlite.data.dataclass
+package com.example.cashlite.data.dataclass.graphs
 
 import com.example.cashlite.data.room.category.CategoryType
 

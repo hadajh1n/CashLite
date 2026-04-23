@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cashlite.data.dataclass.CategoryUI
+import com.example.cashlite.data.dataclass.history.CategoryUI
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.ItemAddNewExpenseOperationBinding
 

@@ -1,6 +1,6 @@
 package com.example.cashlite.data.mapper
 
-import com.example.cashlite.data.dataclass.CategoryUI
+import com.example.cashlite.data.dataclass.history.CategoryUI
 import com.example.cashlite.data.room.transaction.TransactionEntity
 
 class TransactionEntityMapper {

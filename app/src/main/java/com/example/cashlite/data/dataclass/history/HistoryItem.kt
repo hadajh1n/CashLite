@@ -1,4 +1,4 @@
-package com.example.cashlite.data.dataclass
+package com.example.cashlite.data.dataclass.history
 
 sealed class HistoryItem {
 

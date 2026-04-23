@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.room.Room
 import com.example.cashlite.core.app.CashLiteApp
-import com.example.cashlite.data.dataclass.CategoryUI
-import com.example.cashlite.data.dataclass.TotalsStateUI
-import com.example.cashlite.data.dataclass.TransactionUI
+import com.example.cashlite.data.dataclass.history.CategoryUI
+import com.example.cashlite.data.dataclass.history.TotalsStateUI
+import com.example.cashlite.data.dataclass.history.TransactionUI
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.data.mapper.CategoryEntityMapper
 import com.example.cashlite.data.mapper.TransactionEntityMapper
-import com.example.cashlite.data.room.AppDatabase
+import com.example.cashlite.data.room.database.AppDatabase
 import com.example.cashlite.data.room.category.CategoryType
 import com.example.cashlite.data.room.transaction.TransactionEntity
 import com.example.cashlite.ui.mapper.CategoryUiMapper

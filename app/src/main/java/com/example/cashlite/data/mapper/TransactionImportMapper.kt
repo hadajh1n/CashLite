@@ -1,6 +1,6 @@
 package com.example.cashlite.data.mapper
 
-import com.example.cashlite.data.dataclass.ParseBankTransaction
+import com.example.cashlite.data.dataclass.parse.ParseBankTransaction
 import com.example.cashlite.data.local.TransactionClassifier
 import com.example.cashlite.data.repository.AppRepository
 import com.example.cashlite.data.room.transaction.TransactionEntity

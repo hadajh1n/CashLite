@@ -3,7 +3,7 @@ package com.example.cashlite.core.manager
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import com.example.cashlite.data.dataclass.ParseBankTransaction
+import com.example.cashlite.data.dataclass.parse.ParseBankTransaction
 import com.example.cashlite.data.local.TransactionNameNormalizer
 import com.example.cashlite.data.mapper.TransactionImportMapper
 import com.example.cashlite.data.repository.AppRepository

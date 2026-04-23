@@ -13,7 +13,7 @@ import com.example.cashlite.R
 import com.example.cashlite.core.utils.Constants
 import com.example.cashlite.core.utils.format.DecimalDigitsInputFilter
 import com.example.cashlite.core.utils.format.formatDate
-import com.example.cashlite.data.dataclass.CategoryUI
+import com.example.cashlite.data.dataclass.history.CategoryUI
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.FragmentAddIncomeOperationBinding
 import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding

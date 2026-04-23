@@ -1,4 +1,4 @@
-package com.example.cashlite.data.dataclass
+package com.example.cashlite.data.dataclass.parse
 
 data class ParseBankTransaction(
     val date: Long,
