@@ -37,6 +37,7 @@ class AddTransferOperationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initDate()
         setupChipGroup()
         onButtonAddTransfer()
     }
@@ -44,6 +45,10 @@ class AddTransferOperationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun initDate() = with(binding) {
+        edtDate.setText(formatDate(selectedDate))
     }
 
     private fun setupChipGroup() = with(binding) {
@@ -70,7 +75,6 @@ class AddTransferOperationFragment : Fragment() {
             val contactText = edtContact.text.toString()
             val amountText = edtAmount.text.toString()
             val noteText = edtNote.text.toString()
-            edtDate.setText(formatDate(selectedDate))
 
             if (contactText.isBlank()) {
                 tilContact.error = context?.getString(R.string.tilContactOperationTransferError)

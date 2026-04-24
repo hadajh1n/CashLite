@@ -4,4 +4,11 @@
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/themes</item>
     </style>
+
+    <style name="NumberPickerWhiteText" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:colorControlNormal">@color/white</item>
+    </style>
 </resources>

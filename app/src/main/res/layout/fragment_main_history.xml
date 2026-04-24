@@ -98,26 +98,44 @@
         <TextView
             android:id="@+id/tvTotalIncome"
             style="@style/tvIncome"
-            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:inputType="numberDecimal"
-            android:text="0 ₽" />
+            android:gravity="center"
+            android:singleLine="true"
+            app:autoSizeMaxTextSize="16dp"
+            app:autoSizeMinTextSize="8dp"
+            app:autoSizeStepGranularity="1dp"
+            app:autoSizeTextType="uniform"
+            tools:text="999 999 999,99 ₽" />
 
         <TextView
             android:id="@+id/tvTotalBalance"
             style="@style/tvBalance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:gravity="center"
-            android:inputType="numberDecimal"
-            android:text="0 ₽" />
+            android:singleLine="true"
+            app:autoSizeMaxTextSize="16dp"
+            app:autoSizeMinTextSize="8dp"
+            app:autoSizeStepGranularity="1dp"
+            app:autoSizeTextType="uniform"
+            tools:text="999 999 999,99 ₽" />
 
         <TextView
             android:id="@+id/tvTotalExpense"
             style="@style/tvExpenses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:gravity="center"
-            android:inputType="numberDecimal"
-            android:text="0 ₽" />
+            android:singleLine="true"
+            app:autoSizeMaxTextSize="16dp"
+            app:autoSizeMinTextSize="8dp"
+            app:autoSizeStepGranularity="1dp"
+            app:autoSizeTextType="uniform"
+            tools:text="-999 999 999,99 ₽" />
     </GridLayout>
 
     <androidx.recyclerview.widget.RecyclerView

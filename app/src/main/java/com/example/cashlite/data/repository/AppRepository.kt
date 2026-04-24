@@ -82,28 +82,6 @@ object AppRepository {
         addSource(categoriesSource) { updateTransactions() }
     }
 
-    val totalTransaction: LiveData<TotalsStateUI> = MediatorLiveData<TotalsStateUI>().apply {
-        val expenseLive = transactionDao.getSumByType(CategoryType.EXPENSE)
-        val incomeLive = transactionDao.getSumByType(CategoryType.INCOME)
-
-        fun updateTotals() {
-            val expenseSum = expenseLive.value ?: 0.0
-            val incomeSum = incomeLive.value ?: 0.0
-            value = calculateTotals(expenseSum, incomeSum)
-        }
-
-        addSource(expenseLive) { updateTotals() }
-        addSource(incomeLive) { updateTotals() }
-    }
-
-    private fun calculateTotals(expenseSum: Double, incomeSum: Double): TotalsStateUI {
-        return TotalsStateUI(
-            totalExpense = expenseSum,
-            totalIncome = incomeSum,
-            totalBalance = incomeSum - expenseSum
-        )
-    }
-
     suspend fun initCategories() {
         if (categoryDao.getCount() == 0) {
             categoryDao.insertAll(categoryEntityMapper.getAllSystemCategories())

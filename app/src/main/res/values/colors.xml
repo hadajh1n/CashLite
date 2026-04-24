@@ -86,9 +86,9 @@
     <color name="btnImport">#F4E5C2</color>
     <color name="cgTransferText">#EEEEEE</color>
     <color name="cgTransferBackgroundSelector">#F4E5C2</color>
-    <color name="cgTransferBackgroundDefault">#00FFFFFF</color>
+    <color name="cgTransferBackgroundDefault">#FFFFFFFF</color>
     <color name="cgTransferTextSelector">#FF000000</color>
-    <color name="cgTransferTextDefault">#EEEEEE</color>
+    <color name="cgTransferTextDefault">#FF000000</color>
     <color name="edtInputTransferSelector">#EEEEEE</color>
     <color name="edtInputTransferDefault">#EEEEEE</color>
     <color name="tvBackgroundTransfer">#F4E5C2</color>

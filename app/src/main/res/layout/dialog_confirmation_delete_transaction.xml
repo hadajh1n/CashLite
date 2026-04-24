@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:backgroundTint="@color/btnCancelDeleteTransaction"
             android:text="@string/btnTextCancelDeleteTransaction" />
 
@@ -47,9 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginTop="5dp"
             android:backgroundTint="@color/btnDialogConfirmationDeleteTransaction"
-            android:layout_margin="5dp"
+            android:layout_margin="2dp"
             android:text="@string/btnTextDialogConfirmationDeleteTransaction" />
 
     </LinearLayout>

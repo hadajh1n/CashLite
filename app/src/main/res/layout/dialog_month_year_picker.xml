@@ -31,13 +31,15 @@
             android:id="@+id/monthPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:theme="@style/NumberPickerWhiteText" />
 
         <NumberPicker
             android:id="@+id/yearPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:theme="@style/NumberPickerWhiteText" />
     </LinearLayout>
 
     <Button

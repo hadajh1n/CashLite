@@ -97,6 +97,7 @@ class HistoryMainFragment : Fragment() {
             maxValue = 11
             displayedValues = months
             value = currentFilter?.month ?: Calendar.getInstance().get(Calendar.MONTH)
+            descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
         }
 
         dialogBinding.yearPicker.apply {
@@ -104,6 +105,7 @@ class HistoryMainFragment : Fragment() {
             minValue = curYear - 10
             maxValue = curYear + 2
             value = currentFilter?.year ?: curYear
+            descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
         }
 
         val textColor = ContextCompat.getColor(requireContext(), R.color.white)

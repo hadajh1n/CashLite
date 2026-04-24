@@ -92,7 +92,7 @@
                 android:inputType="textCapSentences"
                 android:textColorHint="@color/hint"
                 android:textColor="@color/black"
-                android:maxLength="50"
+                android:maxLength="200"
                 android:maxLines="3"/>
         </com.google.android.material.textfield.TextInputLayout>
 
