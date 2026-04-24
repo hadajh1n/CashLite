@@ -101,6 +101,32 @@
         <item name="android:textColor">@color/tvEmptyList</item>
     </style>
 
+        // dialog_month_year_picker.xml
+
+    <style name="tvTitleDialogMonthYearPicker" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvTitleDialogMonthYearPicker</item>
+    </style>
+
+    <style name="btnAllTime" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btnTextAllTime</item>
+    </style>
+
+    <style name="btnOk" parent="Widget.Material3.Button">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btnTextOk</item>
+    </style>
+
+    <style name="btnReset" parent="Widget.Material3.Button">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/btnTextReset</item>
+    </style>
+
         // fragment_details.xml
 
     <style name="tvTitleDetails" parent="Widget.AppCompat.TextView">
@@ -113,6 +139,29 @@
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/tvDetails</item>
+    </style>
+
+        // dialog_confirmation_delete_transaction.xml
+
+    <style name="tvTitleDialogConfirmationDeleteTransaction" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvTitleDialogConfirmationDeleteTransaction</item>
+    </style>
+
+    <style name="tvDialogConfirmationDeleteTransaction" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/tvDialogConfirmationDeleteTransaction</item>
+    </style>
+
+    <style name="btnConfirmationDeleteTransaction" parent="Widget.Material3.Button">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/btnTextDialogConfirmationDeleteTransaction</item>
+    </style>
+
+    <style name="btnCancelDeleteTransaction" parent="Widget.Material3.Button">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/btnTextCancelDeleteTransaction</item>
     </style>
 
         // fragment_add_new_operation.xml

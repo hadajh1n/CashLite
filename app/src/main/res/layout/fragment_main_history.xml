@@ -9,55 +9,69 @@
 
     <ImageButton
         android:id="@+id/btnHamburger"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="10dp"
         android:background="@color/transparent"
         android:src="@drawable/icon_history_hamburger"
+        app:layout_constraintBottom_toBottomOf="@+id/cvMonthYear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/cvMonthYear" />
 
-    <LinearLayout
-        android:id="@+id/llTitleFinance"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMonthYear"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/cvMonthYear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/gridIncomeExpense">
+        app:cardCornerRadius="15dp">
 
-        <TextView
-            android:id="@+id/tvMonth"
-            style="@style/tvMonth"
+        <LinearLayout
+            android:id="@+id/llMonthYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Февраль" />
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/gridIncomeExpense">
 
-        <TextView
-            android:id="@+id/tvYear"
-            style="@style/tvYear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="2026" />
+            <TextView
+                android:id="@+id/tvMonth"
+                style="@style/tvMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Февраль" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvYear"
+                style="@style/tvYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="2026" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <GridLayout
         android:id="@+id/gridIncomeExpense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:columnCount="3"
         android:rowCount="3"
         android:useDefaultMargins="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llTitleFinance"
+        app:layout_constraintTop_toBottomOf="@+id/cvMonthYear"
         app:layout_constraintBottom_toTopOf="@id/rvHistory">
 
         <TextView

@@ -1,16 +1,17 @@
 package com.example.cashlite.ui.viewModel.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.cashlite.R
+import com.example.cashlite.core.app.CashLiteApp
 import com.example.cashlite.core.utils.format.formatDate
+import com.example.cashlite.data.dataclass.history.HistoryFilter
 import com.example.cashlite.data.dataclass.history.HistoryItem
 import com.example.cashlite.data.dataclass.history.TotalsStateUI
 import com.example.cashlite.data.dataclass.history.TransactionUI
 import com.example.cashlite.data.repository.AppRepository
+import com.example.cashlite.data.room.category.CategoryType
 import kotlinx.coroutines.launch
-import kotlin.collections.iterator
+import java.util.Calendar
 
 sealed class HistoryUiState {
     object Loading : HistoryUiState()
@@ -21,52 +22,88 @@ sealed class HistoryUiState {
 class HistoryViewModel : ViewModel() {
 
     private val transactions: LiveData<List<TransactionUI>> = AppRepository.transactions
-    val totalTransaction: LiveData<TotalsStateUI> = AppRepository.totalTransaction
 
-    val uiHistoryState: LiveData<HistoryUiState> = MediatorLiveData<HistoryUiState>().apply {
+    private val _filter = MutableLiveData<HistoryFilter>().apply {
+        val cal = Calendar.getInstance()
+        value = HistoryFilter(cal.get(Calendar.MONTH), cal.get(Calendar.YEAR), false)
+    }
+    val filter: LiveData<HistoryFilter> = _filter
 
-        value = HistoryUiState.Loading
-
-        addSource(transactions) { list ->
-            value = when {
-                list.isEmpty() -> HistoryUiState.Empty
-                else -> HistoryUiState.Content(buildHistoryItems(list))
-            }
+    val monthYearLabel: LiveData<Pair<String, String>> = _filter.map { filter ->
+        if (filter.isAllTime) {
+            "Все" to "транзакции"
+        } else {
+            val months = CashLiteApp.instance.resources.getStringArray(R.array.months_full)
+            months[filter.month] to filter.year.toString()
         }
     }
 
-    private fun buildHistoryItems(transactions: List<TransactionUI>): List<HistoryItem> {
-        if (transactions.isEmpty()) return emptyList()
+    private val filteredTransactions = MediatorLiveData<List<TransactionUI>>().apply {
+        fun update() {
+            val list = transactions.value ?: emptyList()
+            val f = _filter.value ?: return
 
+            value = if (f.isAllTime) {
+                list
+            } else {
+                list.filter {
+                    val cal = Calendar.getInstance().apply { timeInMillis = it.date }
+                    cal.get(Calendar.MONTH) == f.month && cal.get(Calendar.YEAR) == f.year
+                }
+            }
+        }
+        addSource(transactions) { update() }
+        addSource(_filter) { update() }
+    }
+
+    val filteredTotals: LiveData<TotalsStateUI> = filteredTransactions.map { list ->
+        val expense = list.filter { it.type == CategoryType.EXPENSE }.sumOf { it.amount }
+        val income = list.filter { it.type == CategoryType.INCOME }.sumOf { it.amount }
+        TotalsStateUI(expense, income, income - expense)
+    }
+
+    val uiHistoryState: LiveData<HistoryUiState> = filteredTransactions.map { list ->
+        if (list.isEmpty()) HistoryUiState.Empty
+        else HistoryUiState.Content(buildHistoryItems(list))
+    }
+
+    fun setFilter(month: Int, year: Int) {
+        _filter.value = HistoryFilter(month, year, false)
+    }
+
+    fun setAllTimeFilter() {
+        _filter.value = HistoryFilter(0, 0, true)
+    }
+
+    private fun buildHistoryItems(transactions: List<TransactionUI>): List<HistoryItem> {
         val sorted = transactions.sortedByDescending { it.date }
         val grouped = sorted.groupBy { formatDate(it.date) }
         val result = mutableListOf<HistoryItem>()
-
         for ((date, list) in grouped) {
             result.add(HistoryItem.DateHeader(date))
-
-            list.forEach { transaction ->
-                result.add(HistoryItem.TransactionItem(transaction))
-            }
+            list.forEach { result.add(HistoryItem.TransactionItem(it)) }
         }
         return result
     }
 
+    fun resetToCurrentDate() {
+        val cal = Calendar.getInstance()
+        _filter.value = HistoryFilter(
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.YEAR),
+            false
+        )
+    }
+
     fun onSwipeRemoveTransaction(transaction: TransactionUI) {
-        viewModelScope.launch {
-            AppRepository.removeTransaction(transaction.idTransaction)
-        }
+        viewModelScope.launch { AppRepository.removeTransaction(transaction.idTransaction) }
     }
 
     fun onDeleteAllTransactions() {
-        viewModelScope.launch {
-            AppRepository.deleteAllTransactions()
-        }
+        viewModelScope.launch { AppRepository.deleteAllTransactions() }
     }
 
     fun onDeleteImportedTransactions() {
-        viewModelScope.launch {
-            AppRepository.deleteImportedTransactions()
-        }
+        viewModelScope.launch { AppRepository.deleteImportedTransactions() }
     }
 }

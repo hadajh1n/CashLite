@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bgDialogConfirmationDeleteTransaction"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitleDialogConfirmationDeleteTransaction"
+        style="@style/tvTitleDialogConfirmationDeleteTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvTitleDialogConfirmationDeleteTransaction"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tvDialogConfirmationDeleteTransaction"
+        style="@style/tvDialogConfirmationDeleteTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvDialogConfirmationDeleteTransaction"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelDeleteTransaction"
+            style="@style/btnCancelDeleteTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/btnCancelDeleteTransaction"
+            android:text="@string/btnTextCancelDeleteTransaction" />
+
+        <Button
+            android:id="@+id/btnConfirmationDeleteTransaction"
+            style="@style/btnConfirmationDeleteTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/btnDialogConfirmationDeleteTransaction"
+            android:layout_margin="5dp"
+            android:text="@string/btnTextDialogConfirmationDeleteTransaction" />
+
+    </LinearLayout>
+</LinearLayout>

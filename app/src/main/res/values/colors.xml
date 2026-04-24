@@ -27,9 +27,10 @@
     // fragment_history.xml
 
     <color name="iconButtonHamburger">#EEEEEE</color>
+    <color name="cvMonthYear">#F4E5C2</color>
 
-    <color name="tvMonth">#FFFFFFFF</color>
-    <color name="tvYear">#FFFFFFFF</color>
+    <color name="tvMonth">#FF000000</color>
+    <color name="tvYear">#1A1818</color>
     <color name="tvIncomeTitle">#FFFFFFFF</color>
     <color name="tvExpensesTitle">#FFFFFFFF</color>
     <color name="tvBalanceTitle">#FFFFFFFF</color>
@@ -41,13 +42,35 @@
     <color name="btnAddOperationBackground">#FFEB3B</color>
     <color name="btnAddOperation">#FF000000</color>
 
+    // dialog_month_year_picker.xml
+
+    <color name="bgDialogMonthYearPicker">#26252D</color>
+
+    <color name="tvTitleDialogMonthYearPicker">#FFFFFFFF</color>
+    <color name="btnTextAllTime">#FFFFFFFF</color>
+    <color name="btnOk">#F4E5C2</color>
+    <color name="btnTextOk">#FF000000</color>
+    <color name="btnReset">#F44336</color>
+    <color name="btnTextReset">#FFFFFFFF</color>
+
     // fragment_details.xml
+
+    <color name="bgDialogConfirmationDeleteTransaction">#26252D</color>
 
     <color name="cvDetails">#1A1818</color>
     <color name="tvTitleDetails">#AFFFFFFF</color>
     <color name="tvDetails">#FFFFFFFF</color>
-
     <color name="btnDeleteOperation">#F4E5C2</color>
+    <color name="btnTextDeleteOperation">#F4E5C2</color>
+
+    // dialog_confirmation_delete_transaction.xml
+
+    <color name="tvTitleDialogConfirmationDeleteTransaction">#FFFFFFFF</color>
+    <color name="tvDialogConfirmationDeleteTransaction">#FFFFFFFF</color>
+    <color name="btnDialogConfirmationDeleteTransaction">#F4E5C2</color>
+    <color name="btnTextDialogConfirmationDeleteTransaction">#FF000000</color>
+    <color name="btnCancelDeleteTransaction">#F44336</color>
+    <color name="btnTextCancelDeleteTransaction">#FFFFFFFF</color>
 
     // fragment_add_operation.xml
 

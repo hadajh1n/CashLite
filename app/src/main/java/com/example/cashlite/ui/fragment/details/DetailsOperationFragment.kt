@@ -15,6 +15,7 @@ import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.history.TransactionUI
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.data.room.category.CategoryType
+import com.example.cashlite.databinding.DialogConfirmationDeleteTransactionBinding
 import com.example.cashlite.databinding.FragmentDetailsOperationBinding
 import com.example.cashlite.ui.viewModel.details.DetailsViewModel
 
@@ -24,6 +25,7 @@ class DetailsOperationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: DetailsViewModel by viewModels()
+    private lateinit var currentTransaction: TransactionUI
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,14 +39,22 @@ class DetailsOperationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initTransaction()
         setupBackButton()
         setupUI()
-        onDeleteTransaction()
+        setupDeleteButton()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun initTransaction() {
+        currentTransaction = requireActivity()
+            .intent
+            .getParcelableExtra("transaction")
+            ?: throw IllegalStateException("TransactionUI не передан")
     }
 
     private fun setupBackButton() = with(binding) {
@@ -54,34 +64,30 @@ class DetailsOperationFragment : Fragment() {
     }
 
     private fun setupUI() = with(binding) {
-        val transaction: TransactionUI = requireActivity()
-            .intent
-            .getParcelableExtra("transaction")
-            ?: throw IllegalStateException("TransactionUI не передан в DetailsOperationActivity")
+        imCategoryDetails.setImageResource(currentTransaction.imageId)
+        imCategoryDetails.setColorFilter(requireContext().getColor(currentTransaction.color))
 
-        imCategoryDetails.setImageResource(transaction.imageId)
-        imCategoryDetails.setColorFilter(requireContext().getColor(transaction.color))
-
-        val isUnknown = transaction.categoryName == CategoryKeys.UNKNOWN_EXPENSE ||
-                transaction.categoryName == CategoryKeys.UNKNOWN_INCOME
+        val isUnknown = currentTransaction.categoryName == CategoryKeys.UNKNOWN_EXPENSE ||
+                currentTransaction.categoryName == CategoryKeys.UNKNOWN_INCOME
 
         tvCategoryDetails.text = if (isUnknown) {
             getString(R.string.unknown_general)
         } else {
-            getString(CategoryKeys.getCategoryNameRes(transaction.categoryName))
+            getString(CategoryKeys.getCategoryNameRes(currentTransaction.categoryName))
         }
 
-        tvAmountDetails.text = when (transaction.type) {
-            CategoryType.EXPENSE -> "-${transaction.amount.formatMoney()} ₽"
-            CategoryType.INCOME  -> "+${transaction.amount.formatMoney()} ₽"
-            else                 -> "${transaction.amount.formatMoney()} ₽"
+        tvAmountDetails.text = when (currentTransaction.type) {
+            CategoryType.EXPENSE -> "-${currentTransaction.amount.formatMoney()} ₽"
+            CategoryType.INCOME  -> "+${currentTransaction.amount.formatMoney()} ₽"
+            else                 -> "${currentTransaction.amount.formatMoney()} ₽"
         }
 
-        tvDateDetails.text = formatDate(transaction.date)
-        tvTypeDetails.text = if (transaction.type == CategoryType.EXPENSE) "Расход" else "Доход"
+        tvDateDetails.text = formatDate(currentTransaction.date)
+        tvTypeDetails.text =
+            if (currentTransaction.type == CategoryType.EXPENSE) "Расход" else "Доход"
 
-        setupOptionalField(llContactDetails, tvContactDetails, transaction.contact)
-        setupOptionalField(llNoteDetails, tvNoteDetails, transaction.note)
+        setupOptionalField(llContactDetails, tvContactDetails, currentTransaction.contact)
+        setupOptionalField(llNoteDetails, tvNoteDetails, currentTransaction.note)
     }
 
     private fun setupOptionalField(
@@ -97,26 +103,25 @@ class DetailsOperationFragment : Fragment() {
         }
     }
 
-    private fun onDeleteTransaction() = with(binding) {
+    private fun setupDeleteButton() = with(binding) {
         btnDeleteOperation.setOnClickListener {
             showDeleteConfirmationDialog()
         }
     }
 
     private fun showDeleteConfirmationDialog() {
-        val transaction = requireActivity()
-            .intent
-            .getParcelableExtra<TransactionUI>("transaction")
-            ?: return
+        val dialogBinding = DialogConfirmationDeleteTransactionBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root).create()
 
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.dialogDeleteTransactionTitle)
-            .setMessage(R.string.dialogDeleteTransactionMessage)
-            .setPositiveButton(R.string.dialogButtonYes) { _, _ ->
-                viewModel.onRemoveTransaction(transaction.idTransaction)
-                requireActivity().finish()
-            }
-            .setNegativeButton(R.string.dialogButtonNo, null)
-            .show()
+        dialogBinding.btnConfirmationDeleteTransaction.setOnClickListener {
+            viewModel.onRemoveTransaction(currentTransaction.idTransaction)
+            requireActivity().finish()
+        }
+
+        dialogBinding.btnCancelDeleteTransaction.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }

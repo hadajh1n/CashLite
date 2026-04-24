@@ -27,6 +27,28 @@
     <string name="tvExpensesTitle">Расходы</string>
     <string name="tvEmptyList">Список пуст</string>
 
+    <string-array name="months_full">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
+    </string-array>
+
+    // fragment_main_history
+
+    <string name="tvTitleDialogMonthYearPicker">Выберите период</string>
+    <string name="btnAllTime">За все время</string>
+    <string name="btnOk">Применить</string>
+    <string name="btnReset">Сброс на текущий месяц</string>
+
     // fragment_details
 
     <string name="tvDateTitleDetails">Дата</string>
@@ -36,6 +58,13 @@
 
     <string name="dialogDeleteTransactionTitle">Удалить операцию?</string>
     <string name="dialogDeleteTransactionMessage">Эта операция будет удалена без возможности восстановления.</string>
+
+    // dialog_confirmation_delete_transaction
+
+    <string name="tvTitleDialogConfirmationDeleteTransaction">Удалить операцию?</string>
+    <string name="tvDialogConfirmationDeleteTransaction">Эта операция будет удалена без возможности восстановления</string>
+    <string name="btnTextDialogConfirmationDeleteTransaction">Подтвердить</string>
+    <string name="btnTextCancelDeleteTransaction">Отменить</string>
 
     // fragment_add_operation
     <string name="btnExpensesTitle">Расход</string>
@@ -108,7 +137,5 @@
     <string name="selectGraphsIncomeWeek">Неделя</string>
     <string name="selectGraphsIncomeMonth">Месяц</string>
     <string name="selectGraphsIncomeYear">Год</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -1,13 +1,18 @@
 package com.example.cashlite.ui.fragment.main
 
 import android.app.AlertDialog
+import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.NumberPicker
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -17,10 +22,13 @@ import com.example.cashlite.R
 import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.dataclass.history.HistoryItem
 import com.example.cashlite.data.dataclass.history.TransactionUI
+import com.example.cashlite.databinding.DialogConfirmationDeleteTransactionBinding
+import com.example.cashlite.databinding.DialogMonthYearPickerBinding
 import com.example.cashlite.ui.adapter.HistoryAdapter
 import com.example.cashlite.databinding.FragmentMainHistoryBinding
 import com.example.cashlite.ui.viewModel.main.HistoryUiState
 import com.example.cashlite.ui.viewModel.main.HistoryViewModel
+import java.util.Calendar
 
 class HistoryMainFragment : Fragment() {
 
@@ -46,8 +54,8 @@ class HistoryMainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
+        setupClicks()
         observeViewModel()
-        onButtonHamburger()
         setupItemTouchHelper()
     }
 
@@ -64,11 +72,102 @@ class HistoryMainFragment : Fragment() {
         rvHistory.adapter = adapter
     }
 
+    private fun setupClicks() = with(binding) {
+        btnHamburger.setOnClickListener { showMenu(it) }
+
+        cvMonthYear.setOnClickListener { showMonthYearPicker() }
+    }
+
     private fun openDetails(transaction: TransactionUI) {
         val action = HistoryMainFragmentDirections
             .actionHistoryToTransactionDetail(transaction)
 
         findNavController().navigate(action)
+    }
+
+    private fun showMonthYearPicker() {
+        val dialogBinding = DialogMonthYearPickerBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(requireContext()).setView(dialogBinding.root).create()
+
+        val months = resources.getStringArray(R.array.months_full)
+        val currentFilter = viewModel.filter.value
+
+        dialogBinding.monthPicker.apply {
+            minValue = 0
+            maxValue = 11
+            displayedValues = months
+            value = currentFilter?.month ?: Calendar.getInstance().get(Calendar.MONTH)
+        }
+
+        dialogBinding.yearPicker.apply {
+            val curYear = Calendar.getInstance().get(Calendar.YEAR)
+            minValue = curYear - 10
+            maxValue = curYear + 2
+            value = currentFilter?.year ?: curYear
+        }
+
+        val textColor = ContextCompat.getColor(requireContext(), R.color.white)
+        val dividerColor = ContextCompat.getColor(requireContext(), R.color.white)
+
+        setNumberPickerTextColor(dialogBinding.monthPicker, textColor)
+        setNumberPickerTextColor(dialogBinding.yearPicker, textColor)
+
+        setDividerColor(dialogBinding.monthPicker, dividerColor)
+        setDividerColor(dialogBinding.yearPicker, dividerColor)
+
+        dialogBinding.btnOk.setOnClickListener {
+            viewModel.setFilter(dialogBinding.monthPicker.value, dialogBinding.yearPicker.value)
+            dialog.dismiss()
+        }
+
+        dialogBinding.btnAllTime.setOnClickListener {
+            viewModel.setAllTimeFilter()
+            dialog.dismiss()
+        }
+
+        dialogBinding.btnReset.setOnClickListener {
+            viewModel.resetToCurrentDate()
+
+            val cal = Calendar.getInstance()
+            dialogBinding.monthPicker.value = cal.get(Calendar.MONTH)
+            dialogBinding.yearPicker.value = cal.get(Calendar.YEAR)
+
+            dialog.dismiss()
+        }
+
+        dialogBinding.btnExit.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun setNumberPickerTextColor(numberPicker: NumberPicker, color: Int) {
+        try {
+            for (i in 0 until numberPicker.childCount) {
+                val child = numberPicker.getChildAt(i)
+                if (child is EditText) {
+                    child.setTextColor(color)
+                }
+            }
+            val field = NumberPicker::class.java.getDeclaredField("mSelectorWheelPaint")
+            field.isAccessible = true
+            val paint = field.get(numberPicker) as Paint
+            paint.color = color
+            numberPicker.invalidate()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setDividerColor(numberPicker: NumberPicker, color: Int) {
+        try {
+            val field = NumberPicker::class.java.getDeclaredField("mSelectionDivider")
+            field.isAccessible = true
+            field.set(numberPicker, ColorDrawable(color))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun observeViewModel() = with(binding) {
@@ -95,7 +194,7 @@ class HistoryMainFragment : Fragment() {
             }
         }
 
-        viewModel.totalTransaction.observe(viewLifecycleOwner) { state ->
+        viewModel.filteredTotals.observe(viewLifecycleOwner) { state ->
             tvTotalExpense.text = if (state.totalExpense == 0.0) {
                 "${state.totalExpense.formatMoney()} ₽"
             } else {
@@ -104,10 +203,11 @@ class HistoryMainFragment : Fragment() {
             tvTotalIncome.text  = "${state.totalIncome.formatMoney()} ₽"
             tvTotalBalance.text = "${state.totalBalance.formatMoney()} ₽"
         }
-    }
 
-    private fun onButtonHamburger() = with(binding) {
-        btnHamburger.setOnClickListener { showMenu(it) }
+        viewModel.monthYearLabel.observe(viewLifecycleOwner) { (month, year) ->
+            tvMonth.text = month
+            tvYear.text = year
+        }
     }
 
     private fun showMenu(anchor: View) {
@@ -173,7 +273,7 @@ class HistoryMainFragment : Fragment() {
                 val item = adapter.getItem(position)
 
                 if (item is HistoryItem.TransactionItem) {
-                    viewModel.onSwipeRemoveTransaction(item.transaction)
+                    showDeleteConfirmationDialog(item.transaction, position)
                 }
             }
 
@@ -189,5 +289,26 @@ class HistoryMainFragment : Fragment() {
 
         itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper?.attachToRecyclerView(binding.rvHistory)
+    }
+
+    private fun showDeleteConfirmationDialog(transaction: TransactionUI, position: Int) {
+        val dialogBinding = DialogConfirmationDeleteTransactionBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(
+            requireContext())
+            .setView(dialogBinding.root)
+            .setCancelable(false)
+            .create()
+
+        dialogBinding.btnConfirmationDeleteTransaction.setOnClickListener {
+            viewModel.onSwipeRemoveTransaction(transaction)
+            dialog.dismiss()
+        }
+
+        dialogBinding.btnCancelDeleteTransaction.setOnClickListener {
+            adapter.notifyItemChanged(position)
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }
