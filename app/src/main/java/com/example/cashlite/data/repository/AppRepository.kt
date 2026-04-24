@@ -3,6 +3,7 @@ package com.example.cashlite.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.room.Room
+import androidx.room.withTransaction
 import com.example.cashlite.core.app.CashLiteApp
 import com.example.cashlite.data.dataclass.history.CategoryUI
 import com.example.cashlite.data.dataclass.history.TotalsStateUI
@@ -12,6 +13,7 @@ import com.example.cashlite.data.mapper.CategoryEntityMapper
 import com.example.cashlite.data.mapper.TransactionEntityMapper
 import com.example.cashlite.data.room.database.AppDatabase
 import com.example.cashlite.data.room.category.CategoryType
+import com.example.cashlite.data.room.importing.ImportedStatementEntity
 import com.example.cashlite.data.room.transaction.TransactionEntity
 import com.example.cashlite.ui.mapper.CategoryUiMapper
 import com.example.cashlite.ui.mapper.TransactionUiMapper
@@ -33,6 +35,7 @@ object AppRepository {
 
     private val categoryDao = db.categoryDao()
     private val transactionDao = db.transactionDao()
+    private val importedStatementDao = db.importedStatementDao()
 
     val expenseCategories: LiveData<List<CategoryUI>> = MediatorLiveData<List<CategoryUI>>().apply {
         val source = categoryDao.getCategoriesByType(CategoryType.EXPENSE)
@@ -112,8 +115,23 @@ object AppRepository {
         return categoryUiMapper.fromEntityToUI(entity)
     }
 
-    suspend fun insertImportedTransactions(transactions: List<TransactionEntity>) {
-        transactionDao.insertAllImport(transactions)
+    fun generateTransactionSignature(date: Long, amount: Double, note: String): String {
+        return "${date}_${amount}_${note}"
+    }
+
+    suspend fun isTransactionDuplicate(signature: String): Boolean =
+        importedStatementDao.exists(signature)
+
+    suspend fun insertImportedTransactions(
+        transactions: List<TransactionEntity>,
+        signatures: List<String>
+    ) {
+        db.withTransaction {
+            transactionDao.insertAllImport(transactions)
+            signatures.forEach { sig ->
+                importedStatementDao.insert(ImportedStatementEntity(sig))
+            }
+        }
     }
 
     suspend fun addTransaction(
@@ -133,10 +151,16 @@ object AppRepository {
     }
 
     suspend fun deleteAllTransactions() {
-        transactionDao.deleteAll()
+        db.withTransaction {
+            transactionDao.deleteAll()
+            importedStatementDao.deleteAll()
+        }
     }
 
     suspend fun deleteImportedTransactions() {
-        transactionDao.deleteAllImported()
+        db.withTransaction {
+            transactionDao.deleteAllImported()
+            importedStatementDao.deleteAll()
+        }
     }
 }

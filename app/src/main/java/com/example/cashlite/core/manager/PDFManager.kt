@@ -24,23 +24,38 @@ class PDFManager(private val context: Context) {
         if (text.isBlank()) return@withContext false
 
         val parsedList = parseBankStatement(text)
-
         if (parsedList.isEmpty()) return@withContext false
 
         val mapper = TransactionImportMapper()
         val entities = mutableListOf<TransactionEntity>()
+        val signatures = mutableListOf<String>()
+
+        var duplicatesCount = 0
 
         for (parsed in parsedList) {
+            val signature = AppRepository.generateTransactionSignature(
+                date = parsed.date,
+                amount = Math.abs(parsed.amount),
+                note = parsed.displayNote
+            )
+
+            if (AppRepository.isTransactionDuplicate(signature)) {
+                duplicatesCount++
+                continue
+            }
+
             val entity = mapper.mapToEntity(parsed)
             if (entity != null) {
                 entities.add(entity)
-            } else {
-                Log.e("LOG_TESTING", "Нет категории: ${parsed.displayNote}")
+                signatures.add(signature)
             }
         }
 
+        Log.e("LOG_TESTING", "Результат импорта: Новых: ${entities.size}, " +
+                "Дубликатов: $duplicatesCount")
+
         if (entities.isNotEmpty()) {
-            AppRepository.insertImportedTransactions(entities)
+            AppRepository.insertImportedTransactions(entities, signatures)
             return@withContext true
         }
 
@@ -139,8 +154,6 @@ class PDFManager(private val context: Context) {
                 .replace(",", ".")
             val raw = match.groupValues[3].trim()
             val display = TransactionNameNormalizer.normalize(raw)
-
-            Log.e("LOG_TESTING", "MATCH → $display | $amountRaw")
 
             val date = try {
                 dateFormat.parse(dateStr)?.time ?: return@forEach

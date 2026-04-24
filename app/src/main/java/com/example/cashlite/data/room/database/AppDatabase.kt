@@ -4,11 +4,13 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.cashlite.data.room.category.CategoryDao
 import com.example.cashlite.data.room.category.CategoryEntity
+import com.example.cashlite.data.room.importing.ImportedStatementDao
+import com.example.cashlite.data.room.importing.ImportedStatementEntity
 import com.example.cashlite.data.room.transaction.TransactionDao
 import com.example.cashlite.data.room.transaction.TransactionEntity
 
 @Database(
-    entities = [TransactionEntity::class, CategoryEntity::class],
+    entities = [TransactionEntity::class, CategoryEntity::class, ImportedStatementEntity::class],
     version = 1,
     exportSchema = false
 )
@@ -16,4 +18,5 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun categoryDao(): CategoryDao
     abstract fun transactionDao(): TransactionDao
+    abstract fun importedStatementDao(): ImportedStatementDao
 }

@@ -74,7 +74,7 @@
     <string name="btnImport">Импорт выписки</string>
 
     <string name="observeImportSuccess">Выписка успешно импортирована!</string>
-    <string name="observeImportError">Не удалось импортировать выписку</string>
+    <string name="observeImportError">Не удалось импортировать выписку!</string>
 
     // view_add_categories_panel
     <string name="hintAmountOperation">Сумма операции</string>
