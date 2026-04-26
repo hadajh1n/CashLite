@@ -2,6 +2,8 @@ package com.example.cashlite.ui.fragment.newOperation
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import com.example.cashlite.R
 import com.example.cashlite.core.utils.Constants
 import com.example.cashlite.core.utils.format.DecimalDigitsInputFilter
 import com.example.cashlite.core.utils.format.formatDate
+import com.example.cashlite.core.utils.format.setupAmountLogic
 import com.example.cashlite.data.dataclass.history.CategoryUI
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.FragmentAddIncomeOperationBinding
@@ -20,7 +23,6 @@ import com.example.cashlite.databinding.ViewAddCategoriesPanelBinding
 import com.example.cashlite.ui.adapter.AddIncomeOperationAdapter
 import com.example.cashlite.ui.viewModel.newOperation.AddIncomeViewModel
 import java.util.Calendar
-import kotlin.getValue
 
 class AddIncomeOperationFragment : Fragment() {
 
@@ -38,14 +40,13 @@ class AddIncomeOperationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddIncomeOperationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupAdapter()
         observeViewModel()
     }
@@ -69,7 +70,6 @@ class AddIncomeOperationFragment : Fragment() {
     }
 
     private fun showPanel(categoryName: CategoryUI) {
-
         binding.bottomInputContainer.visibility = View.VISIBLE
 
         if (panelBinding == null) {
@@ -78,74 +78,68 @@ class AddIncomeOperationFragment : Fragment() {
                 binding.bottomInputContainer,
                 true
             )
+            setupPanelListeners()
         }
 
         panelBinding?.apply {
-
             tvTitlePanel.text = context?.getString(
                 CategoryKeys.getCategoryNameRes(categoryName.categoryName)
             ) ?: categoryName.categoryName
-            edtAmount.text?.clear()
+
             edtNote.text?.clear()
             edtDate.setText(formatDate(selectedDate))
-
-            setupDatePicker()
-
-            edtAmount.filters = arrayOf(
-                DecimalDigitsInputFilter(
-                    Constants.DigitFilter.DIGITS_BEFORE_ZERO,
-                    Constants.DigitFilter.DIGITS_AFTER_ZERO,
-                )
-            )
+            edtAmount.setText("0")
+            tilAmount.error = null
 
             imAddNewOperation.setOnClickListener {
-                val amountText = edtAmount.text.toString()
-
-                if (amountText.isBlank()) {
-                    tilAmount.error = context?.getString(R.string.tilAmountOperationError)
-                    return@setOnClickListener
-                } else {
-                    tilAmount.error = null
-                }
-
-                val amountDouble = amountText.toDoubleOrNull()
-
-                if (amountDouble == null) {
-                    tilAmount.error = context?.getString(R.string.tilAmountNullError)
-                    return@setOnClickListener
-                }
-
-                val noteText = edtNote.text.toString()
-
-                viewModel.addIncomeOperation(categoryName, amountDouble, noteText, selectedDate)
-
-                findNavController()
-                    .navigate(R.id.mainActivity)
+                validateAndSave(categoryName)
             }
         }
+    }
+
+    private fun setupPanelListeners() = panelBinding?.apply {
+
+        edtAmount.setupAmountLogic()
+
+        edtAmount.filters = arrayOf(
+            DecimalDigitsInputFilter(
+                Constants.DigitFilter.DIGITS_BEFORE_ZERO,
+                Constants.DigitFilter.DIGITS_AFTER_ZERO,
+            )
+        )
+        setupDatePicker()
+    }
+
+    private fun validateAndSave(categoryName: CategoryUI) = panelBinding?.apply {
+        val amountText = edtAmount.text.toString().replace(",", ".")
+        val amountDouble = amountText.toDoubleOrNull() ?: 0.0
+
+        if (amountDouble <= 0.0) {
+            edtAmount.setText("0")
+            tilAmount.error = context?.getString(R.string.tilAmountOperationError)
+            return@apply
+        }
+
+        val noteText = edtNote.text.toString()
+        viewModel.addIncomeOperation(categoryName, amountDouble, noteText, selectedDate)
+        findNavController().navigate(R.id.mainActivity)
     }
 
     private fun setupDatePicker() {
         panelBinding?.edtDate?.setOnClickListener {
             val calendar = Calendar.getInstance()
-
             val dialog = DatePickerDialog(
                 requireContext(),
                 { _, year, month, dayOfMonth ->
                     val selectedCalendar = Calendar.getInstance()
                     selectedCalendar.set(year, month, dayOfMonth)
-
                     selectedDate = selectedCalendar.timeInMillis
-
-                    panelBinding?.edtDate?.setText(
-                        formatDate(selectedDate)
-                    )
+                    panelBinding?.edtDate?.setText(formatDate(selectedDate))
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             )
-
             dialog.show()
         }
     }

@@ -5,16 +5,8 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 
 fun Double.formatMoney(): String {
-    val symbols = DecimalFormatSymbols(Locale.getDefault()).apply {
-        groupingSeparator = ' '
-        decimalSeparator = ','
-    }
+    val symbols = DecimalFormatSymbols(Locale.getDefault())
+    val formatter = DecimalFormat("###,###,##0.00", symbols)
 
-    return if (this@formatMoney % 1.0 == 0.0) {
-        val df = DecimalFormat("#,###", symbols)
-        df.format(this@formatMoney.toInt())
-    } else {
-        val df = DecimalFormat("#,###.00", symbols)
-        df.format(this@formatMoney)
-    }
+    return formatter.format(this)
 }

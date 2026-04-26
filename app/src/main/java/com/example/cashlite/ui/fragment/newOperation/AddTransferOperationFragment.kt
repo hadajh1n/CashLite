@@ -2,6 +2,8 @@ package com.example.cashlite.ui.fragment.newOperation
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import com.example.cashlite.R
 import com.example.cashlite.core.utils.Constants
 import com.example.cashlite.core.utils.format.DecimalDigitsInputFilter
 import com.example.cashlite.core.utils.format.formatDate
+import com.example.cashlite.core.utils.format.setupAmountLogic
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.FragmentAddTransferOperationBinding
 import com.example.cashlite.ui.viewModel.newOperation.AddTransferViewModel
@@ -29,17 +32,16 @@ class AddTransferOperationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAddTransferOperationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        initDate()
+        setupInitialData()
         setupChipGroup()
-        onButtonAddTransfer()
+        setupListeners()
     }
 
     override fun onDestroyView() {
@@ -47,8 +49,10 @@ class AddTransferOperationFragment : Fragment() {
         _binding = null
     }
 
-    private fun initDate() = with(binding) {
+    private fun setupInitialData() = with(binding) {
         edtDate.setText(formatDate(selectedDate))
+        edtAmount.setText("0")
+        edtAmount.isCursorVisible = false
     }
 
     private fun setupChipGroup() = with(binding) {
@@ -61,7 +65,10 @@ class AddTransferOperationFragment : Fragment() {
         }
     }
 
-    private fun onButtonAddTransfer() = with(binding) {
+    private fun setupListeners() = with(binding) {
+
+        edtAmount.setupAmountLogic()
+
         edtAmount.filters = arrayOf(
             DecimalDigitsInputFilter(
                 Constants.DigitFilter.DIGITS_BEFORE_ZERO,
@@ -72,61 +79,54 @@ class AddTransferOperationFragment : Fragment() {
         setupDatePicker()
 
         btnAddTransfer.setOnClickListener {
-            val contactText = edtContact.text.toString()
-            val amountText = edtAmount.text.toString()
-            val noteText = edtNote.text.toString()
-
-            if (contactText.isBlank()) {
-                tilContact.error = context?.getString(R.string.tilContactOperationTransferError)
-                return@setOnClickListener
-            } else {
-                tilContact.error = null
-            }
-
-            if (amountText.isBlank()) {
-                tilAmount.error = context?.getString(R.string.tilAmountOperationTransferError)
-                return@setOnClickListener
-            } else {
-                tilAmount.error = null
-            }
-
-            val amountDouble = amountText.toDoubleOrNull()
-
-            if (amountDouble == null) {
-                tilAmount.error = context?.getString(R.string.tilAmountNullError)
-                return@setOnClickListener
-            }
-
-            viewModel.addOperationTransfer(
-                selectedCategoryKey, amountDouble, noteText, selectedDate, contactText
-            )
-
-            findNavController()
-                .navigate(R.id.mainActivity)
+            validateAndSave()
         }
+    }
+
+    private fun validateAndSave() = with(binding) {
+        val contactText = edtContact.text.toString()
+        val amountText = edtAmount.text.toString().replace(",", ".")
+        val noteText = edtNote.text.toString()
+
+        if (contactText.isBlank()) {
+            tilContact.error = context?.getString(R.string.tilContactOperationTransferError)
+            return@with
+        } else {
+            tilContact.error = null
+        }
+
+        val amountDouble = amountText.toDoubleOrNull() ?: 0.0
+
+        if (amountDouble <= 0.0) {
+            edtAmount.setText("0")
+            tilAmount.error = context?.getString(R.string.tilAmountOperationTransferError)
+            return@with
+        } else {
+            tilAmount.error = null
+        }
+
+        viewModel.addOperationTransfer(
+            selectedCategoryKey, amountDouble, noteText, selectedDate, contactText
+        )
+
+        findNavController().navigate(R.id.mainActivity)
     }
 
     private fun setupDatePicker() = with(binding) {
         edtDate.setOnClickListener {
             val calendar = Calendar.getInstance()
-
             val dialog = DatePickerDialog(
                 requireContext(),
                 { _, year, month, dayOfMonth ->
                     val selectedCalendar = Calendar.getInstance()
                     selectedCalendar.set(year, month, dayOfMonth)
-
                     selectedDate = selectedCalendar.timeInMillis
-
-                    edtDate.setText(
-                        formatDate(selectedDate)
-                    )
+                    edtDate.setText(formatDate(selectedDate))
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             )
-
             dialog.show()
         }
     }
