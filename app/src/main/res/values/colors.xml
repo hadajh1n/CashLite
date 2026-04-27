@@ -139,6 +139,7 @@
     <color name="icon_income_unknown">#B32428</color>
 
     // fragment_main_graphs
+
     <color name="btnSelectGraphsNavSelector">#F4E5C2</color>
     <color name="btnSelectGraphsNavDefault">#00FFFFFF</color>
     <color name="btnSelectGraphsTextNavSelector">#FF000000</color>
@@ -148,5 +149,14 @@
     <color name="btnSelectGraphsSortDateNavDefault">#00FFFFFF</color>
     <color name="btnSelectGraphsSortDateTextNavSelector">#FF000000</color>
     <color name="btnSelectGraphsSortDateTextNavDefault">#FFFFFFFF</color>
+
+    // fragment_main_report
+
+    <color name="cvTitleReport">#2C2C2C</color>
+    <color name="tvSavingsTitle">#BDBDBD</color>
+    <color name="viewReport">#40FFFFFF</color>
+    <color name="tvTitleReportIncomeExpense">#BDBDBD</color>
+    <color name="cvActivityReport">#2C2C2C</color>
+    <color name="cvTopReport">#2C2C2C</color>
 
 </resources>

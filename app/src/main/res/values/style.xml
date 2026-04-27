@@ -244,4 +244,54 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+        // fragment_main_report.xml
+
+    <style name="tvTitleReport" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tvSavingsTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/tvSavingsTitle</item>
+    </style>
+
+    <style name="tvSavingsValue" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">32dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tvTitleReportIncomeExpense" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/tvTitleReportIncomeExpense</item>
+    </style>
+
+    <style name="tvReportIncomeExpense" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tvTitleActivityReport" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tvActivityReport" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tvTitleTopReport" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="tvTopCategoriesReport" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

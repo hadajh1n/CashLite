@@ -138,4 +138,12 @@
     <string name="selectGraphsIncomeMonth">Месяц</string>
     <string name="selectGraphsIncomeYear">Год</string>
 
+    // fragment_main_report
+    <string name="tvTitleReport">Итоги месяца</string>
+    <string name="tvSavingsTitle">Сбережения</string>
+    <string name="tvTitleReportIncome">Доход</string>
+    <string name="tvTitleReportExpense">Расход</string>
+    <string name="tvTitleActivityReport">Активность</string>
+    <string name="tvTitleTopReport">Топ трат</string>
+
 </resources>
