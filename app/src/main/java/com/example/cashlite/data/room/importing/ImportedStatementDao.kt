@@ -10,8 +10,8 @@ interface ImportedStatementDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(statement: ImportedStatementEntity)
 
-    @Query("SELECT EXISTS(SELECT 1 FROM imported_statements WHERE signature = :signature)")
-    suspend fun exists(signature: String): Boolean
+    @Query("SELECT EXISTS(SELECT 1 FROM imported_statements WHERE idImport = :idImport)")
+    suspend fun exists(idImport: Int): Boolean
 
     @Query("DELETE FROM imported_statements")
     suspend fun deleteAll()

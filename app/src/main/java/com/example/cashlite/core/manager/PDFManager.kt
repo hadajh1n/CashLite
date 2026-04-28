@@ -28,26 +28,26 @@ class PDFManager(private val context: Context) {
 
         val mapper = TransactionImportMapper()
         val entities = mutableListOf<TransactionEntity>()
-        val signatures = mutableListOf<String>()
+        val signatures = mutableListOf<Int>()
 
         var duplicatesCount = 0
 
         for (parsed in parsedList) {
-            val signature = AppRepository.generateTransactionSignature(
+            val transactionId = AppRepository.generateTransactionId(
                 date = parsed.date,
                 amount = Math.abs(parsed.amount),
                 note = parsed.displayNote
             )
 
-            if (AppRepository.isTransactionDuplicate(signature)) {
+            if (AppRepository.isTransactionDuplicate(transactionId)) {
                 duplicatesCount++
                 continue
             }
 
-            val entity = mapper.mapToEntity(parsed)
+            val entity = mapper.mapToEntity(parsed)?.copy(idImport = transactionId)
             if (entity != null) {
                 entities.add(entity)
-                signatures.add(signature)
+                signatures.add(transactionId)
             }
         }
 

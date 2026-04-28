@@ -17,6 +17,7 @@ class TransactionImportMapper {
 
         return TransactionEntity(
             idCategory = category.idCategory,
+            idImport = null,
             amount = abs(parsed.amount),
             note = parsed.displayNote,
             date = parsed.date,

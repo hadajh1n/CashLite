@@ -17,8 +17,8 @@ import com.example.cashlite.data.room.importing.ImportedStatementEntity
         ),
         ForeignKey(
             entity = ImportedStatementEntity::class,
-            parentColumns = ["signature"],
-            childColumns = ["signature"],
+            parentColumns = ["idImport"],
+            childColumns = ["idImport"],
             onDelete = ForeignKey.SET_NULL
         )
     ]
@@ -27,7 +27,7 @@ data class TransactionEntity(
     @PrimaryKey(autoGenerate = true)
     val idTransaction: Int = 0,
     val idCategory: Int,
-    val signature: String? = null,
+    val idImport: Int? = null,
     val amount: Double,
     val note: String? = null,
     val date: Long = System.currentTimeMillis(),

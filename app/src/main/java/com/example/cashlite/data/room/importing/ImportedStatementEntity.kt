@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "imported_statements")
 data class ImportedStatementEntity(
     @PrimaryKey
-    val signature: String,
+    val idImport: Int,
     val importTimeMillis: Long = System.currentTimeMillis()
 )

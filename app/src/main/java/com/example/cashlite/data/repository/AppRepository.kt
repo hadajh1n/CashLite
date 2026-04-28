@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.withTransaction
 import com.example.cashlite.core.app.CashLiteApp
 import com.example.cashlite.data.dataclass.history.CategoryUI
-import com.example.cashlite.data.dataclass.history.TotalsStateUI
 import com.example.cashlite.data.dataclass.history.TransactionUI
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.data.mapper.CategoryEntityMapper
@@ -93,22 +92,22 @@ object AppRepository {
         return categoryUiMapper.fromEntityToUI(entity)
     }
 
-    fun generateTransactionSignature(date: Long, amount: Double, note: String): String {
-        return "${date}_${amount}_${note}"
+    fun generateTransactionId(date: Long, amount: Double, note: String): Int {
+        return "${date}_${amount}_${note}".hashCode()
     }
 
-    suspend fun isTransactionDuplicate(signature: String): Boolean =
-        importedStatementDao.exists(signature)
+    suspend fun isTransactionDuplicate(idImport: Int): Boolean =
+        importedStatementDao.exists(idImport)
 
     suspend fun insertImportedTransactions(
         transactions: List<TransactionEntity>,
-        signatures: List<String>
+        idImport: List<Int>
     ) {
         db.withTransaction {
-            transactionDao.insertAllImport(transactions)
-            signatures.forEach { sig ->
-                importedStatementDao.insert(ImportedStatementEntity(sig))
+            idImport.forEach { id ->
+                importedStatementDao.insert(ImportedStatementEntity(id))
             }
+            transactionDao.insertAllImport(transactions)
         }
     }
 
