@@ -1,5 +1,6 @@
 package com.example.cashlite.ui.fragment.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
@@ -133,7 +134,9 @@ class GraphsMainFragment : Fragment() {
             if (data.pieEntries.isEmpty()) {
                 pieChart.clear()
                 pieChart.setNoDataText("Нет операций за этот период")
-                pieChart.setNoDataTextColor(android.graphics.Color.WHITE)
+                pieChart.setNoDataTextColor(
+                    ContextCompat.getColor(requireContext(), R.color.tvEmptyGraphs)
+                )
                 adapter.submitList(emptyList())
                 return@observe
             }
@@ -172,7 +175,7 @@ class GraphsMainFragment : Fragment() {
                     textSize = 13f
                     formSize = 13f
                     yEntrySpace = 8f
-                    textColor = android.graphics.Color.WHITE
+                    textColor = ContextCompat.getColor(requireContext(), R.color.tvCategoryGraphs)
 
                     orientation = Legend.LegendOrientation.VERTICAL
                     verticalAlignment = Legend.LegendVerticalAlignment.CENTER

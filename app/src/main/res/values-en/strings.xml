@@ -1,4 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">CashLite</string>
 
+    // fragment_main
+    <string name="tvHistoryFragment">History</string>
+    <string name="tvGraphsFragment">Graphs</string>
+    <string name="tvReportFragment">Report</string>
+    <string name="tvSettingsFragment">Settings</string>
+
+    // top_nav_operation_menu
+    <string name="addExpenseOperationFragment">Expense</string>
+    <string name="addIncomeOperationFragment">Income</string>
+    <string name="addTransferOperationFragment">Transfer</string>
+
+    // fragment_main_history
+    <string name="menu_delete_all">Delete all transactions</string>
+    <string name="menu_delete_import">Delete imported transactions</string>
+
+    <string name="dialogDeleteAllTransactions">Confirm deletion of all transactions?</string>
+    <string name="dialogDeleteImportedTransactions">Confirm deletion of imported transactions?</string>
+    <string name="dialogButtonYes">Yes</string>
+    <string name="dialogButtonNo">No</string>
+
+    <string name="tvIncomeTitle">Income</string>
+    <string name="tvBalanceTitle">Balance</string>
+    <string name="tvExpensesTitle">Expenses</string>
+    <string name="tvEmptyList">The list is empty</string>
+
+    <string-array name="months_full">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    // dialog_month_year_picker
+    <string name="tvTitleDialogMonthYearPicker">Select period</string>
+    <string name="btnAllTime">All time</string>
+    <string name="btnOk">Apply</string>
+    <string name="btnReset">Reset to current month</string>
+
+    // fragment_details
+    <string name="tvDateTitleDetails">Date</string>
+    <string name="tvTypeTitleDetails">Type</string>
+    <string name="tvContactTitleDetails">To / From</string>
+    <string name="tvNoteTitleDetails">Note</string>
+
+    <string name="dialogDeleteTransactionTitle">Delete transaction?</string>
+    <string name="dialogDeleteTransactionMessage">This transaction will be deleted permanently.</string>
+
+    // dialog_confirmation_delete_transaction
+    <string name="tvTitleDialogConfirmationDeleteTransaction">Delete transaction?</string>
+    <string name="tvDialogConfirmationDeleteTransaction">This transaction will be deleted permanently</string>
+    <string name="btnTextDialogConfirmationDeleteTransaction">Confirm</string>
+    <string name="btnTextCancelDeleteTransaction">Cancel</string>
+
+    // fragment_add_operation
+    <string name="btnExpensesTitle">Expense</string>
+    <string name="btnIncomeTitle">Income</string>
+    <string name="btnTransferTitle">Transfer</string>
+
+    <string name="expense_supermarket">Supermarket</string>
+    <string name="expense_food">Food</string>
+    <string name="expense_clothes">Clothes</string>
+    <string name="expense_car">Car</string>
+    <string name="expense_bus">Transport</string>
+    <string name="expense_bicycle">Sport</string>
+    <string name="expense_housing">Housing</string>
+    <string name="expense_marketplace">Marketplace</string>
+    <string name="expense_taxi">Taxi</string>
+    <string name="expense_education">Education</string>
+    <string name="expense_flag">Travel</string>
+    <string name="expense_electronics">Electronics</string>
+    <string name="expense_phone">Phone</string>
+    <string name="expense_pharmacy">Pharmacy</string>
+    <string name="expense_baby">Kids</string>
+    <string name="expense_cat">Pet</string>
+
+    <string name="income_wallet">Salary</string>
+    <string name="income_cashback">Cashback</string>
+    <string name="income_graph">Investments</string>
+    <string name="income_award">Bonuses</string>
+
+    <string name="transfer_expense">Transfer - Sent</string>
+    <string name="transfer_income">Transfer - Received</string>
+
+    <string name="unknown_expense">Other</string>
+    <string name="unknown_income">Other</string>
+    <string name="unknown_general">Other</string>
+
+    <string name="btnImport">Import statement</string>
+
+    <string name="observeImportSuccess">Statement imported successfully!</string>
+    <string name="observeImportError">Failed to import statement!</string>
+
+    // view_add_categories_panel
+    <string name="hintAmountOperation">Transaction amount</string>
+    <string name="hintNote">Note</string>
+    <string name="hintDate">Date</string>
+    <string name="tilAmountOperationError">Enter amount</string>
+    <string name="tilAmountNullError">Invalid amount</string>
+
+    // fragment_add_transfer_operation
+    <string name="contact_expense">Send</string>
+    <string name="contact_income">Receive</string>
+    <string name="hintSum">Amount</string>
+    <string name="hintContact">To / From</string>
+    <string name="hintNoteTrans">Note</string>
+    <string name="hintDateTrans">Date</string>
+    <string name="btnAddTransfer">Add</string>
+
+    <string name="tilContactOperationTransferError">Enter sender/recipient</string>
+    <string name="tilAmountOperationTransferError">Enter amount</string>
+
+    // fragment_main_graphs
+    <string name="selectGraphsExpense">Expense</string>
+    <string name="selectGraphsIncome">Income</string>
+
+    // fragment_graphs_expense
+    <string name="selectGraphsExpenseWeek">Week</string>
+    <string name="selectGraphsExpenseMonth">Month</string>
+    <string name="selectGraphsExpenseYear">Year</string>
+
+    // fragment_graphs_income
+    <string name="selectGraphsIncomeWeek">Week</string>
+    <string name="selectGraphsIncomeMonth">Month</string>
+    <string name="selectGraphsIncomeYear">Year</string>
+
+    // fragment_main_report
+    <string name="tvTitleReport">Monthly summary</string>
+    <string name="tvSavingsTitle">Savings</string>
+    <string name="tvTitleReportIncome">Income</string>
+    <string name="tvTitleReportExpense">Expense</string>
+    <string name="tvTitleActivityReport">Activity</string>
+    <string name="tvTitleTopReport">Top expenses</string>
+
+    // fragment_main_settings
+    <string name="tvTitleSettings">Settings</string>
+    <string name="tvTitleInterfaceSettings">Interface</string>
+    <string name="tvTitleThemeSettings">Dark theme</string>
+    <string name="tvTitleLanguageSettings">App language</string>
+    <string name="tvCurrentLanguageSettings">English</string>
 </resources>

@@ -249,7 +249,7 @@
     <style name="tvTitleReport" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">24dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/tvTitleReport</item>
     </style>
 
     <style name="tvSavingsTitle" parent="Widget.AppCompat.TextView">
@@ -276,7 +276,7 @@
 
     <style name="tvTitleActivityReport" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">14dp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/tvTitleActivityReport</item>
     </style>
 
     <style name="tvActivityReport" parent="Widget.AppCompat.TextView">
@@ -286,12 +286,36 @@
 
     <style name="tvTitleTopReport" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">14dp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/tvTitleTopReport</item>
     </style>
 
     <style name="tvTopCategoriesReport" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+        // fragment_main_settings.xml
+
+    <style name="tvTitleSettings" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">24dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tvTitleSettings</item>
+    </style>
+
+    <style name="tvTitleInterfaceSettings" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/tvTitleInterfaceSettings</item>
+    </style>
+
+    <style name="tvTitleThemeAndLanguageSettings" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/tvTitleThemeAndLanguageSettings</item>
+    </style>
+
+    <style name="tvCurrentLanguageSettings" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/tvCurrentLanguageSettings</item>
+    </style>
+
 
 </resources>

@@ -31,6 +31,11 @@ class ReportMainFragment : Fragment() {
         observeViewModel()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun observeViewModel() = with(binding) {
         viewModel.reportData.observe(viewLifecycleOwner) { data ->
             tvSavingsValue.text = "${data.savingsRate.toInt()}%"
@@ -54,10 +59,5 @@ class ReportMainFragment : Fragment() {
                 "Данных для топа пока недостаточно"
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

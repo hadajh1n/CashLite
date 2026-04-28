@@ -5,7 +5,7 @@
     <color name="transparent">#00FFFFFF</color>
 
     <color name="themes">#2F2E2E</color>
-    <color name="fragAll">#FFFFFFFF</color>
+    <color name="fragAll">#2F2E2E</color>
     <color name="llNavigation">#1A1818</color>
 
     // activity_add_new_operation
@@ -13,7 +13,7 @@
     <color name="btnAddNewOperationNavSelector">#F4E5C2</color>
     <color name="btnAddNewOperationNavDefault">#00FFFFFF</color>
     <color name="btnTextAddNewOperationNavSelector">#FF000000</color>
-    <color name="btnTextAddNewOperationNavDefault">#FF000000</color>
+    <color name="btnTextAddNewOperationNavDefault">#FFFFFFFF</color>
 
     // view_add_categories_panel
 
@@ -26,18 +26,18 @@
 
     // fragment_history.xml
 
-    <color name="iconButtonHamburger">#FF000000</color>
+    <color name="iconButtonHamburger">#EEEEEE</color>
     <color name="cvMonthYear">#F4E5C2</color>
 
     <color name="tvMonth">#FF000000</color>
     <color name="tvYear">#1A1818</color>
-    <color name="tvIncomeTitle">#FF000000</color>
-    <color name="tvExpensesTitle">#FF000000</color>
-    <color name="tvBalanceTitle">#FF000000</color>
+    <color name="tvIncomeTitle">#FFFFFFFF</color>
+    <color name="tvExpensesTitle">#FFFFFFFF</color>
+    <color name="tvBalanceTitle">#FFFFFFFF</color>
     <color name="tvIncome">#4CAF50</color>
     <color name="tvExpenses">#F44336</color>
     <color name="tvBalance">#F4E5C2</color>
-    <color name="tvEmptyList">#FF000000</color>
+    <color name="tvEmptyList">#FFFFFFFF</color>
 
     <color name="btnAddOperationBackground">#FFEB3B</color>
     <color name="btnAddOperation">#FF000000</color>
@@ -55,14 +55,14 @@
 
     // fragment_details.xml
 
-    <color name="tvCategoryDetails">#FF000000</color>
-    <color name="tvAmountDetails">#FF000000</color>
+    <color name="tvCategoryDetails">#FFFFFFFF</color>
+    <color name="tvAmountDetails">#FFFFFFFF</color>
 
     <color name="bgDialogConfirmationDeleteTransaction">#26252D</color>
 
-    <color name="cvDetails">#AFFFFFFF</color>
-    <color name="tvTitleDetails">#2F2E2E</color>
-    <color name="tvDetails">#FF000000</color>
+    <color name="cvDetails">#1A1818</color>
+    <color name="tvTitleDetails">#AFFFFFFF</color>
+    <color name="tvDetails">#FFFFFFFF</color>
     <color name="btnDeleteOperation">#F4E5C2</color>
     <color name="btnTextDeleteOperation">#F4E5C2</color>
 
@@ -95,33 +95,33 @@
     <color name="edtInputTransferSelector">#EEEEEE</color>
     <color name="edtInputTransferDefault">#EEEEEE</color>
 
-    <color name="tvAndHintContact">#FF000000</color>
-    <color name="tvAndHintAmount">#FF000000</color>
-    <color name="tvAndHintNote">#FF000000</color>
-    <color name="tvAndHintDate">#FF000000</color>
+    <color name="tvAndHintContact">#FFFFFFFF</color>
+    <color name="tvAndHintAmount">#FFFFFFFF</color>
+    <color name="tvAndHintNote">#FFFFFFFF</color>
+    <color name="tvAndHintDate">#FFFFFFFF</color>
 
     <color name="tvBackgroundTransfer">#F4E5C2</color>
     <color name="btnAddTransfer">#F4E5C2</color>
     <color name="btnTextAddTransfer">#FF000000</color>
-    <color name="edtDateTransfer">#FF000000</color>
+    <color name="edtDateTransfer">#EEEEEE</color>
     <color name="tilErrorEdt">#F44336</color>
 
     // item_history.xml
 
-    <color name="cvItemHistory">#AFFFFFFF</color>
-    <color name="llItemHistory">#AFFFFFFF</color>
-    <color name="imCategory">#AFFFFFFF</color>
+    <color name="cvItemHistory">#FFFFFFFF</color>
+    <color name="llItemHistory">#FFFFFFFF</color>
+    <color name="imCategory">#FFFFFFFF</color>
     <color name="tvNote">#FF000000</color>
     <color name="tvCategory">#020203</color>
     <color name="tvAmount">#1A1818</color>
 
     // item_date_header_history.xml
 
-    <color name="tvDateHeader">#FF000000</color>
+    <color name="tvDateHeader">#FFFFFFFF</color>
 
     // drawable icons
 
-    <color name="iconsOfCategory">#FF000000</color>
+    <color name="iconsOfCategory">#EEEEEE</color>
     <color name="iconCategoriesSelector">#F09E45</color>
     <color name="iconDefault">#EEEEEE</color>
     <color name="iconAddCategory">#F09E45</color>
@@ -156,39 +156,39 @@
 
     // fragment_main_graphs
 
-    <color name="tvEmptyGraphs">#FF000000</color>
-    <color name="tvCategoryGraphs">#FF000000</color>
+    <color name="tvEmptyGraphs">#FFFFFFFF</color>
+    <color name="tvCategoryGraphs">#FFFFFFFF</color>
 
     <color name="btnSelectGraphsNavSelector">#F4E5C2</color>
     <color name="btnSelectGraphsNavDefault">#00FFFFFF</color>
     <color name="btnSelectGraphsTextNavSelector">#FF000000</color>
-    <color name="btnSelectGraphsTextNavDefault">#FF000000</color>
+    <color name="btnSelectGraphsTextNavDefault">#FFFFFFFF</color>
 
-    <color name="btnSelectGraphsSortDateNavSelector">#FF000000</color>
+    <color name="btnSelectGraphsSortDateNavSelector">#FFFFFFFF</color>
     <color name="btnSelectGraphsSortDateNavDefault">#00FFFFFF</color>
-    <color name="btnSelectGraphsSortDateTextNavSelector">#FFFFFFFF</color>
-    <color name="btnSelectGraphsSortDateTextNavDefault">#FF000000</color>
+    <color name="btnSelectGraphsSortDateTextNavSelector">#FF000000</color>
+    <color name="btnSelectGraphsSortDateTextNavDefault">#FFFFFFFF</color>
 
     // fragment_main_report
 
     <color name="cvTitleReport">#2C2C2C</color>
-    <color name="tvTitleReport">#FF000000</color>
+    <color name="tvTitleReport">#FFFFFFFF</color>
     <color name="tvSavingsTitle">#BDBDBD</color>
     <color name="viewReport">#40FFFFFF</color>
-    <color name="tvTitleActivityReport">#FF000000</color>
+    <color name="tvTitleActivityReport">#FFFFFFFF</color>
     <color name="tvTitleReportIncomeExpense">#BDBDBD</color>
     <color name="cvActivityReport">#2C2C2C</color>
     <color name="cvTopReport">#2C2C2C</color>
-    <color name="tvTitleTopReport">#FF000000</color>
+    <color name="tvTitleTopReport">#FFFFFFFF</color>
 
     // fragment_main_settings
 
-    <color name="tvTitleSettings">#FF000000</color>
-    <color name="tvTitleInterfaceSettings">#FF000000</color>
-    <color name="cvThemeSettings">#FFFFFFFF</color>
-    <color name="tvTitleThemeAndLanguageSettings">#FF000000</color>
-    <color name="cvLanguageSettings">#FFFFFFFF</color>
-    <color name="tvCurrentLanguageSettings">#2C2C2C</color>
+    <color name="tvTitleSettings">#FFFFFFFF</color>
+    <color name="tvTitleInterfaceSettings">#BDBDBD</color>
+    <color name="cvThemeSettings">#2C2C2C</color>
+    <color name="tvTitleThemeAndLanguageSettings">#FFFFFFFF</color>
+    <color name="cvLanguageSettings">#2C2C2C</color>
+    <color name="tvCurrentLanguageSettings">#BDBDBD</color>
     <color name="switchThemeSelector">#FFFFFFFF</color>
     <color name="switchThemeDefault">#FF000000</color>
 

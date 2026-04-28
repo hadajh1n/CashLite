@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/themes"
+    android:background="@color/fragAll"
     android:padding="20dp"
     tools:context=".ui.fragment.details.DetailsOperationFragment">
 
@@ -30,7 +30,7 @@
         android:id="@+id/tvCategoryDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/tvCategoryDetails"
         android:textStyle="bold"
         android:textSize="22sp"
         android:layout_marginTop="12dp"
@@ -43,7 +43,7 @@
         android:id="@+id/tvAmountDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/tvAmountDetails"
         android:textStyle="bold"
         android:textSize="32sp"
         android:layout_marginTop="16dp"

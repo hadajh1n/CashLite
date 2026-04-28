@@ -44,15 +44,15 @@
             android:id="@+id/tilContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/tvAndHintContact"
             android:hint="@string/hintContact"
             android:layout_marginTop="12dp"
             android:layout_marginHorizontal="20dp"
             android:maxLines="3"
-            app:hintTextColor="@color/white"
+            app:hintTextColor="@color/tvAndHintContact"
             app:boxStrokeColor="@drawable/text_input_edit_text_transfer_selector"
-            app:errorTextColor="@color/white"
-            app:boxStrokeErrorColor="@color/white"
+            app:errorTextColor="@color/tvAndHintContact"
+            app:boxStrokeErrorColor="@color/tvAndHintContact"
             app:errorIconTint="@color/tilErrorEdt">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/tvAndHintContact"
                 android:textStyle="bold"
                 android:inputType="textCapSentences"
                 android:maxLength="40"/>
@@ -70,14 +70,14 @@
             android:id="@+id/tilAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/tvAndHintAmount"
             android:hint="@string/hintSum"
             android:layout_marginTop="12dp"
             android:layout_marginHorizontal="20dp"
-            app:hintTextColor="@color/white"
+            app:hintTextColor="@color/tvAndHintAmount"
             app:boxStrokeColor="@drawable/text_input_edit_text_transfer_selector"
-            app:errorTextColor="@color/white"
-            app:boxStrokeErrorColor="@color/white"
+            app:errorTextColor="@color/tvAndHintAmount"
+            app:boxStrokeErrorColor="@color/tvAndHintAmount"
             app:errorIconTint="@color/tilErrorEdt">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/tvAndHintAmount"
                 android:textStyle="bold"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,11 +94,11 @@
             android:id="@+id/tilNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/tvAndHintNote"
             android:hint="@string/hintNoteTrans"
             android:layout_marginTop="12dp"
             android:layout_marginHorizontal="20dp"
-            app:hintTextColor="@color/white"
+            app:hintTextColor="@color/tvAndHintNote"
             app:boxStrokeColor="@drawable/text_input_edit_text_transfer_selector">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="@color/white"
+                android:textColor="@color/tvAndHintNote"
                 android:textStyle="bold"
                 android:maxLines="3"
                 android:maxLength="200"
@@ -117,7 +117,7 @@
             android:id="@+id/tilDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/tvAndHintNote"
             android:hint="@string/hintDateTrans"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"

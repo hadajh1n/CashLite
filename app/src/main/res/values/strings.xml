@@ -146,4 +146,11 @@
     <string name="tvTitleActivityReport">Активность</string>
     <string name="tvTitleTopReport">Топ трат</string>
 
+    // fragment_main_settings
+    <string name="tvTitleSettings">Настройки</string>
+    <string name="tvTitleInterfaceSettings">Интерфейс</string>
+    <string name="tvTitleThemeSettings">Темная тема</string>
+    <string name="tvTitleLanguageSettings">Язык приложения</string>
+    <string name="tvCurrentLanguageSettings">Русский</string>
+
 </resources>
