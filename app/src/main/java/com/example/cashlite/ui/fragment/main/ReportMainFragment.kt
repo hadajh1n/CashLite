@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.cashlite.R
 import com.example.cashlite.core.utils.format.formatMoney
 import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.databinding.FragmentMainReportBinding
@@ -42,21 +43,24 @@ class ReportMainFragment : Fragment() {
             tvReportIncome.text = "${data.totalIncome.formatMoney()} ₽"
             tvReportExpense.text = "${data.totalExpense.formatMoney()} ₽"
 
-            tvCountValue.text = "Операций за месяц: ${data.transactionCount}"
-            tvAvgValue.text = "Средний чек: ${data.averageTransaction.formatMoney()} ₽"
+            tvCountValue.text = "${getString(R.string.tvOperationsPerMonthReport)}: " +
+                    "${data.transactionCount}"
+            tvAvgValue.text = "${getString(R.string.tvAverageBillReport)}: " +
+                    "${data.averageTransaction.formatMoney()} ₽"
 
             tvMaxValue.text = data.maxExpense?.let { (name, amount) ->
-                "Рекордный расход: ${getString(CategoryKeys.getCategoryNameRes(name))} " +
+                "${getString(R.string.tvRecordExpensesReport)}: " +
+                        "${getString(CategoryKeys.getCategoryNameRes(name))} " +
                         "(${amount.formatMoney()} ₽)"
-            } ?: "Рекордных расходов пока нет"
+            } ?: getString(R.string.tvRecordExpensesEmptyReport)
 
-            tvTopCategoriesReport.text = if (data.topCategories.isNotEmpty()) {
+                    tvTopCategoriesReport.text = if (data.topCategories.isNotEmpty()) {
                 data.topCategories.mapIndexed { index, pair ->
                     "${index + 1}. ${getString(CategoryKeys.getCategoryNameRes(pair.first))} — " +
                             "${pair.second.formatMoney()} ₽"
                 }.joinToString("\n")
             } else {
-                "Данных для топа пока недостаточно"
+                getString(R.string.tvTopEmptyReport)
             }
         }
     }

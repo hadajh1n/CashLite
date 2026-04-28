@@ -29,13 +29,10 @@ class HistoryViewModel : ViewModel() {
     }
     val filter: LiveData<HistoryFilter> = _filter
 
-    val monthYearLabel: LiveData<Pair<String, String>> = _filter.map { filter ->
-        if (filter.isAllTime) {
-            "Все" to "транзакции"
-        } else {
-            val months = CashLiteApp.instance.resources.getStringArray(R.array.months_full)
-            months[filter.month] to filter.year.toString()
-        }
+    val monthYearLabel: LiveData<HistoryFilter> = _filter
+
+    fun refresh() {
+        _filter.value = _filter.value
     }
 
     private val filteredTransactions = MediatorLiveData<List<TransactionUI>>().apply {

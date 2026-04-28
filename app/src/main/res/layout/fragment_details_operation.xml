@@ -180,7 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/btnDeleteOperation"
-        android:text="Удалить операцию"
+        android:text="@string/tvDeleteTransactionDetails"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/cardDetails"
         app:layout_constraintStart_toStartOf="@+id/cardDetails"

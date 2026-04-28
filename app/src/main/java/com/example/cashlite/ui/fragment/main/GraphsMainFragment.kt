@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cashlite.R
+import com.example.cashlite.core.utils.graphSort.GraphUtils
 import com.example.cashlite.data.dataclass.graphs.Period
+import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.data.room.category.CategoryType
 import com.example.cashlite.databinding.FragmentMainGraphsBinding
 import com.example.cashlite.ui.adapter.CategoryChartAdapter
@@ -17,6 +19,7 @@ import com.example.cashlite.ui.viewModel.main.GraphsViewModel
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.button.MaterialButton
 
 class GraphsMainFragment : Fragment() {
@@ -40,12 +43,15 @@ class GraphsMainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupAdapter()
         setupChartBase()
         setupClicks()
         observeState()
         observePeriods()
         observeGraph()
+
+        viewModel.refresh()
     }
 
     private fun setupAdapter() = with(binding) {
@@ -77,6 +83,7 @@ class GraphsMainFragment : Fragment() {
 
             val state = viewModel.graphState.value
             val currentRange = state?.range
+            val currentPeriod = state?.period ?: Period.MONTH
 
             list.forEach { item ->
                 val btn = MaterialButton(
@@ -84,7 +91,7 @@ class GraphsMainFragment : Fragment() {
                     null,
                     com.google.android.material.R.attr.materialButtonOutlinedStyle
                 ).apply {
-                    text = item.label
+                    text = GraphUtils.formatLabel(item.key, currentPeriod)
 
                     setTextColor(ContextCompat.getColorStateList(
                         context, R.color.btn_select_graphs_sort_date_text_nav_selector)
@@ -131,9 +138,9 @@ class GraphsMainFragment : Fragment() {
 
     private fun observeGraph() = with(binding) {
         viewModel.graphData.observe(viewLifecycleOwner) { data ->
-            if (data.pieEntries.isEmpty()) {
+            if (data.categoryDetails.isEmpty()) {
                 pieChart.clear()
-                pieChart.setNoDataText("Нет операций за этот период")
+                pieChart.setNoDataText(getString(R.string.emptyGraphs))
                 pieChart.setNoDataTextColor(
                     ContextCompat.getColor(requireContext(), R.color.tvEmptyGraphs)
                 )
@@ -141,12 +148,17 @@ class GraphsMainFragment : Fragment() {
                 return@observe
             }
 
+            val entries = data.categoryDetails.map { item ->
+                val localizedTitle = getString(CategoryKeys.getCategoryNameRes(item.categoryName))
+                PieEntry(item.amount.toFloat(), localizedTitle)
+            }
+
             val resolvedColors = data.categoryColors.map {
                 try { ContextCompat.getColor(requireContext(), it) }
                 catch (e: Exception) { it }
             }
 
-            val dataSet = PieDataSet(data.pieEntries, "").apply {
+            val dataSet = PieDataSet(entries, "").apply {
                 colors = resolvedColors
                 sliceSpace = 3f
                 setDrawValues(false)

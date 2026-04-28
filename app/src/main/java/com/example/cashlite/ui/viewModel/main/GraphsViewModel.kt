@@ -101,21 +101,20 @@ class GraphsViewModel : ViewModel() {
         }.sortedByDescending { it.amount }
 
         val total = rawDetails.sumOf { it.amount }
-        val finalDetails = rawDetails.map { it.copy(percent = (it.amount / total) * 100.0) }
+        val finalDetails = rawDetails
+            .map { it.copy(percent = (it.amount / total) * 100.0) }
+            .sortedByDescending { it.amount }
 
         return GraphChartData(
-            pieEntries = finalDetails.map { item ->
-                val title = try {
-                    CashLiteApp.instance.getString(
-                        CategoryKeys.getCategoryNameRes(item.categoryName)
-                    )
-                } catch (e: Exception) { item.categoryName }
-                PieEntry(item.amount.toFloat(), title)
-            },
+            pieEntries = emptyList(),
             categoryColors = finalDetails.map { it.color },
             categoryDetails = finalDetails
         )
     }
 
     private fun emptyData() = GraphChartData(emptyList(), emptyList(), emptyList())
+
+    fun refresh() {
+        state.value = state.value
+    }
 }

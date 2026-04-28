@@ -84,7 +84,8 @@ class DetailsOperationFragment : Fragment() {
 
         tvDateDetails.text = formatDate(currentTransaction.date)
         tvTypeDetails.text =
-            if (currentTransaction.type == CategoryType.EXPENSE) "Расход" else "Доход"
+            if (currentTransaction.type == CategoryType.EXPENSE) getString(R.string.tvExpensesTitle)
+            else getString(R.string.tvIncomeTitle)
 
         setupOptionalField(llContactDetails, tvContactDetails, currentTransaction.contact)
         setupOptionalField(llNoteDetails, tvNoteDetails, currentTransaction.note)

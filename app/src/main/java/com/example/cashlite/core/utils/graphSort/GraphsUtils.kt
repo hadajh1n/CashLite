@@ -2,7 +2,9 @@ package com.example.cashlite.core.utils.graphSort
 
 import com.example.cashlite.data.dataclass.graphs.GraphPeriodUI
 import com.example.cashlite.data.dataclass.graphs.Period
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 object GraphUtils {
 
@@ -115,7 +117,10 @@ object GraphUtils {
         }
     }
 
-    private fun monthName(m: Int) = listOf(
-        "", "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"
-    )[m]
+    private fun monthName(m: Int): String {
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.MONTH, m - 1)
+        val sdf = SimpleDateFormat("MMM", Locale.getDefault())
+        return sdf.format(cal.time).replaceFirstChar { it.uppercase() }
+    }
 }

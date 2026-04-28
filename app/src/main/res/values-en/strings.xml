@@ -23,7 +23,7 @@
 
     <string name="tvIncomeTitle">Income</string>
     <string name="tvBalanceTitle">Balance</string>
-    <string name="tvExpensesTitle">Expenses</string>
+    <string name="tvExpensesTitle">Expense</string>
     <string name="tvEmptyList">The list is empty</string>
 
     <string-array name="months_full">
@@ -42,6 +42,10 @@
     </string-array>
 
     // dialog_month_year_picker
+
+    <string name="all_time_label">All</string>
+    <string name="transactions_label">transactions</string>
+
     <string name="tvTitleDialogMonthYearPicker">Select period</string>
     <string name="btnAllTime">All time</string>
     <string name="btnOk">Apply</string>
@@ -52,6 +56,8 @@
     <string name="tvTypeTitleDetails">Type</string>
     <string name="tvContactTitleDetails">To / From</string>
     <string name="tvNoteTitleDetails">Note</string>
+
+    <string name="tvDeleteTransactionDetails">Delete transaction</string>
 
     <string name="dialogDeleteTransactionTitle">Delete transaction?</string>
     <string name="dialogDeleteTransactionMessage">This transaction will be deleted permanently.</string>
@@ -123,6 +129,7 @@
     // fragment_main_graphs
     <string name="selectGraphsExpense">Expense</string>
     <string name="selectGraphsIncome">Income</string>
+    <string name="emptyGraphs">No transactions for this period</string>
 
     // fragment_graphs_expense
     <string name="selectGraphsExpenseWeek">Week</string>
@@ -140,7 +147,12 @@
     <string name="tvTitleReportIncome">Income</string>
     <string name="tvTitleReportExpense">Expense</string>
     <string name="tvTitleActivityReport">Activity</string>
+    <string name="tvOperationsPerMonthReport">Operations per month</string>
+    <string name="tvAverageBillReport">Average check</string>
+    <string name="tvRecordExpensesReport">Record expense</string>
+    <string name="tvRecordExpensesEmptyReport">There are no record expenses yet</string>
     <string name="tvTitleTopReport">Top expenses</string>
+    <string name="tvTopEmptyReport">There is not enough data for the top yet</string>
 
     // fragment_main_settings
     <string name="tvTitleSettings">Settings</string>

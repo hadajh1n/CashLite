@@ -57,6 +57,8 @@ class HistoryMainFragment : Fragment() {
         setupClicks()
         observeViewModel()
         setupItemTouchHelper()
+
+        viewModel.refresh()
     }
 
     override fun onDestroyView() {
@@ -206,9 +208,15 @@ class HistoryMainFragment : Fragment() {
             tvTotalBalance.text = "${state.totalBalance.formatMoney()} ₽"
         }
 
-        viewModel.monthYearLabel.observe(viewLifecycleOwner) { (month, year) ->
-            tvMonth.text = month
-            tvYear.text = year
+        viewModel.monthYearLabel.observe(viewLifecycleOwner) { filter ->
+            if (filter.isAllTime) {
+                tvMonth.text = getString(R.string.all_time_label)
+                tvYear.text = getString(R.string.transactions_label)
+            } else {
+                val months = resources.getStringArray(R.array.months_full)
+                tvMonth.text = months[filter.month]
+                tvYear.text = filter.year.toString()
+            }
         }
     }
 

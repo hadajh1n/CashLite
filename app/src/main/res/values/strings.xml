@@ -42,7 +42,10 @@
         <item>Декабрь</item>
     </string-array>
 
-    // fragment_main_history
+    // dialog_month_year_picker
+
+    <string name="all_time_label">Все</string>
+    <string name="transactions_label">транзакции</string>
 
     <string name="tvTitleDialogMonthYearPicker">Выберите период</string>
     <string name="btnAllTime">За все время</string>
@@ -55,6 +58,8 @@
     <string name="tvTypeTitleDetails">Тип</string>
     <string name="tvContactTitleDetails">Кому / От кого</string>
     <string name="tvNoteTitleDetails">Примечание</string>
+
+    <string name="tvDeleteTransactionDetails">Удалить операцию</string>
 
     <string name="dialogDeleteTransactionTitle">Удалить операцию?</string>
     <string name="dialogDeleteTransactionMessage">Эта операция будет удалена без возможности восстановления.</string>
@@ -127,6 +132,7 @@
     // fragment_main_graphs
     <string name="selectGraphsExpense">Расход</string>
     <string name="selectGraphsIncome">Доход</string>
+    <string name="emptyGraphs">Нет операций за этот период</string>
 
     // fragment_graphs_expense
     <string name="selectGraphsExpenseWeek">Неделя</string>
@@ -144,7 +150,12 @@
     <string name="tvTitleReportIncome">Доход</string>
     <string name="tvTitleReportExpense">Расход</string>
     <string name="tvTitleActivityReport">Активность</string>
+    <string name="tvOperationsPerMonthReport">Операций за месяц</string>
+    <string name="tvAverageBillReport">Средний чек</string>
+    <string name="tvRecordExpensesReport">Рекордный расход</string>
+    <string name="tvRecordExpensesEmptyReport">Рекордных расходов пока нет</string>
     <string name="tvTitleTopReport">Топ трат</string>
+    <string name="tvTopEmptyReport">Данных для топа пока недостаточно</string>
 
     // fragment_main_settings
     <string name="tvTitleSettings">Настройки</string>
