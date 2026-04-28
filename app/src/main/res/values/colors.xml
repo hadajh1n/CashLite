@@ -36,7 +36,7 @@
     <color name="tvBalanceTitle">#FF000000</color>
     <color name="tvIncome">#4CAF50</color>
     <color name="tvExpenses">#F44336</color>
-    <color name="tvBalance">#F4E5C2</color>
+    <color name="tvBalance">#4285B4</color>
     <color name="tvEmptyList">#FF000000</color>
 
     <color name="btnAddOperationBackground">#FFEB3B</color>
@@ -123,7 +123,7 @@
 
     <color name="iconsOfCategory">#FF000000</color>
     <color name="iconCategoriesSelector">#F09E45</color>
-    <color name="iconDefault">#EEEEEE</color>
+    <color name="iconDefault">#020203</color>
     <color name="iconAddCategory">#F09E45</color>
 
     <color name="icon_expense_basket">#00416A</color>

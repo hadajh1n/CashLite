@@ -4,6 +4,7 @@ import com.example.cashlite.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cashlite.data.dataclass.history.CategoryUI
@@ -37,6 +38,10 @@ class AddIncomeOperationAdapter(
             tvIncomeTitle.text = itemView.context.getString(
                 CategoryKeys.getCategoryNameRes(item.categoryName)
             )
+            val textSelector = ContextCompat.getColorStateList(
+                itemView.context, R.color.text_category_selector
+            )
+            tvIncomeTitle.setTextColor(textSelector)
 
             root.setOnClickListener {
                 val oldPosition = incomeCategoriesList
