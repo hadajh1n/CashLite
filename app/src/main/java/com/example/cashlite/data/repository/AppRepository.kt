@@ -111,6 +111,10 @@ object AppRepository {
         }
     }
 
+    suspend fun hasImportedTransactions(): Boolean {
+        return transactionDao.hasImportedTransactions()
+    }
+
     suspend fun addTransaction(
         category: CategoryUI,
         amount: Double,

@@ -68,6 +68,11 @@
     <string name="btnTextDialogConfirmationDeleteTransaction">Confirm</string>
     <string name="btnTextCancelDeleteTransaction">Cancel</string>
 
+    // dialog_duplicate_import
+    <string name="tvTitleDialogDuplicateImport">Statement already imported!</string>
+    <string name="tvDialogDuplicateImport">You can only import one statement at a time!\n\nTo import a new statement, please delete all existing imported transactions in the \"History\" section.</string>
+    <string name="btnTextCancelDialogDuplicateImport">Close</string>
+
     // fragment_add_operation
     <string name="btnExpensesTitle">Expense</string>
     <string name="btnIncomeTitle">Income</string>

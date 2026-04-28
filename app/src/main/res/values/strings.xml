@@ -65,11 +65,15 @@
     <string name="dialogDeleteTransactionMessage">Эта операция будет удалена без возможности восстановления.</string>
 
     // dialog_confirmation_delete_transaction
-
     <string name="tvTitleDialogConfirmationDeleteTransaction">Удалить операцию?</string>
     <string name="tvDialogConfirmationDeleteTransaction">Эта операция будет удалена без возможности восстановления</string>
     <string name="btnTextDialogConfirmationDeleteTransaction">Подтвердить</string>
     <string name="btnTextCancelDeleteTransaction">Отменить</string>
+
+    // dialog_duplicate_import
+    <string name="tvTitleDialogDuplicateImport">Выписка уже импортирована!</string>
+    <string name="tvDialogDuplicateImport">Вы можете импортировать не более 1 выписки!\n\nДля импорта новой выписки необходимо удалить все импортируемые транзакции через раздел "История"</string>
+    <string name="btnTextCancelDialogDuplicateImport">Закрыть</string>
 
     // fragment_add_operation
     <string name="btnExpensesTitle">Расход</string>

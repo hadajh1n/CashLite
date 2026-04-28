@@ -1,5 +1,6 @@
 package com.example.cashlite.ui.fragment.newOperation
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cashlite.R
 import com.example.cashlite.core.navigation.setupAddOperationNav
+import com.example.cashlite.databinding.DialogDuplicateImportBinding
 import com.example.cashlite.databinding.FragmentAddOperationBinding
 import com.example.cashlite.ui.viewModel.newOperation.AddOperationViewModel
 import com.example.cashlite.ui.viewModel.newOperation.ImportUiState
@@ -107,7 +109,28 @@ class AddOperationFragment : Fragment() {
 
     private fun onButtonImport() = with(binding) {
         btnImport.setOnClickListener {
-            pickPdfLauncher.launch(arrayOf("application/pdf"))
+            viewModel.checkCanImport { canImport ->
+                if (canImport) {
+                    pickPdfLauncher.launch(arrayOf("application/pdf"))
+                } else {
+                    showDuplicateImport()
+                }
+            }
         }
+    }
+
+    private fun showDuplicateImport() {
+        val dialogBinding = DialogDuplicateImportBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogBinding.root)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        dialogBinding.btnCancelDialogDuplicateImport.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }

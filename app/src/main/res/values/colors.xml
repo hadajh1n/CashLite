@@ -66,6 +66,11 @@
     <color name="btnDeleteOperation">#F4E5C2</color>
     <color name="btnTextDeleteOperation">#F4E5C2</color>
 
+    // dialog_duplicate_import.xml
+
+    <color name="bgDialogDuplicateImport">#26252D</color>
+    <color name="btnTextCancelDialogDuplicateImport">#FFFFFFFF</color>
+
     // dialog_confirmation_delete_transaction.xml
 
     <color name="tvTitleDialogConfirmationDeleteTransaction">#FFFFFFFF</color>

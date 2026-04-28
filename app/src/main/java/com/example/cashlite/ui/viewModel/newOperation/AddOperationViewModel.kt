@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cashlite.core.manager.PDFManager
 import com.example.cashlite.core.app.CashLiteApp
+import com.example.cashlite.data.repository.AppRepository
 import kotlinx.coroutines.launch
 
 sealed class ImportUiState {
@@ -24,6 +25,13 @@ class AddOperationViewModel : ViewModel() {
 
     private val _importSuccess = MutableLiveData<Boolean>()
     val importSuccess: LiveData<Boolean> = _importSuccess
+
+    fun checkCanImport(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            val hasImports = AppRepository.hasImportedTransactions()
+            onResult(!hasImports)
+        }
+    }
 
     fun importPdf(uri: Uri) {
         viewModelScope.launch {

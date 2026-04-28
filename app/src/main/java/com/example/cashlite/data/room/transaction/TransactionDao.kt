@@ -25,6 +25,9 @@ interface TransactionDao {
     @Insert
     suspend fun insertAllImport(transactions: List<TransactionEntity>)
 
+    @Query("SELECT EXISTS(SELECT 1 FROM transactions WHERE isImport = 1)")
+    suspend fun hasImportedTransactions(): Boolean
+
     @Query("DELETE FROM transactions WHERE idTransaction = :idTransaction")
     suspend fun deleteById(idTransaction: Int)
 
