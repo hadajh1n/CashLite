@@ -1,8 +1,6 @@
 package com.example.cashlite.ui.viewModel.main
 
 import androidx.lifecycle.*
-import com.example.cashlite.R
-import com.example.cashlite.core.app.CashLiteApp
 import com.example.cashlite.core.utils.format.formatDate
 import com.example.cashlite.data.dataclass.history.HistoryFilter
 import com.example.cashlite.data.dataclass.history.HistoryItem

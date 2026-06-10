@@ -2,14 +2,11 @@ package com.example.cashlite.ui.viewModel.main
 
 import android.graphics.Color
 import androidx.lifecycle.*
-import com.example.cashlite.core.app.CashLiteApp
 import com.example.cashlite.core.utils.graphSort.GraphUtils
 import com.example.cashlite.data.dataclass.graphs.*
 import com.example.cashlite.data.dataclass.history.TransactionUI
-import com.example.cashlite.data.local.CategoryKeys
 import com.example.cashlite.data.repository.AppRepository
 import com.example.cashlite.data.room.category.CategoryType
-import com.github.mikephil.charting.data.PieEntry
 import kotlin.math.abs
 
 class GraphsViewModel : ViewModel() {
